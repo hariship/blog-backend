@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^2.7.0",
+    "puppeteer": "^22.8.0",
+    "redis": "^4.6.13"
+  }
+}
