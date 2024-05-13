@@ -8,7 +8,7 @@ const port = 3001;
 
 // Create a Redis client
 const redisClient = redis.createClient(process.env.REDIS_URL || 'http://localhost:6379');
-
+// Dummy commit
 
 redisClient.on('error', (err) => console.error('Redis Client Error', err));
 
