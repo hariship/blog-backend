@@ -100,12 +100,15 @@ app.get('/rss-feed', async (req, res) => {
       await redisClient.set('post:order', JSON.stringify(postOrder)); // Save order
     }
 
-    // Fetch posts based on the order
+    // Fetch posts based on the order and include likes count
     const posts = [];
     for (const title of postOrder) {
       const post = await redisClient.get(`post:${title}`);
+      const likes = await redisClient.get(`likes:${title}`) || 0; // Fetch likes separately, default to 0
       if (post) {
-        posts.push(JSON.parse(post));
+        const postData = JSON.parse(post);
+        postData.likesCount = likes; // Attach the likes to the post data
+        posts.push(postData);
       }
     }
 
@@ -153,20 +156,22 @@ const autoScroll = async (page) => {
 app.post('/update-likes', async (req, res) => {
   const { title, likesCount } = req.body;
   try {
+    // Step 1: Check if the post exists in Redis
     const post = await redisClient.get(`post:${title}`);
-    if (post) {
-      const postData = JSON.parse(post);
-      postData.likesCount = likesCount; // Update the likes count
-      await redisClient.set(`post:${title}`, JSON.stringify(postData));
-      res.json({ message: 'Likes count updated successfully!' });
-    } else {
-      res.status(404).json({ message: 'Post not found' });
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
     }
+
+    // Step 2: Update the likes count in a separate key `likes:{title}`
+    await redisClient.set(`likes:${title}`, likesCount);
+
+    res.json({ message: 'Likes count updated successfully!' });
   } catch (error) {
     console.error('Error updating likes count:', error);
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
