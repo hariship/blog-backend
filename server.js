@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 app.get('/scrape', async (req, res) => {
   try {
     const url = 'https://www.haripriya.org/blog';
-    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox']});
+    const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
     await autoScroll(page);
@@ -42,19 +42,60 @@ app.get('/scrape', async (req, res) => {
         const likesCount = elem.querySelector('.like-button-with-count__like-count')?.textContent.trim();
         const description = elem.querySelector('.post-description')?.textContent.trim();
         const imageUrl = elem.querySelector('.gallery-item-visible')?.src;
-        items.push({ title, likesCount, description, imageUrl });
+        items.push({
+          title,
+          likesCount: parseInt(likesCount) || 0, // Ensure likesCount is a number, default to 0
+          description,
+          imageUrl
+        });
       });
       return items;
     });
 
     await browser.close();
 
-    // Save each post individually in Redis
+    const updatedPosts = [];
+
+    // Iterate over all the scraped posts
     for (const post of posts) {
-      await redisClient.set(`post:${post.title}`, JSON.stringify(post));
+      // Try to get the post from Redis
+      const redisPost = await redisClient.get(`post:${post.title}`);
+      let postData;
+
+      if (redisPost) {
+        // If the post is found in Redis, parse it
+        postData = JSON.parse(redisPost);
+      } else {
+        // If not found, fetch RSS data
+        const rssResponse = await fetch('https://www.haripriya.org/blog-feed.xml');
+        const rssData = await rssResponse.text();
+        const parsedPosts = await parseRSS(rssData);
+        
+        postData = parsedPosts.find(p => p.title === post.title);
+
+        if (postData) {
+          // Store the newly retrieved post in Redis
+          await redisClient.set(`post:${postData.title}`, JSON.stringify(postData));
+        } else {
+          console.warn(`Post ${post.title} not found in RSS feed.`);
+          continue; // Skip to next post if not found in RSS
+        }
+      }
+      
+      // Update the likesCount if the current likesCount in Redis is 0 or doesn't exist
+      if (!postData.likesCount || postData.likesCount === 0) {
+        postData.likesCount = post.likesCount;
+      }
+
+      // Save the updated likes count separately
+      await redisClient.set(`likes:${post.title}`, post.likesCount);
+
+      // Add the updated post to the result list
+      updatedPosts.push(postData);
     }
 
-    res.json(posts);
+    // Return all the posts (updated with likesCount)
+    res.json(updatedPosts);
   } catch (error) {
     console.error('Error fetching data:', error);
     res.status(500).send('Internal Server Error');
@@ -85,29 +126,27 @@ app.get('/rss-feed', async (req, res) => {
     if (postOrderData) {
       postOrder = JSON.parse(postOrderData);
     } else {
-      // No order found in Redis, scrape and save data
+      // Fetch RSS feed and save post order if missing
       const response = await fetch('https://www.haripriya.org/blog-feed.xml');
       const rssData = await response.text();
-      const parsedPosts = await parseRSS(rssData); // Parse the RSS feed
+      const parsedPosts = await parseRSS(rssData);
 
       postOrder = parsedPosts.map(post => post.title);
-      
-      // Save each post and maintain order
+      await redisClient.set('post:order', JSON.stringify(postOrder));
+
       for (const post of parsedPosts) {
         await redisClient.set(`post:${post.title}`, JSON.stringify(post));
       }
-
-      await redisClient.set('post:order', JSON.stringify(postOrder)); // Save order
     }
 
-    // Fetch posts based on the order and include likes count
     const posts = [];
     for (const title of postOrder) {
       const post = await redisClient.get(`post:${title}`);
-      const likes = await redisClient.get(`likes:${title}`) || 0; // Fetch likes separately, default to 0
       if (post) {
         const postData = JSON.parse(post);
-        postData.likesCount = parseInt(likes); // Attach the likes to the post data as a number
+        const likes = await redisClient.get(`likes:${title}`) || 0; // Default to 0 if no likes
+
+        postData.likesCount = parseInt(likes); // Merge likes into post data
         posts.push(postData);
       }
     }
@@ -153,17 +192,24 @@ const autoScroll = async (page) => {
 };
 
 // Update likes for a post
-// Update likes for a post
 app.post('/update-likes', async (req, res) => {
   const { title, likesCount } = req.body;
   try {
-    // Step 1: Check if the post exists in Redis
+    // Fetch the existing post from Redis
     const post = await redisClient.get(`post:${title}`);
+    
     if (!post) {
       return res.status(404).json({ message: 'Post not found' });
     }
 
-    // Step 2: Update the likes count in a separate key `likes:{title}`
+    // Parse the post and update the likesCount
+    const postData = JSON.parse(post);
+    postData.likesCount = likesCount;
+
+    // Save the updated post back to Redis
+    await redisClient.set(`post:${title}`, JSON.stringify(postData));
+
+    // Also update the separate likes key
     await redisClient.set(`likes:${title}`, likesCount);
 
     res.json({ message: 'Likes count updated successfully!' });
