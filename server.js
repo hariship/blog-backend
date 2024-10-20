@@ -107,7 +107,7 @@ app.get('/rss-feed', async (req, res) => {
       const likes = await redisClient.get(`likes:${title}`) || 0; // Fetch likes separately, default to 0
       if (post) {
         const postData = JSON.parse(post);
-        postData.likesCount = likes; // Attach the likes to the post data
+        postData.likesCount = parseInt(likes); // Attach the likes to the post data as a number
         posts.push(postData);
       }
     }
@@ -152,6 +152,7 @@ const autoScroll = async (page) => {
   });
 };
 
+// Update likes for a post
 // Update likes for a post
 app.post('/update-likes', async (req, res) => {
   const { title, likesCount } = req.body;
