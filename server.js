@@ -149,6 +149,25 @@ const autoScroll = async (page) => {
   });
 };
 
+// Update likes for a post
+app.post('/update-likes', async (req, res) => {
+  const { title, likesCount } = req.body;
+  try {
+    const post = await redisClient.get(`post:${title}`);
+    if (post) {
+      const postData = JSON.parse(post);
+      postData.likesCount = likesCount; // Update the likes count
+      await redisClient.set(`post:${title}`, JSON.stringify(postData));
+      res.json({ message: 'Likes count updated successfully!' });
+    } else {
+      res.status(404).json({ message: 'Post not found' });
+    }
+  } catch (error) {
+    console.error('Error updating likes count:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
