@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Haripriya</title>
+    <description>Haripriya</description>
+    <link>https://www.haripriya.org/blog</link>
+    <generator>RSS for Node</generator>
+    <lastBuildDate>Sun, 02 Jun 2024 15:23:45 GMT</lastBuildDate>
+    <atom:link href="https://www.haripriya.org/blog-feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Bi-Weekly Notes (21/22) - 2024</title>
+      <description>I was traveling last week, so it's a bi-weekly update this time. My last two weeks were mostly Travel, Mountains, Work, Spotify &amp;#38; Movies....</description>
+      <link>https://www.haripriya.org/post/bi-weekly-notes-21-22-2024</link>
+      <guid isPermaLink="false">665c6d9316d00d2a5877c9cf</guid>
+      <pubDate>Sun, 02 Jun 2024 15:16:16 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_7d57abc4f3204aff8fcf4a7a15ee0645~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I was traveling last week, so it&amp;apos;s a bi-weekly update this time. My last two weeks were mostly Travel, Mountains, Work, Spotify &amp;amp; Movies.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Sometimes its hard to forget certain days - like the past 2 weeks. I recently travelled to Sissu in Himachal and it turned out to be one of the best solo&amp;apos;s I&amp;apos;ve taken in a while. Waking up to different places each day made time feel like it was moving slower.&lt;em&gt;&lt;span style="color: #38434d;"&gt;(On a similar context, I listened to a &lt;/span&gt;&lt;/em&gt;&lt;u&gt;&lt;a href="https://radiolab.org/podcast/secret-long-life" rel="noreferrer" target="_blank"&gt;&lt;em&gt;&lt;span style="color: #38434d;"&gt;podcast&lt;/span&gt;&lt;/em&gt;&lt;/a&gt;&lt;/u&gt;&lt;em&gt;&lt;span style="color: #38434d;"&gt; that talks on how memory works and how it impacts time).&lt;/span&gt;&lt;/em&gt;&lt;em&gt; &lt;/em&gt;I also did couple of treks&lt;em&gt;&lt;span style="color: #38434d;"&gt;(Will write a separate post about that )&lt;/span&gt;&lt;/em&gt;. Below is a brief overview.&lt;/p&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Waterfall trek :&lt;/strong&gt; It was a short but steep hike from the place I stayed. The only way to reach the top is via zipline followed by a hike since the bridge is broken. Being summer, I encountered lush green valleys surrounded by snow-capped peaks with Chandra River flowing by the side —a &lt;u&gt;&lt;a href="https://www.thrillophilia.com/attractions/sissu-waterfall" rel="noreferrer" target="_blank"&gt;view&lt;/a&gt;&lt;/u&gt; not to be missed.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Monastery trek :&lt;/strong&gt; It is yet another short but steep hike situated in a village above Sissu. The hike itself was a bliss, reminding me of the setting from the movie &amp;quot;Up&amp;quot;. 
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_7d57abc4f3204aff8fcf4a7a15ee0645~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;As a promise to myself, I sketched the above landscape using procreate. It closely resembles a view from my memory. I also did spend a good amount of time writing and am looking forward to sharing them in upcoming posts.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Work was mostly research + automations. I did write couple of python scripts to automate some of the mundane tasks at work and explored the possibilities of &lt;u&gt;&lt;a href="https://python.langchain.com/v0.2/docs/introduction/" rel="noreferrer" target="_blank"&gt;langchain&lt;/a&gt;&lt;/u&gt; with one my ex colleague and a good friend of mine. One of the days at WeWork, I helped a young guy with his deployment. We ended up working together for an extra 4-5 hours to make sure everything was completed. It was a time spent well.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I invested sometime learning math. I got to know about &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Erd%C5%91s_number" rel="noreferrer" target="_blank"&gt;Erdős&lt;/a&gt;&lt;/u&gt;&lt;a href="https://en.wikipedia.org/wiki/Erd%C5%91s_number" rel="noreferrer" target="_blank"&gt; &lt;/a&gt;number. It measures how closely a mathematician&amp;apos;s work is connected to the Hungarian mathematician, Paul Erdős. It sparked my interest and I dedicated a day learning his work on graph theory. I felt sad about growing distant from something I once loved. Now, I want to start from the basics to learn integration and differential calculus.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I watched &lt;u&gt;&lt;a href="https://www.imdb.com/title/tt26660021/" rel="noreferrer" target="_blank"&gt;Aavesham&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; It was super fun and I believe only FaFa could pull off such a character so well. I am also watching older episodes of &lt;u&gt;&lt;a href="https://www.amazon.com/Modern-Love-Season-1/dp/B0875GVR5Z" rel="noreferrer" target="_blank"&gt;Modern love&lt;/a&gt;&lt;/u&gt;. Some episodes were good, while others were just okay. I particularly liked the &lt;u&gt;&lt;a href="https://www.imdb.com/title/tt8543396/" rel="noreferrer" target="_blank"&gt;one&lt;/a&gt;&lt;/u&gt; starring Anne Hathaway.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Bangalore is back with regular showers but, I&amp;apos;m currently in Chennai and missed experiencing the hailstorms. With the heatwave sweeping across India, its a relief to see some rain in south. This isn&amp;apos;t just a local phenomenon; it&amp;apos;s part of a global trend. While efforts are being made to control emissions, I believe more comprehensive and coordinated actions are required globally to mitigate the effects of climate change.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly Notes - (20/2024)</title>
+      <description>This week: Felt fast paced and hence the early notes. It was mostly consumption with little time for creation - YouTube, Spotify, Books &amp;#38;...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-20-2024</link>
+      <guid isPermaLink="false">66487b49e3faa779957fc6f3</guid>
+      <category>Life</category>
+      <pubDate>Sat, 18 May 2024 10:53:54 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_a1a08df5601847928b4309734a8bb619~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;This week: Felt fast paced and hence the early notes. It was mostly consumption with little time for creation - YouTube, Spotify, Books &amp;amp; Procreate;  Each day felt different.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_a1a08df5601847928b4309734a8bb619~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I enjoy baking my own creations which motivated me to take a step further and run a self-hosted website where I manage on my own. From running the server to troubleshooting issues, I like handling the challenges that come my way. I created issues to work on both &lt;u&gt;&lt;a href="https://github.com/hariship/blog/issues" rel="noreferrer" target="_blank"&gt;client&lt;/a&gt;&lt;/u&gt; and &lt;u&gt;&lt;a href="https://github.com/hariship/blog-backend/issues" rel="noreferrer" target="_blank"&gt;server&lt;/a&gt;&lt;/u&gt; side, and I&amp;apos;m excited to solve them.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Having said that, I also made it a point to sketch every week for the cover post. It felt good to sketch again after months. Hoping to maintain this pace.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I was mostly behind the walls either watching, reading or listening.
+ It felt like a nostalgic journey back to my teen years, focussing mainly on space/brain science.
+&lt;/p&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I spent sometime on YouTube learning about &lt;u&gt;&lt;a href="https://www.ligo.caltech.edu/" rel="noreferrer" target="_blank"&gt;LIGO&lt;/a&gt;&lt;/u&gt;. Previously, I had only heard, but I didn&amp;apos;t know the extent of its significance. Each time we pointed new instrument to the universe, nature has revealed enormous things to us. I felt amused. &lt;u&gt;&lt;a href="https://www.youtube.com/watch?v=4GbWfNHtHRg" rel="noreferrer" target="_blank"&gt;Here&lt;/a&gt;&lt;/u&gt; is a quick link to a 3-min video summary.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;This week&amp;apos;s Spotify was mostly dedicated to RadioLab. I particularly enjoyed two episodes: &lt;u&gt;&lt;a href="https://radiolab.org/podcast/memory-and-forgetting" rel="noreferrer" target="_blank"&gt;Memory and Forgetting&lt;/a&gt;&lt;/u&gt; and &lt;u&gt;&lt;a href="https://radiolab.org/podcast/the-moon-itself" rel="noreferrer" target="_blank"&gt;The Moon itself&lt;/a&gt;&lt;/u&gt;&lt;u&gt;,&lt;/u&gt; both offering unique perspectives.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I listened to Cosmic Queries by Neil D Tyson with &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Janna_Levin" rel="noreferrer" target="_blank"&gt;Janna Levin&lt;/a&gt;&lt;/u&gt;. She is one the few renowned female cosmologists alive today. I loved her metaphor about photons existing in two states simultaneously. Below is her quote from the &lt;u&gt;&lt;a href="https://app.podscribe.ai/episode/101018962" rel="noreferrer" target="_blank"&gt;podcast&lt;/a&gt;&lt;/u&gt;,&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span style="color: #0404fc;"&gt;Let&amp;apos;s just quickly describe the many worlds interpretation. It says it doesn&amp;apos;t even have to be as fancy as quantum entanglement. It just says a particle can be in more than one state. So the analogy I like to give, I dunno if I&amp;apos;ve done it here before, is, is chords in music versus individual notes in music. Okay. So let&amp;apos;s say I play a chord and it&amp;apos;s a definite chord. Right. That is a super position of certain notes. Yep. So I can&amp;apos;t simultaneously be in a single state of one note and in the state of the chords.&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Work was mostly light this week, allowing me to spend more time researching. I discovered &lt;u&gt;&lt;a href="https://python.langchain.com/v0.1/docs/get_started/introduction/" rel="noreferrer" target="_blank"&gt;langchain&lt;/a&gt;&lt;/u&gt; which offers very unique packages. I was experimenting with their &lt;u&gt;&lt;a href="https://python.langchain.com/v0.1/docs/integrations/platforms/openai/" rel="noreferrer" target="_blank"&gt;openai&lt;/a&gt;&lt;/u&gt; libraries. I am hoping to integrate some of them into my work-stream.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Bangalore had some nice showers this week, making it feel like the city I remember. I will be travelling soon, which I&amp;apos;m looking forward to.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Migrating WIX posts to a new blog using RSS</title>
+      <description>RSS(expands to Really Simple Syndication - it's not what you think it is), is a simple protocol represented in XML format, that contains...</description>
+      <link>https://www.haripriya.org/post/migrating-wix-posts-to-a-new-blog-using-rss</link>
+      <guid isPermaLink="false">6641c515f39e8d860d4c50b2</guid>
+      <category>Technology</category>
+      <pubDate>Mon, 13 May 2024 07:47:51 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_38b8d68e2ae04a5aafb21920dc2b29d8~mv2.png/v1/fit/w_496,h_352,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;RSS(&lt;em&gt;expands to Really Simple Syndication - it&amp;apos;s not what you think it is&lt;/em&gt;), is a simple protocol represented in XML format, that contains your webpage&amp;apos;s metadata.&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_52ec3130e0d54246a686039dd179beb1~mv2.png/v1/fit/w_496,h_400,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;The beauty of RSS lies in its simplicity and versatility. Instead of manually visiting multiple websites to check for updates, it can help you notify whenever a post/article goes up. &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="color: #656d8f;"&gt;Note: It was between 2005 and 2006 when RSS gained widespread use.&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This post is an attempt to share my experience of migrating to a newly hosted platform using RSS feeds.&lt;/p&gt;
+&lt;h2&gt;Why did I migrate from WiX?&lt;/h2&gt;
+&lt;p&gt;First of all, the frustration stemmed from the lack of control over posts. WiX&amp;apos;s content management system (CMS) imposes certain restrictions on how content can be created, organised, and managed. I don&amp;apos;t own the database. Without direct access to the DB or the ability to implement custom solutions, I found myself constrained by WiX&amp;apos;s predefined templates and functionalities. Additionally, I didn&amp;apos;t migrate entirely exactly. All I did was added a listener to a newly hosted platform. &lt;/p&gt;
+&lt;h2&gt;How did I migrate?&lt;/h2&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_86c3702bd15a4ae2a93a927187234e20~mv2.png/v1/fit/w_1000,h_604,al_c,q_80/file.png"title="Component Flow"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;Components&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Client-1&lt;/strong&gt;: WIX: &lt;u&gt;&lt;a href="https://www.haripriya.org/blog-feed.xml" rel="noreferrer" target="_blank"&gt;blog-feed.xml&lt;/a&gt;&lt;/u&gt; &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Client-2&lt;/strong&gt;: A simple &lt;em&gt;ReactJS+Webpack&lt;/em&gt; project : &lt;u&gt;&lt;a href="https://blog.haripriya.org/" target="_blank"&gt;https://blog.haripriya.org/&lt;/a&gt;&lt;/u&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Server&lt;/strong&gt;: A simple &lt;em&gt;Nodejs+Typescript&lt;/em&gt; server to read from and save into &lt;em&gt;redis.&lt;/em&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I do not have a listener yet. Rather, right now whenever a post gets published, I manually call&lt;span style="color: #EC008C;"&gt; &lt;/span&gt;&lt;span style="color: #518afb;"&gt;`/GET refresh-data` &lt;/span&gt;&lt;span style="color: #000000;"&gt;to refresh my redis. I will soon setup a CRON to auto update my redis on twice-a-week basis. You can find my git &lt;/span&gt;&lt;u&gt;&lt;a href="https://github.com/hp-qwlt/my-rss-reader" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #000000;"&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;&lt;span style="color: #000000;"&gt;. (The code is very messy and &lt;/span&gt;amateur&lt;span style="color: #000000;"&gt; for now, will work on that). &lt;/span&gt;I am also looking forward to publish my data.&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_adf8855f54b44a0aa2c9d3719cc90a80~mv2.png/v1/fit/w_1000,h_416,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;I generally am passionate about organisation, design, and the freedom to express myself. For me, organisation isn&amp;apos;t just about tidying up clutter; it&amp;apos;s about structuring content in a way that enhances clarity, accessibility, and user experience.&lt;/p&gt;
+&lt;p&gt;Beyond traditional blog posts, the hosted &lt;u&gt;&lt;a href="https://blog.haripriya.org/" rel="noreferrer" target="_blank"&gt;platform&lt;/a&gt;&lt;/u&gt; serves as a canvas for sharing more than just words. I&amp;apos;m excited to leverage this space to publish more architectural designs, providing insights into my thoughts, methods, and best practices.&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly Notes (19/2024)</title>
+      <description>This week: Bangalore rains, balanced work -life, and a desire to travel. ⚙️ I have been busy migrating my current blog to a newly self...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-19-2024</link>
+      <guid isPermaLink="false">6640ea73845bf12727a5c57c</guid>
+      <category>Life</category>
+      <pubDate>Sun, 12 May 2024 17:35:16 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_7a9af64431bc4657ae4e1a65f0a697ee~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;This week: Bangalore rains, balanced work -life, and a desire to travel.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;⚙️ I have been busy migrating my current &lt;u&gt;&lt;a href="https://blog.haripriya.org/" rel="noreferrer" target="_blank"&gt;blog&lt;/a&gt;&lt;/u&gt; to a newly self hosted platform using RSS feeds. Most likely you&amp;apos;ll be reading my posts exclusively on the new site from now on. I will be writing a detailed post on that shortly.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt; I listened to a couple of podcasts this week, where I stumbled upon an economist, &lt;u&gt;&lt;a href="https://www.rohitlamba.com/" rel="noreferrer" target="_blank"&gt;Rohit Lambda&lt;/a&gt;&lt;/u&gt;. He recommended to read one of the renowned books by Ram Guha, &lt;u&gt;&lt;a href="https://www.amazon.in/India-After-Gandhi-History-Democracy/dp/9382616977" rel="noreferrer" target="_blank"&gt;India after Gandhi&lt;/a&gt;&lt;/u&gt;. The very first page from the book,  &lt;em&gt;&lt;strong&gt;Why should history stop at 1947&lt;/strong&gt;&lt;/em&gt; caught my attention. I am enticed to read more.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt; I have recently acquired a term-life insurance and I&amp;apos;m not fully onboard with the idea just yet. I often find the process murky and unethical - payment precedes verification. It should be otherwise, which leaves me questioning the value and necessity of one in my life.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt; I had a peaceful Sunday morning where time almost stood still. Like a sloth in its habitat, I spent nearly an hour flipping through the newspaper and enjoyed some bird watching.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_7a9af64431bc4657ae4e1a65f0a697ee~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;▶️ I finally took the plunge and purchased YouTube premium account. It is so much more tailored to my needs and subscriptions unlike other social media platforms. I like that I can dial down the distractions by just turning off recommendations.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;☔ Bangalore is finally blessed with showers; A much relief from all the scorching heat. I worked mostly out of &lt;u&gt;&lt;a href="https://clayworks.space/property/jpnagar/clayworks-miniforest/virtual-tour/" rel="noreferrer" target="_blank"&gt;clayworks-a-co-working space&lt;/a&gt;&lt;/u&gt; which had an open roof-top, allowing me to stay more productive with a pleasant ambience. It definitely did instil my urge to do a workation, a touch of wanderlust to the week. 
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Bi-Weekly Notes (17/18) - 2024</title>
+      <description>I typically compile my notes over a period of week or two. Given that I've been traveling with busy work, my entries for April and the...</description>
+      <link>https://www.haripriya.org/post/bi-weekly-notes-17-18-2024</link>
+      <guid isPermaLink="false">6637b3c665c969e2bb60dbd5</guid>
+      <category>Life</category>
+      <pubDate>Sun, 05 May 2024 17:55:10 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_1566f3e44b7743a99cd8b85a2ae21181~mv2.jpg/v1/fit/w_831,h_963,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I typically compile my notes over a period of week or two. Given that I&amp;apos;ve been traveling with busy work, my entries for April and the first week of May have been on a bi-weekly basis.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;  This week, I watched &lt;u&gt;&lt;a href="https://www.imdb.com/title/tt13821126/" rel="noreferrer" target="_blank"&gt;Extrapolations&lt;/a&gt;&lt;/u&gt;. It was quite a mixed bag. There was a noticeable commercial vibe throughout, but it was okay as I found myself thinking a lot about the tone of the series and the direction it&amp;apos;s taking. I feel compelled to jot down these thoughts before they slip away.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;The theme of &amp;quot;technophobia&amp;quot; is mostly featured in series like &lt;em&gt;Black Mirror&lt;/em&gt;, prompting us to reflect on our uneasy relationship with technology. It&amp;apos;s interesting to question why we feel a sense of detachment or even fear towards anything computerised or artificial. 
+&lt;/p&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;One reason I thought could be our inherent trust in the reliability and control of natural elements, contrasting with the perceived limitations of technology - The fear of unknown.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Additionally, I often think that the core issue could be our tendency to over-rely on new innovations while undervaluing the resources we currently have. &lt;strong&gt;The fear that technology supplants than it supports human life and skills&lt;/strong&gt;. This series touched upon the very assumption.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;There is a particular story in the episode named &lt;em&gt;Lola,&lt;/em&gt; where it revolves around a character who struggles with memory loss and relies on daily access and sync to retain his memories. It resonated with me deeply. Brain is a very fragile organ. Having experienced losses over the years, both with people and memories, I&amp;apos;ve come to appreciate journaling even more. Writing here serves as a digital archive of my life, preserving precious experiences that I might lose otherwise if only stored in my mind. While there are other ways to capture memories like photos and videos, I believe journaling and blogging uniquely capture the emotional essence of those moments, offering a space for reflection and for others to connect with your stories.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; Having said that, I had the opportunity to connect with a few individuals, both from work and outside. Notably, I visited &lt;u&gt;&lt;a href="https://thejeshgn.com/" rel="noreferrer" target="_blank"&gt;Thejesh&amp;apos;s&lt;/a&gt;&lt;/u&gt; home to meet his happy child, Uma, along with her siblings Pathu and Echo. I also had the pleasure of catching up with Yash and Suneela. Yash runs a &lt;u&gt;&lt;a href="https://holistictravellers.com/" rel="noreferrer" target="_blank"&gt;travelogue&lt;/a&gt;&lt;/u&gt; - something I am looking forward to read and follow. I also spent the last of my weeks with my cousins and their Doggos Chooku and BB. These encounters are rare and though brief, I enjoyed the time we spent together. I borrowed yet another book from Jagan, &lt;u&gt;&lt;a href="https://www.goodreads.com/book/show/34466963-why-we-sleep" rel="noreferrer" target="_blank"&gt;Why we sleep&lt;/a&gt;&lt;/u&gt; by Mathew Walker.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; Every week serves as an example to prioritise work-life balance. Week 17 was packed with numerous tasks, all of which concluded by Tuesday, April 30th, leaving the remainder of the days with a sense of tranquility. After sailing through a wave, I am in a place where I think I have genuine contentment in what I do. In this period, I am prioritising personal satisfaction over just mere financial gain.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_1566f3e44b7743a99cd8b85a2ae21181~mv2.jpg/v1/fit/w_831,h_963,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt; This year, the job crisis, particularly for freshers, is alarmingly high. I traveled to Chennai briefly for official engagements to assist in coordinating campus drive at &lt;u&gt;&lt;a href="https://www.veltech.edu.in/" rel="noreferrer" target="_blank"&gt;Vel Tech&lt;/a&gt;&lt;/u&gt; and &lt;u&gt;&lt;a href="https://www.srmist.edu.in/" rel="noreferrer" target="_blank"&gt;SRM&lt;/a&gt;&lt;/u&gt;, encountering atleast 1000 individuals a day. For the most part, I stayed at the &lt;u&gt;&lt;a href="https://www.theaccordhotels.com/property/metropolitan-chennai/?gad_source=1&amp;gclid=CjwKCAjw3NyxBhBmEiwAyofDYRgCkQ2I1Uk7YVUg9QKKkYsFcW673JzcPIB7fsI6aBPU-Y_rV2yFwBoC_aQQAvD_BwE" rel="noreferrer" target="_blank"&gt;Accord&lt;/a&gt;&lt;/u&gt; (sponsored by the company) and had the pleasure of catching up with the Turing Team, which, though tiring, was a much-needed and relishing experience.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;☀️ It only gets hotter with time, but I did enjoy couple of surprising showers at Bangalore - especially experiencing hailstorms for the very first time in my life. Looking forward for more such showers, so I don&amp;apos;t feel compelled to buy an AC for my room.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Bi-Weekly Notes (15/16) - 2024</title>
+      <description>I couldn't write for the past two weeks because I've been tied up, so this month, my notes have been bi-weekly. Below, I'm combining the...</description>
+      <link>https://www.haripriya.org/post/bi-weekly-notes-15-16-2024</link>
+      <guid isPermaLink="false">66254f6510a3841cc65d1da3</guid>
+      <category>Life</category>
+      <pubDate>Sun, 21 Apr 2024 18:15:32 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_47854e495c9747498aed38408a0c56bc~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I couldn&amp;apos;t write for the past two weeks because I&amp;apos;ve been tied up, so this month, my notes have been bi-weekly. Below, I&amp;apos;m combining the updates from the past two weeks into one summary.&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;At work, I heavily rely on GPT for coding. It often feels like something straight out of a Star Trek scene. I seek help from AI to generate test cases or fix bugs, kind of like how they use voice commands in the show and movies. ChatGPT is my goto. Although I use it cautiously, primarily to speed up my searches. I still rely on Google for verification and deeper research
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I am in Chennai, celebrated Tamil New Year with family. It was a lot of fun, especially visiting my partner&amp;apos;s nephew—we played quite a bit! I also made it to the beach and caught up with several friends. I&amp;apos;ll be heading back to Bangalore later this week.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_47854e495c9747498aed38408a0c56bc~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I recently cast my vote in the Lok Sabha elections. I also wrote a &lt;u&gt;&lt;a href="https://www.haripriya.org/post/its-voting-time" rel="noreferrer" target="_blank"&gt;post&lt;/a&gt;&lt;/u&gt; on it. Each post I publish also serves as a personal reminder to change the hosting for my website. I&amp;apos;m looking forward to tackling more projects and clearing the decks for new beginnings.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I visited &lt;u&gt;&lt;a href="https://vrchennai.com/home/ShopDetails/212" rel="noreferrer" target="_blank"&gt;OM Book shop&lt;/a&gt;&lt;/u&gt; in VR Mall; Purchased &lt;u&gt;&lt;a href="https://www.goodreads.com/en/book/show/8521879" rel="noreferrer" target="_blank"&gt;Annihilation of caste&lt;/a&gt;&lt;/u&gt;. Something I am not &amp;apos;very&amp;apos; familiar with to make an opinion. I am looking forward to reading more before forming interpretations. I also came across a book called &lt;u&gt;&lt;a href="https://www.goodreads.com/en/book/show/7138803" rel="noreferrer" target="_blank"&gt;Chai Chai&lt;/a&gt;&lt;/u&gt;, which is a travel diary. It seemed like a perfect read for on-the-go moments. Having said that, My friend once shared a tip on choosing books: always go with your current mood. If you&amp;apos;re excited about a book now, buy it before the enthusiasm fades. So, the buying spree is still on.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I enjoy reading blogs at night, but since Chrome on my iPhone doesn’t have a reading mode, I’ve switched to using Safari. I keep a bookmarked reading list there. I recently read, &lt;u&gt;&lt;a href="https://indiauncut.substack.com/p/dont-get-into-a-box" rel="noreferrer" target="_blank"&gt;Don&amp;apos;t Get Into a Box&lt;/a&gt;&lt;/u&gt; on India Uncut&amp;apos;s Substack. It was good.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I&amp;apos;ve found myself in a love-hate relationship with Apple products. On one hand, I appreciate the comfort and seamless integration that items like AirPods and Safari&amp;apos;s reading mode offer. On the other hand, such simplicity sometimes feels restrictive, limiting my ability to tailor the tech to my needs. The relationship is complicated.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Recently, &lt;u&gt;&lt;a href="https://open.spotify.com/track/6q7bXTv3yBedHblKRoC5uu" rel="noreferrer" target="_blank"&gt;Kadam&lt;/a&gt;&lt;/u&gt; has been on repeat for me especially when I am travelling. Whether I&amp;apos;m in an auto, cab, bus, train, or flight, it&amp;apos;s my soundtrack for the journey and this season. My mom says, it sounds like for someone who feels a bit lost in life. Even though I don&amp;apos;t understand Hindi well, the music still resonates with me—it just feels good.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Lately, I&amp;apos;ve been overwhelmed with personal and professional issues, making it hard to focus on reading or detailed studies. However, I&amp;apos;ve started to slow down. Week 15 has been particularly positive. It feels good to find some calm in the chaos.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+    </item>
+    <item>
+      <title>It's voting time</title>
+      <description>I play a teeny-tiny, still, a crucial part. All of us do. In voting, I am effectively choosing a representative for the state I live in....</description>
+      <link>https://www.haripriya.org/post/its-voting-time</link>
+      <guid isPermaLink="false">662109671c72e3b006f582b8</guid>
+      <category>Motives</category>
+      <pubDate>Thu, 18 Apr 2024 13:02:02 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_c7eb3fda43584634b91a090a081e2e32~mv2.png/v1/fit/w_400,h_300,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I play a teeny-tiny, still, a crucial part. All of us do.&lt;a href="http://part.In" target="_blank"&gt; &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_c7eb3fda43584634b91a090a081e2e32~mv2.png/v1/fit/w_400,h_300,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;In voting, I am effectively choosing a representative for the state I live in. Recognising the types of governance I wish to avoid has been straightforward to me; however, pinpointing the ideal is decidedly more complicated.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Considering in mind the current events happening around, I took some time today to jot down my own criteria for making choices. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;[Transparency] &lt;/strong&gt;&lt;/span&gt;&lt;span style="color: #000000;"&gt;No single leader can be the sole saviour of the world. I value candidates who prioritise transparency in governance. It’s crucial that they engage in open communication and hold themselves accountable to the public, making sure their actions and decisions are transparent and justifiable in terms of their impact on the community.&lt;/span&gt;
+
+&lt;span style="color: #1c60d0;"&gt;I feel It&amp;apos;s important not to be ashamed to confront issues openly and constructively&lt;/span&gt;. 
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;[Nurturing unity]&lt;/strong&gt;&lt;/span&gt;&lt;span style="color: #000000;"&gt; I would lean to favour candidates who promote unity over division, uphold the rights of all communities without resorting to intimidation, and refrain from worsening national divisions.&lt;/span&gt;
+
+&lt;span style="color: #1c60d0;"&gt;When I run into a public space(road, mall, station, or theatre), ideally the thought of passing judgments should itself be disconcerting. I want to regard those around me simply as fellow beings, without having to feel threatened based on their food, caste, or religion.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;[Not favouring one] &lt;/strong&gt;&lt;/span&gt;&lt;span style="color: #000000;"&gt;I am drawn to those who commit to fostering secular values and federalism, recognising that while we may not be fully secular yet, there is a promise to strive toward greater inclusivity. &lt;/span&gt;
+
+&lt;span style="color: #1c60d0;"&gt;Just like how each individuals/families adapt their own principles to meet their specific needs, federalism allows each state to tailor its educational policies, health regulations, and economic strategies to best fit its residents&amp;apos; needs. &lt;/span&gt;
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: #000000;"&gt;&lt;strong&gt;[Strategies over ambiguous promises]&lt;/strong&gt;&lt;/span&gt;&lt;span style="color: #000000;"&gt; I appreciate those who prioritise clear, actionable strategies over ambiguous promises, particularly those who recognise and address societal challenges with effective legislation. Instead of empty promises to eliminate issues like corruption, I look for someone who acknowledges these challenges and commits to enacting laws to address.&lt;/span&gt;
+
+&lt;span style="color: #1c60d0;"&gt;When I tell my company, I can solve this. My manager would ask, whats your plan. It is important we ask candidates the same.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: #000000;"&gt;I would support candidates with a deep understanding of economic complexities, and prefer those who base their decisions on solid evidence, even if it challenges their personal beliefs.&lt;/span&gt;
+
+&lt;span style="color: #1c60d0;"&gt;Imagine someone emotionally attached to buying a certain car brand because of childhood memories. But after checking safety and reliability, they find potential risks like frequent breakdowns. Despite the emotional tie, they choose a safer option&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: #000000;"&gt;I would choose to vote for representatives willing to consider diverse perspectives and make informed decisions, even if these challenge their own views.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;While we may not have candidates who would meet all of these, I will try to choose a lesser evil option.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Documenting thoughts</title>
+      <description>My recent visit to Kolkata gave me enough time to ponder. It was a pause that offered me a sense of control over my thoughts, even if it...</description>
+      <link>https://www.haripriya.org/post/documenting-thoughts</link>
+      <guid isPermaLink="false">6616952174bef698584bcf36</guid>
+      <category>Experience</category>
+      <pubDate>Wed, 10 Apr 2024 14:35:31 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_a2c0b420d3d24882b30c17c1e1b563df~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;My recent visit to Kolkata gave me enough time to ponder. It was a pause that offered me a sense of control over my thoughts, even if it was minimal. I like documenting my journey and have recently recorded some thoughts I&amp;apos;m keen on sharing.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_ad20bd0ee14f4b01bb393685b63f0c4f~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;On Media&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;This has been my favourite subject of wonder for quite sometime now. I had also &lt;u&gt;&lt;a href="https://www.haripriya.org/post/weekly-notes-04-2024" rel="noreferrer" target="_blank"&gt;penned&lt;/a&gt;&lt;/u&gt; a phrase quoted by &lt;u&gt;&lt;a href="https://twitter.com/krishashok?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" rel="noreferrer" target="_blank"&gt;Krish Ashok&lt;/a&gt;&lt;/u&gt; in one of the podcasts regarding how as a society we are transitioning from &amp;quot;&lt;em&gt;Community of Situation to Community of Choice&lt;/em&gt;&amp;quot;.  I approach media with the same caution as one might with caffeine or alcohol, aware of its nature.  When you are young, you have the energy to absorb a lot with few negative effects, but as we age, our ability wanes, diminishing the capacity to juggle numerous endeavours. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;During a cab ride, I had a chat with my friend on the same topic. Media is like appreciating the craftsmanship of a knife, which can be skilfully used to prepare chicken or, in contrast, misused to cause harm. Just as one would exercise caution when giving a knife to a child, highlighting its potential dangers, a similar caution applies to media consumption.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The One-Stop Medium: A Genuine Fear&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I used to be a huge advocate of &lt;strong&gt;One-Stop solution&lt;/strong&gt;, akin to shopping at a supermarket where everything is available in one place. However, over time, such platforms have started to concern me. I thought of potential repercussions if my chosen platform is not ideal, or if my heavy reliance on a single medium leads to a situation where, if it fails, I lose access to all my resources. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_ab28bbd24c8f4e2d90ad3568b7691dca~mv2.png/v1/fit/w_1000,h_296,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;&lt;span style="color: #172FD9;"&gt;Ironically, while composing this post, which supposedly has an auto-save feature, I couldn&amp;apos;t retrieve the draft version for quite sometime with above error :)&lt;/span&gt;&lt;/em&gt;&lt;span style="color: #172FD9;"&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;apos;s becoming clear that I need to create backups, even for the content I post on platforms where I don&amp;apos;t have control over the data. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_a2c0b420d3d24882b30c17c1e1b563df~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I appreciate libraries for similar reasons. They offer a space where I can concentrate on one piece of content at a time, yet have access to a wide array within the same environment. While some books might not be to my taste and others might be excellent, I have greater control over choosing what I want to read.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unlearning Mental Habits&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I realised I often judged people too much based on their ideologies. People evolve over time. &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Shehla_Rashid" rel="noreferrer" target="_blank"&gt;Sheela Rashid&lt;/a&gt;&lt;/u&gt; is one live example. It&amp;apos;s becoming increasingly important to separate individuals from their viewpoints&lt;em&gt;(On a lighter note: something &lt;/em&gt;&lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Parakala_Prabhakar" rel="noreferrer" target="_blank"&gt;&lt;em&gt;Parakala Prabhakar&lt;/em&gt;&lt;/a&gt;&lt;/u&gt;&lt;em&gt; likely practices to maintain harmony in his personal life!)&lt;/em&gt;. Instead of focusing solely on someone&amp;apos;s political beliefs, we should prioritise enhancing our critical thinking skills and our capacity to distinguish between facts and fiction, my cousin always points it out. These insights extend to AI as well. Although I was once&lt;em&gt;(even now a little!?)&lt;/em&gt; enthusiastic about AI&amp;apos;s potential to outthink humans, it&amp;apos;s important to remember that it&amp;apos;s still a human creation. It is still a one-stop medium. In the wrong hands, the neural connections it fosters could lead to dire consequences over judgement.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Bi-Weekly Notes (13/14) - 2024</title>
+      <description>I couldn't write last week because I was sick, but I have gotten better this week. I am writing this note from Kolkata. Over the few...</description>
+      <link>https://www.haripriya.org/post/bi-weekly-notes-13-14-2024</link>
+      <guid isPermaLink="false">6612f624402b3b8674d9c01e</guid>
+      <category>Life</category>
+      <pubDate>Sun, 07 Apr 2024 20:39:11 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_4efc23bd672d4f5c9d56884b342e66eb~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I couldn&amp;apos;t write last week because I was sick, but I have gotten better this week. I am writing this note from Kolkata. Over the few weeks I&amp;apos;ve had numerous thoughts and realisations. I will try to write a separate post on that some day. Below is a gist of some of them in chronological order.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Week 13/2024&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I stretched myself too thin by eagerly accepting many additional responsibilities, which led to burn out. I&amp;apos;ve come to understand that we wake up with a finite amount of energy each day. I wrote a &lt;u&gt;&lt;a href="https://www.haripriya.org/post/i-quit-a-tale-of-farewells" rel="noreferrer" target="_blank"&gt;post&lt;/a&gt;&lt;/u&gt; on quitting some of the major projects I worked on. 
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Recently, I&amp;apos;ve transitioned from podcasts to YouTube, mainly tuning into Amit Varma and Ajay Shah, but now through their different show called &lt;em&gt;Everything is Everything&lt;/em&gt;. I listened to &lt;u&gt;&lt;a href="https://www.youtube.com/watch?v=ubCWj8h4x24" rel="noreferrer" target="_blank"&gt;Surface area of Serendipity&lt;/a&gt;&lt;/u&gt; This was mostly non-political and I enjoyed.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I finished &lt;u&gt;&lt;a href="https://www.goodreads.com/en/book/show/14376" rel="noreferrer" target="_blank"&gt;Einstien&amp;apos;s Dreams&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; It transported me into an entirely new dimension of time. I found many chapters captivating, especially the one exploring the concept of time as a loop.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_4efc23bd672d4f5c9d56884b342e66eb~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_8cd7c3dcf40e4e33ba963a33823c498d~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_7d896bd596a843a8b09f80c6a2fdca70~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Week 14/2024&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;The week started off quickly, with the first half flying by. I caught up with some friends from previous travels, but my main focus was on finishing the work I hadn&amp;apos;t managed to complete the week before.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I travelled to &lt;strong&gt;Kolkata&lt;/strong&gt;, which captured the essence of the week. I stayed with friends. We were greeted by unexpectedly pleasant weather today, which made us to comfortably explore Kolkata&amp;apos;s rich history and lively streets  - Its a city which felt like the time had almost frozen after a period. 
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;At resort, I had a memorable experience learning to open my eyes underwater while swimming, a challenge I had grappled with for a long time. I was incredibly happy. Thanks to my friend who had the patience to teach me.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;We explored three main parts of the city on foot, &lt;/p&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;New Market Area&lt;/strong&gt; - We had one of the authentic Biriyani&amp;apos;s of Kolkata. It also had variety of small shops. We were three of us and I sensed the novelty and happiness in us navigating the bustling crowd — An experience I likely wouldn&amp;apos;t have sought out in my hometown.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Prinsep Ghat - &lt;/strong&gt;I loved the charm of the train stations, with their stops alongside the riverbank. It felt like walking into the scenes of one of the Jhumpa Lahiri stories. We spent enough hours just strolling beside the river.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Park Street Area &lt;/strong&gt;- It was filled with richness of commercial elements and books. We spent hours at Oxford, one of the only two bookshops that exists in India.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I hoarded books, which I am happy about instead of the usual guilt. We spent quite sometime at Oxford reading some parts. The book I started reading now is Khushwant singh&amp;apos;s  &lt;a href="https://www.amazon.in/Khushwantnama-Lessons-Life-Khushwant-Singh/dp/014341948X/ref=sr_1_21?dib=eyJ2IjoiMSJ9.WlUHcA7eBtwDEAZnlgptzxopVoKNN0GN1N0JAtJyLP2JLMy6waifB2cl4oSPQTJkfM9BuwCfykxANZ4NuopKJEnGXj3emy4eKETWCrkIwT3j8CAvdd6-n8AwmoG7M-2JKvuVQW0-_Lm4zrGuSJKAuSUqmHhnSNgHlzZvSSjvkdXGbPaFkoAnmpSPu9inhdpDp63GaJeLGnJIU6pmkA6_4hsemqT5HY2zZT8WSNO4Xzg.LXlgRKFZrX8PSn9v1eA7GnDL3VI8yyHKszL5HdOm2FI&amp;dib_tag=se&amp;qid=1712521523&amp;refinements=p_27%3AKhushwant+Singh&amp;s=books&amp;sr=1-21" target="_blank"&gt;&lt;span style="color: rgb(196, 85, 0);"&gt;The Lessons Of My Life&lt;/span&gt;&lt;/a&gt; . 
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;For two days I made a conscious effort to disconnect from my phone for nearly 6 hours straight — Also managed to avoid Instagram for ~24 hours which I am happy about. Despite the break, the urge to share a story prevailed at the end of the day, and eventually, I gave in and posted it. But this is still a good stepping stone.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+    </item>
+    <item>
+      <title>I quit: A tale of farewells</title>
+      <description>In a restaurant, with a gentle breeze on my face, I raise a glass to quitting most of my critical jobs and projects. Its a whole...</description>
+      <link>https://www.haripriya.org/post/i-quit-a-tale-of-farewells</link>
+      <guid isPermaLink="false">6606d23d92528d6bfe9cd59e</guid>
+      <category>Life</category>
+      <pubDate>Fri, 29 Mar 2024 15:24:51 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_635049a11f6a4996b69bbd470d845971~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;In a restaurant, with a gentle breeze on my face, I raise a glass to quitting most of my critical jobs and projects. Its a whole different game from the days when it was just me and no one else to worry about.  Decisions were simpler, life was lighter. Now, with the weight of the world seemingly on my shoulders, I&amp;apos;m caught in a whirlwind of thoughts about whether I want to get back into the endless chase for money. Despite being surrounded by people, the fear didn&amp;apos;t quite fade away. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;em&gt;The need for money; The fear of being judged; The fear of breaking down the invisible barriers I have set up for myself to uncover other unnecessary clutters&lt;/em&gt;; &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_635049a11f6a4996b69bbd470d845971~mv2.jpeg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;It all started in cab, felt like a scene straight out of a movie, where everything seemed as unstable as a Jenga tower. My cousin had warned me about this – it takes just one piece to fall, and suddenly it feels like everything I&amp;apos;ve built is on the verge of collapsing. Then there&amp;apos;s my partner&amp;apos;s story, stuck in the middle of nowhere with a broken-down bike, not a soul in sight to help, and not a dime for the bus. Felt very similar where I wasn&amp;apos;t sure if there would be a soul to understand what I am going through. Like my friend pointed out, if you&amp;apos;re feeling this weighed down by something, maybe it&amp;apos;s a sign to let it go.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;em&gt;I let it go. I quit.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I have been here before, deciding on the spot to drop things that just don&amp;apos;t feel right anymore. This time, though, I&amp;apos;ve made the effort to contemplate and communicate. Embracing open talk marks a change and seems like the right way forward. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;em&gt;&lt;strong&gt;Good things happen to those who walk&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;u&gt;&lt;a href="https://www.youtube.com/watch?v=ubCWj8h4x24" rel="noreferrer" target="_blank"&gt;&lt;em&gt;The surface area of serendipity&lt;/em&gt;&lt;/a&gt;&lt;/u&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Taking a moment to reflect and assess my current position is crucial for gaining a clearer view of life. For instance, personally exercising regularly enhances my &lt;em&gt;&lt;strong&gt;locus of control&lt;/strong&gt;&lt;/em&gt;(o&lt;em&gt;nes own belief that they are in charge/control of their own situation&lt;/em&gt;), tricking my brain into believing I&amp;apos;m strong enough to withstand physical challenges and that my body is in good shape. However it&amp;apos;s essential to recognise that some things are beyond my control.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;While I am still figuring out when to push back, when to step back, and when to just keep things under control, I see this decision to quit as a promising start.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (12/2024) - Pause, Intrigue, Change</title>
+      <description>I have been riding a massive swell of thoughts, so I've segmented them into sections. Pause I have been keeping myself busy for quite...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-12-2024-pause-intrigue-change</link>
+      <guid isPermaLink="false">6601103d00ddef00321441d9</guid>
+      <category>Life</category>
+      <pubDate>Mon, 25 Mar 2024 07:23:57 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_98ef3233b6c947e3a46839575a122e30~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I have been riding a massive swell of thoughts, so I&amp;apos;ve segmented them into sections.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pause&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I have been keeping myself busy for quite sometime now. But that tells that I am escaping reality. This week is a reminder to myself that I am missing to prioritise my needs and confront — sailing along with the wave. One of the things I like about weekly notes is that it also gives a closure to the week, as if there is an end to whatever the week renders — good or bad. So, let this week put an end to such distractions. It&amp;apos;s about prioritising what I need, over just rolling with whatever comes my way.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Intrigue&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;My favourite book is finally made into series - &lt;u&gt;&lt;a href="https://www.imdb.com/title/tt13016388/" rel="noreferrer" target="_blank"&gt;Three body problem&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; They&amp;apos;ve done an excellent job of bringing the book&amp;apos;s elements to life with added drama, and I&amp;apos;m really into it. I plan to finish watching it this week. A particular line from the series really made me think of our tendency as humans to lie and manipulate. How scary it is for a completely different being to trust us. It got me wondering, what if we lived in a world where we communicated our thoughts directly, without needing to filter or frame them in words? I am curious. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Change&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Switching up where I work—from the formal vibe of WeWork to the laid-back scenes of cafes and restaurants, has helped flipped the script on how I think. One of the days, I sat through to read the Om Malik&amp;apos;s blog post on &lt;u&gt;&lt;a href="https://om.co/2024/03/19/ai-is-changing-writing-here-is-what-to-do-about-it/" rel="noreferrer" target="_blank"&gt;AI is changing&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; We&amp;apos;re always adapting to new tools, sometimes kicking and screaming. Like, remember when people freaked out over food processors taking over traditional grinding stones? Or how fridges meant we didn&amp;apos;t have to cook three times a day? It got me thinking that AI&amp;apos;s just another tool. It might make life easier, maybe even spare us from heavy thinking now and then, but at the end of the day, it&amp;apos;s here to help as a tool, just in a new way.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_98ef3233b6c947e3a46839575a122e30~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Others&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Workout&lt;/strong&gt;: Joined 10 day &lt;u&gt;&lt;a href="https://www.instagram.com/teamrikz/?hl=en" rel="noreferrer" target="_blank"&gt;parkour&lt;/a&gt;&lt;/u&gt; class. Tried something new apart from usual calisthenics. It was so much fun and inspiring.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Friendships&lt;/strong&gt;: Met a whole new bunch this week. Lately, I&amp;apos;ve been encountering individuals from Kerala, finding a common wavelength with them over the past few months.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Outlook&lt;/strong&gt;: Gave a makeover to my look — coloured my hair once again, kept it subtle.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Books&lt;/strong&gt;: Was half way to reading &lt;u&gt;&lt;a href="https://www.amazon.in/Einsteins-Dreams-Alan-Lightman-ebook/dp/B005RZB6C4/ref=sr_1_1?crid=17F8RDOI7OTVH&amp;dib=eyJ2IjoiMSJ9.Xb4GJgUqo0jn2uurT1H-1437128mM0-4NfX1IDoMHhiOlONYa_Vo4iGAfmsf5Y9OTBij0lONBuiDI1uDnXOi8wxTiWY_2nhqGgUBPiZqFl8L0HeX9PlTWoUc-6dZ3J8Dp4ninKbRJYxtzm88brRhus8wxzAajbyMU5Ws9T5bEoShD2D4rbBJJhLzXABmDSPp.aMIpQCmOazXQ3S8jeNbWuNgWhPJfQQb9Bi9XFgSbNVQ&amp;dib_tag=se&amp;keywords=einstein+dreams+alan+lightman&amp;qid=1711350797&amp;sprefix=a+lightman+ein%2Caps%2C242&amp;sr=8-1" rel="noreferrer" target="_blank"&gt;Einstein&amp;apos;s Dreams&lt;/a&gt;&lt;/u&gt;&lt;u&gt; &lt;/u&gt;referred by my friend. It started off really good, but didn&amp;apos;t find time to complete. I am targeting to finish it this week.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;strong&gt;Work&lt;/strong&gt;: I&amp;apos;m facing a particularly busy week ahead. It&amp;apos;s an opportunity to stretch beyond my usual limits and refine my workflow, steering towards efficiency.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (11/2024)</title>
+      <description>This week felt a bit different with the chipmunk scene. Usually, we’ve got a whole squad of them darting around, but now it’s just this...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-11-2024</link>
+      <guid isPermaLink="false">65f72d88654d08997fd735f8</guid>
+      <category>Life</category>
+      <pubDate>Sun, 17 Mar 2024 18:22:18 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_bf8b6e345ad64d568a4cc9cb7179e2e5~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;This week felt a bit different with the chipmunk scene. Usually, we’ve got a whole squad of them darting around, but now it’s just this one tiny, new guy who seems pretty spooked. It&amp;apos;s kind of funny how things change, even in the world of chipmunks.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Speaking of work, I recently started a new project thanks to an ex-colleague. It&amp;apos;s really interesting, but I&amp;apos;ve been too busy to blog about it. I should find some time for that; sharing the experience could be useful, both for me and anyone who might read it.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Recently, I&amp;apos;ve begun to find solace in star gazing. Although the night sky often seems uneventful, it never fails to leave me in a state of awe. It helps me to unwind and gather my thoughts under the tranquil blanket.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_bf8b6e345ad64d568a4cc9cb7179e2e5~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;After recent Calisthenics workshop, It really hits home when reflecting on the ups and downs of learning and coaching.  Speaking of which, Hemanth has been like a coach to me in more ways than one - photography, art, you name it. Sure, he drives me up the wall sometimes when he’s picking out my mistakes, but honestly, I’ve learned heaps in these 5 years. Lately he also learned to tweak the ways to give me feedbacks which is good.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Lately, I’ve been buzzing with energy, and I’m not entirely sure where it’s all coming from. Maybe it’s the food, the sleep, or just realising that keeping busy keeps me sane. It’s interesting how you find that drive to just keep pushing on, learning new stuff, and trying not to stay still for too long. 
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I have also been reading quite a lot this week. I added Om Malik&amp;apos;s blog to my reading mix, which includes a variety of topics that focus on human-centric writing, technology, and creativity.  I liked his post on &lt;u&gt;&lt;a href="https://om.co/2020/07/30/write-like-a-human/" rel="noreferrer" target="_blank"&gt; &amp;apos;write like human&amp;apos;&lt;/a&gt;&lt;/u&gt;.  Below are the blogs I closely follow for now.
+&lt;/p&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Gyford: &lt;a href="https://www.gyford.com/" target="_blank"&gt;https://www.gyford.com/&lt;/a&gt; &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Rohit (&lt;u&gt;https://blog.kernelanxiety.dev/)&lt;/u&gt;&lt;a href="https://blog.kernelanxiety.dev/)Om" target="_blank"&gt; &lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Om Malik (&lt;a href="https://om.co/" target="_blank"&gt;https://om.co/&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Julia Evans(&lt;a href="https://jvns.ca" target="_blank"&gt;https://jvns.ca&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Terence Eden (&lt;a href="https://shkspr.mobi/blog/" target="_blank"&gt;https://shkspr.mobi/blog/&lt;/a&gt;) &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Daniel Santos (&lt;a href="https://danieldsantos.com/coaching/" target="_blank"&gt;https://danieldsantos.com/coaching/&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (10/2024)</title>
+      <description>This week felt so long as if it spanned a month, filled with so many events(mostly fun). I will summarise it briefly here.  To begin...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-10-2024</link>
+      <guid isPermaLink="false">65edf5ebdcd7d5439a3bdd17</guid>
+      <category>Life</category>
+      <pubDate>Sun, 10 Mar 2024 18:54:45 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_6baaabb2a01149639510c6a52cdc80dd~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;This week felt so long as if it spanned a month, filled with so many events(mostly fun). I will summarise it briefly here.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_6baaabb2a01149639510c6a52cdc80dd~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt; To begin with, met my office colleagues after almost an year gap. We had so much fun meeting up and at the same time had a really productive week with interesting conversations and ideas popping up now and then. I tried bowling, and laser tag. Felt like college times. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; Interestingly, one of the colleagues&amp;apos; partner happened to be a Star Trek TNG fan. Although I didn&amp;apos;t keep track of time, it was so refreshing to see yet another woman enjoying Star Trek just like how I did. It went on for few hours that my manager had to pull me back for work politely. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; I was more occupied with work in the first half, leaving me no time to blog my learnings. However, the theme was very much focused on &amp;apos;Getting things done&amp;apos;. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; Karnataka is facing a significant water crisis, prompting the need for conservation. We&amp;apos;re making efforts to save water wherever possible.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; One of my days to office, I travelled in Maruti 800. I had a reflection and took this note.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style="text-align: center;"&gt;&lt;em&gt; &lt;/em&gt;&lt;em&gt;&lt;span style="color: #656d8f;"&gt;Seeing the driver manually shift retro gears—increasingly rare with today&amp;apos;s automatic and Tesla&amp;apos;s self-driving cars—sparked a thought. Humanity as a whole, is about endless learning and sharing, making knowledge more accessible for everyone. Despite our current shortcomings in our political and social views, our continuous quest for knowledge and improvisation gives me hope for a better future as a whole, someday. We will get there.&lt;/span&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style="text-align: left;"&gt; I planned to catch up with a former colleague and friend from Peppo, but unfortunately, she was ill and couldn&amp;apos;t meet. On a brighter note, I was both surprised and humbled to see &lt;u&gt;&lt;a href="https://thejeshgn.com/" rel="noreferrer" target="_blank"&gt;Thejesh&lt;/a&gt;&lt;/u&gt; mention my blog in his weekly roundup. This week also brought new friendships, including one with a woman from Kerala who owns a dog and lives nearby. I&amp;apos;m looking forward to staying connected.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_5d797a52612b445e9aebf8e5f3c051e2~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;  The later part of the week was into activities. I met &lt;u&gt;&lt;a href="https://www.instagram.com/satya_sherni/?hl=en" rel="noreferrer" target="_blank"&gt;Satya&lt;/a&gt;&lt;/u&gt;, who is one of the few women in calisthenics, especially from south. She runs a Calisthenics park in Bangalore and I participated in the &lt;u&gt;&lt;a href="https://www.instagram.com/calisthenicsgirlsindia/" rel="noreferrer" target="_blank"&gt;Calisthenics girls India championship&lt;/a&gt;&lt;/u&gt; beginner workout routine. Having taken a break from training for about 4-5 months, I was happy that I could complete the circuit. Thanks to my trainer (&lt;u&gt;&lt;a href="https://www.instagram.com/athletic_vaibhav_/" rel="noreferrer" target="_blank"&gt;Vaibhav&lt;/a&gt;&lt;/u&gt;) who kept motivating me although I didn&amp;apos;t turn up to him for months now and obviously Hemanth who makes sure I sleep well and eat on regular basis :). Pavi(&lt;em&gt;my sis-in-law)&lt;/em&gt; suggested that I make this into weekly post as a fast forwarded one. You can find it below. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;a href="undefined"&gt;&lt;img src="undefined" width="720" height="1280"&gt;&lt;/a&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (09/2024)</title>
+      <description>This week: Great movies, Busy work and a couple of interesting songs to hook up.  Few days of the week appeared as if summer is already...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-09-2024</link>
+      <guid isPermaLink="false">65e4c6583e3c235098c16081</guid>
+      <category>Life</category>
+      <pubDate>Sun, 03 Mar 2024 19:25:35 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_f7172ddc395c4307a969c3d380e59f3e~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;This week: Great movies, Busy work and a couple of interesting songs to hook up.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; Few days of the week appeared as if summer is already here. It was very hot. We bought quite a few flowering plants but it felt challenging to upkeep them with the scorching heat outside.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; I visited Lall Bagh with family. We initially explored on foot but found it a bit dull. However, when we joined another group in a jeep, the experience transformed as we delved into the rich history of the place. One of my favorite experiences was seeing the 250+ year old cotton tree.&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_f7172ddc395c4307a969c3d380e59f3e~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; A significant portion of my work went in MLOPS and I acquired quite a few intriguing insights about Pytorch using CUDA with Nvidia. I will write a separate post about it. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; One of the days was a reminder to myself that, &amp;apos;You are not who you are yesterday&amp;apos;. People evolve, circumstances change, and sometimes, individuals discard you when they no longer require your presence. People, much like any machine, possess flaws&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_d6c0d814d1104376a04f8a5b1b6a39f1~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt; The last few days of the week was just movies. It has been just 2 months down the year and we already have a bunch of Mollywood gracing the screens. I watched a lot of Mayalayam movies but fell in love majorly with the two. &lt;u&gt;&lt;a href="https://www.imdb.com/title/tt26458038/" rel="noreferrer" target="_blank"&gt;Manjummel boys&lt;/a&gt;&lt;/u&gt; and &lt;u&gt;&lt;a href="https://www.imdb.com/title/tt15477504/?ref_=fn_al_tt_1" rel="noreferrer" target="_blank"&gt;Nanpakal Nerathu Mayakam&lt;/a&gt;&lt;/u&gt; . Few of the best I had ever seen in the recent times regardless of the language.  It&amp;apos;s been quite some time since I&amp;apos;ve enjoyed movies this much.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (08/2024)</title>
+      <description>My week was packed with activities, so I'm documenting each one visually with pictures. The week kick started with a visit to pole dance...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-08-2024</link>
+      <guid isPermaLink="false">65db7ea7c8449445bd969b0a</guid>
+      <category>Life</category>
+      <pubDate>Sun, 25 Feb 2024 18:29:32 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_5c01ca82626045468c7b5c126b2f3e23~mv2.jpg/v1/fit/w_1000,h_647,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_5c01ca82626045468c7b5c126b2f3e23~mv2.jpg/v1/fit/w_1000,h_647,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_5af4e37042084af5a8315567bddddd9f~mv2.jpg/v1/fit/w_662,h_490,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_520cb781b0974e33aede652438ca1026~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_4d38f0978f7b4abd9412fef004f5743d~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;My week was packed with activities, so I&amp;apos;m documenting each one visually with pictures.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;The week kick started with a visit to &lt;u&gt;&lt;a href="https://g.co/kgs/njdrZ24" rel="noreferrer" target="_blank"&gt;pole dance studio&lt;/a&gt;&lt;/u&gt; nearby. I was initially excited to try it out, but my overall experience wasn&amp;apos;t as positive as I had hoped. I personally wouldn&amp;apos;t go there anymore. However, I do still have the desire to visit &lt;u&gt;&lt;a href="https://www.instagram.com/mirrorsstudio_blr/" rel="noreferrer" target="_blank"&gt;this&lt;/a&gt;&lt;/u&gt; studio sometime soon.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I&amp;apos;ve dusted off my &lt;u&gt;&lt;a href="https://www.amazon.in/gp/product/B07GJSCK6N/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&amp;psc=1" rel="noreferrer" target="_blank"&gt;piano&lt;/a&gt;&lt;/u&gt; keys—they&amp;apos;ve been up in the attic for a while. I always get a bit emotional when they&amp;apos;re around. Hoping this time, playing around will be a different experience. I&amp;apos;m happy to stay consistent with it.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I attended &lt;u&gt;&lt;a href="https://elevate.target.com/" rel="noreferrer" target="_blank"&gt;Target Elevate&lt;/a&gt;&lt;/u&gt; meetup, thanks to Pavi&lt;em&gt;(sis-in-law)&lt;/em&gt; for the referral. I connected with someone involved in tech for Karnataka government startups—who&amp;apos;s also responsible for funding them. Managed to grab her email. We had a good brief lunch chat before heading back. I am hoping to meet &lt;u&gt;&lt;a href="https://www.linkedin.com/in/geetha-manjunath-82b8058/?originalSubdomain=in" rel="noreferrer" target="_blank"&gt;Geetha Manjunath&lt;/a&gt;&lt;/u&gt; next year.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I messaged &lt;u&gt;&lt;a href="https://www.instagram.com/_masalalab/?hl=en" rel="noreferrer" target="_blank"&gt;Krish Ashok&lt;/a&gt;&lt;/u&gt; on Instagram, and to my surprise, he liked my message (&lt;em&gt;shyness overloaded with grins!&lt;/em&gt;). I think it&amp;apos;s important to log this seemingly silly event because initially, I was naive about AI tools and didn&amp;apos;t realise the importance of critical thinking in an age of information overload. I&amp;apos;m glad I took a step and confronted with him.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I wrote a &lt;u&gt;&lt;a href="https://www.haripriya.org/post/gratitudea" rel="noreferrer" target="_blank"&gt;post&lt;/a&gt;&lt;/u&gt; on Gratitude. I felt its important to acknowledge my perspective and expressing gratitude to the people and moments that have influenced me along my journey.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I watched the movie &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Bramayugam" rel="noreferrer" target="_blank"&gt;Bramayugam&lt;/a&gt;&lt;/u&gt; over the weekend. Had a truly unique experience with good company. It&amp;apos;s been a while since I last watched a movie in a theatre, and now I&amp;apos;m eager to do it more often.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;The week wrapped up with some stargazing, and it happened to coincide with a full moon night, bathing the sky in bright light. I am using &lt;u&gt;&lt;a href="https://www.celestron.com/products/nexstar-slt-computerized-mount" rel="noreferrer" target="_blank"&gt;Celestron NexStar SLT Mount&lt;/a&gt;&lt;/u&gt;. Its computerised but I haven&amp;apos;t fully explored its capabilities yet, as I&amp;apos;m still comfortable with manual mode. The &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Tycho_(lunar_crater)" rel="noreferrer" target="_blank"&gt;Tyco crater&lt;/a&gt;&lt;/u&gt; stood out clearly in the telescope.  I want to map out the regions I observe closely someday.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Gratitude</title>
+      <description>I have been wanting to document various incidents that have left a lasting impact on me, shaping the way I navigate my daily life. While...</description>
+      <link>https://www.haripriya.org/post/gratitude</link>
+      <guid isPermaLink="false">65d78f20c500f1eafede6fd9</guid>
+      <category>Life</category>
+      <pubDate>Thu, 22 Feb 2024 19:21:12 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_72295c6c7bb14510a72edf84864442ad~mv2.png/v1/fit/w_590,h_564,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I have been wanting to document various incidents that have left a lasting impact on me, shaping the way I navigate my daily life. While I may not capture every individual here, the focus of this post lies more on the incidents themselves, expressing my gratitude for the lessons they imparted. It goes in a chronological order.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;One evening after school, I found myself holding a partly broken compact disk(CD), clueless about its fate, as I sat staring at my PC. &lt;em&gt;Jagan(cousin&lt;/em&gt;), who is more like a brother, approached me and said: &lt;em&gt;&lt;span style="color: #a08c81;"&gt;&amp;quot;It&amp;apos;s all about finding solutions to the things that bother you every day. Why don&amp;apos;t you now go and figure out a solution instead of staring at the PC?&lt;/span&gt;&lt;/em&gt;&lt;span style="color: #a08c81;"&gt;&amp;quot;&lt;/span&gt;.  Perhaps, since then I wouldn&amp;apos;t need to actively seek a source of inspiration; Instead, I could lean into natural inclination towards problem-solving and allow my interests to guide me. Thanks to him, this advice has stuck with me ever since and has significantly influenced the way I approach life till now. &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_72295c6c7bb14510a72edf84864442ad~mv2.png/v1/fit/w_590,h_564,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;When I first moved to Bangalore, I was quite naive, particularly in how I handled the instances of wrongdoing. I vividly recall a conversation I had with &lt;em&gt;Pavi(sis-in-law)&lt;/em&gt;. She posed a scenario: &lt;em&gt;&lt;span style="color: rgb(160, 140, 129);"&gt;&amp;quot;Hari, picture this: You&amp;apos;re strolling down the street, and a stranger crosses your path and touches you inappropriately. Would you respond with empathy, considering perhaps the person has lacked intimacy in their life, or would you swiftly react with a slap?&amp;quot;&lt;/span&gt;&lt;/em&gt; Thanks to her, it struck me then that while understanding reasons behind someone&amp;apos;s behaviour maybe important, taking action is equally crucial.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;One morning, I woke up feeling utterly broken, sitting in one corner of the room,  reflecting on my actions. Then, a text popped up on the phone from my friend:&lt;/span&gt;&lt;em&gt;&lt;span style="color: rgb(160, 140, 129);"&gt;&lt;strong&gt;&amp;quot;&lt;/strong&gt;&lt;/span&gt;&lt;/em&gt;&lt;em&gt;&lt;span style="color: rgb(160, 140, 129);"&gt;At the end of the day, we&amp;apos;re all machines. Treat yourself with the same care and attention you would give a machine. When there&amp;apos;s a fault, identify and fix it. You are a machine, so you are allowed to commit mistakes. Oh yeah, sometimes, you might experience emotional overload, and that&amp;apos;s okay. You&amp;apos;re just processing things. Dreams? They&amp;apos;re perfectly normal. They often serve as a way to regulate your thoughts and emotions.&lt;/span&gt;&lt;/em&gt;&lt;em&gt;&lt;span style="color: rgb(160, 140, 129);"&gt;&lt;strong&gt;&amp;quot;&lt;/strong&gt;&lt;/span&gt;&lt;/em&gt;&lt;em&gt; Ram&lt;/em&gt; recited me these words during one of the most challenging period of my life and ever since then, her words have always brought solace, helping me forgive myself now and then.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;It was one of those evenings after office, over a cup of chai, where I had a short conversation with &lt;em&gt;Thejesh&lt;/em&gt; after my first breakup back then. I recall opening up to him, expressing my struggle to concentrate on anything amidst overwhelming thoughts. &lt;span style="color: #a08c81;"&gt;&amp;quot;Plan your day the night before and ensure you kick-start with at least one task to tackle the first thing in the morning. Just don&amp;apos;t give any space for your brain to &amp;apos;think&amp;apos; what to do&amp;quot;&lt;/span&gt;, he said. He assured me that I would be surprised at how much I could accomplish simply by following a structured plan to get away with dangling thoughts. Thanks to him, with just a couple of repetitions, I found my days returning to normalcy.
+&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;When I ran into &lt;em&gt;Hemanth(then boyfriend, now partner)&lt;/em&gt; after years, he hit me with a question: &lt;span style="color: #a08c81;"&gt;&amp;quot;Hari, what do you wake up to?&amp;quot; &lt;/span&gt;&lt;span style="color: #000000;"&gt;Back then, I guess I was just waking up to the same old routine – I said, &lt;/span&gt;&lt;em&gt;&lt;span style="color: #000000;"&gt;&amp;quot;Maybe some bread and chocos?&amp;quot;,&lt;/span&gt;&lt;/em&gt;&lt;span style="color: #000000;"&gt; because, let&amp;apos;s face it, the kitchen was my domain (a new experience for me at the time). But now? Oh, I&amp;apos;ve got a whole list of reasons. I wake up to squeeze in a workout when I&amp;apos;m feeling it, enjoy a leisurely morning coffee, take care of myself and my family, dive into new posts, try new things, run to friends, tackle my own challenges, and, of course, stay in the loop with what&amp;apos;s happening in the world. Thanks to him, I&amp;apos;ve discovered so many more reasons to jump out of bed each day.&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (07/2024)</title>
+      <description>I like planning. On my computer is a folder that has the instructions for my funeral, notes to my partner and a summary of all the...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-07-2024</link>
+      <guid isPermaLink="false">65d0695fecf05218b18bdb47</guid>
+      <category>Life</category>
+      <pubDate>Sat, 17 Feb 2024 09:34:37 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_0f4cabacd311455e97cfd5e71a81715a~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I like planning.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;On my computer is a folder that has the instructions for my funeral, notes to my partner and a summary of all the activities I do, including the financials and other important documents. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I recently watched the movie &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/Good_Night_(2023_film)" rel="noreferrer" target="_blank"&gt;Goodnight&lt;/a&gt;&lt;/u&gt; and added it to my personal log. Someday I plan to share some of the collection on my site. Maybe my list will mean something to my future self or someone else.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_0f4cabacd311455e97cfd5e71a81715a~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;O&lt;/strong&gt;ur guest has finally been royally honoured with a wooden chair by Hemanth.  Consciously or not, Chipmunks tend to maintain remarkable punctuality for their breakfast timings. This week, I have been mostly lounging on my balcony, sightseeing. Thanks to the recent trek, my sleep continues to improve, ensuring a relaxing start to my days - &lt;em&gt;Progress&lt;/em&gt;. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_e933f3dd326045f0842b49497349a2f6~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style="text-align: justify;"&gt;I indulged in a little self-gift, &lt;u&gt;&lt;a href="https://www.amazon.in/gp/product/B07FDC4SWM/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&amp;psc=1" rel="noreferrer" target="_blank"&gt;Cason 8 X 40 HD vision bino&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; The purpose was intended for trekking and star gazing, but I also happen to enjoy the charm of balcony views. I tried to capture what I see through the lens via my phone camera. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_2c69ea71f7d64fa49113c3a4bff8ace1~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_302fe4627051496bbe9740372f3e1560~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_dccbc25106714aeba56277eb926cf5e2~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;em&gt;You can click to zoom in on each of them&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Work has been quite productive. We&amp;apos;re eagerly awaiting the results and feedback for several experiments we conducted. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;During breaks, I also sat through to read many blogs. I find joy in these unexpected connections especially sneaking through their weekly notes. It&amp;apos;s like a chat with an unseen friend. &lt;strong&gt;Thejesh&amp;apos;s&lt;/strong&gt; &lt;u&gt;&lt;a href="https://thejeshgn.com/projects/blogring/" rel="noreferrer" target="_blank"&gt;blogring&lt;/a&gt;&lt;/u&gt; became a treasure trove for such discoveries. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;&lt;u&gt;&lt;a href="https://blog.kernelanxiety.dev/" rel="noreferrer" target="_blank"&gt;Rohit&lt;/a&gt;&lt;/u&gt;&amp;apos;s entries caught my attention quite a few times, mostly because its devoid of pictures and he keeps the language simple. &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;&lt;u&gt;&lt;a href="https://tomcritchlow.com/2018/10/10/of-gardens-and-wikis/" rel="noreferrer" target="_blank"&gt;Tom CritchLow&lt;/a&gt;&lt;/u&gt;&amp;apos;s insights on Digital gardening has been an insightful read. &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Thejesh also introduced me to &lt;u&gt;&lt;a href="https://thenewriver.us/" rel="noreferrer" target="_blank"&gt;this&lt;/a&gt;&lt;/u&gt; journal where I occasionally dive in for art and literature related entries. &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;For Tech, I am currently reading &lt;u&gt;&lt;a href="https://jvns.ca/blog/2023/12/31/2023--year-in-review/" rel="noreferrer" target="_blank"&gt;Julia Evans&lt;/a&gt;&lt;/u&gt;&lt;u&gt;&amp;apos;&lt;/u&gt;, especially for her tips on &lt;u&gt;gi&lt;/u&gt;t.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Now that I have subscribed to many blogs, I&amp;apos;ve organised my Gmail for easier reading of subscriptions. I have also been considering to migrate from Wix to WordPress to allow more room for customisations and feeds for my blog.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (06/2024)</title>
+      <description>My week unfolded smoothly, starting with an intriguing café experience and ending with an enjoyable trek at Gokarna. I booked the trek...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-06-2024</link>
+      <guid isPermaLink="false">65c89035611fbba5ac2d98b0</guid>
+      <category>Life</category>
+      <pubDate>Sun, 11 Feb 2024 09:46:14 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_86d8ab4f24de479bb595f525a3eafb38~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;My week unfolded smoothly, starting with an intriguing &lt;u&gt;&lt;a href="https://www.haripriya.org/post/late-bloomer-s-lament-a-personal-anecdote" rel="noreferrer" target="_blank"&gt;café experience&lt;/a&gt;&lt;/u&gt; and ending with an enjoyable trek at Gokarna. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_86d8ab4f24de479bb595f525a3eafb38~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I booked the trek through &lt;u&gt;&lt;a href="https://www.thrillophilia.com/tours/the-gokarna-beach-trek" rel="noreferrer" target="_blank"&gt;Thrillophilia&lt;/a&gt;&lt;/u&gt; and had a great group of people to trek and interact with. 
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_58f593f6c6234d438411d5a064258d9e~mv2.jpg/v1/fit/w_1000,h_778,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Everywhere I go, I see orange flags. Now that there is a strong representation, it conveys some sort of revolution. For better or worse, at this point, I think we as a people would gain clarity only as we experience repercussions.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_07cb36b56bc244ac87381a43be0bf97d~mv2.jpg/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;This week, I also came across few interesting blogs to go through. One of them is &lt;u&gt;&lt;a href="https://bost.ocks.org/mike/" rel="noreferrer" target="_blank"&gt;this&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; He publishes lot of insights with data and also writes about how he does it. &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;As the post gets published, I am sitting under a roof top cafe, with peace. Overall, I&amp;apos;m content with my current situation and eagerly anticipate upcoming activities in the weeks ahead.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Late Bloomers Lament: A personal anecdote </title>
+      <description>I walked into a cafe by myself and read a book. An activity I've done countless times. However, today I felt a bit different and I would...</description>
+      <link>https://www.haripriya.org/post/late-bloomer-s-lament-a-personal-anecdote</link>
+      <guid isPermaLink="false">65bfbe554fe59da329a61cff</guid>
+      <category>Motives</category>
+      <pubDate>Sun, 04 Feb 2024 19:04:12 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_9773bd9716bb4cdf8ef533cdf619bb86~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;I walked into a cafe by myself and read a book. An activity I&amp;apos;ve done countless times. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;However, today I felt a bit different and I would like to log this moment. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;While my posts tend take a neutral tone, for this specific one, I intend to touch on sensitive topics, all while sharing my contemplations. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_9773bd9716bb4cdf8ef533cdf619bb86~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;This is my second visit to the place, &lt;em&gt;Cafe Reset&lt;/em&gt;&lt;strong&gt; &lt;/strong&gt;in Koramangala. I was initially drawn to the name, (recognising my unconventional thought patterns) considering it as a spot for mental reset. While riding my bike to this location, I decided to listen to &lt;u&gt;&lt;a href="https://seenunseen.in/episodes/2024/1/29/episode-366-arghya-sengupta-and-the-engine-room-of-law/" rel="noreferrer" target="_blank"&gt;this&lt;/a&gt;&lt;/u&gt; podcast featuring &lt;u&gt;&lt;a href="https://vidhilegalpolicy.in/team/arghya-sengupta/" rel="noreferrer" target="_blank"&gt;Arghya Sengupta&lt;/a&gt;&lt;/u&gt; joining along the side with Amit Varma. &lt;/p&gt;
+&lt;p&gt;I initially wasn&amp;apos;t piqued at the outset, but podcasts on a personal note, helps aid my listening skills. To my surprise, within a few minutes, I was deeply absorbed and it led me on a different journey.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I found myself quietly seated alone in the cafe, immersed in my thoughts as I read through numerous blogs and articles, taking notes in silence. The last time I felt this focused was back in my college days. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;While I got all fancy and romanticised this ordinary moment with a cup of coffee by my side, I did spend sometime reflecting on why I feel that way.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I should acknowledge the privileges I currently enjoy. Like having a home, eating three meals a day, the ability to make purchases without worrying too much about finances, and the comfort of an open and honest partnership. With more than fundamental needs met, I find myself in a position to ponder what lies beyond this zone of &lt;strong&gt;comfort&lt;/strong&gt;. &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I also do acknowledge that, I find myself becoming more vocal in articulating my thoughts, all the while cognizant of the influence that accompanies it. Deliberate or not, I understand that this is rooted in a profound sense of &lt;strong&gt;safety&lt;/strong&gt;, knowing that I am surrounded by supportive individuals.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Additionally, I am also conscious of the unique privilege that comes with residing in a city, which in comparison to many others in the country, offers an open and inclusive environment. Here, I can live independently, express myself and choose my attire without the fear of discrimination. This assurance is bolstered by the knowledge that there are &lt;strong&gt;legal protections&lt;/strong&gt; in place, ensuring that any form of misconduct would result in condemnation.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;I feel its important to acknowledge the privilege because it inherently instills a profound(sometimes false) sense of &amp;quot;safety&amp;quot;. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;However, I couldn&amp;apos;t help but think that, for any society, in the pursuit of security or stability, it&amp;apos;s becomes even more essential to strike a delicate balance between safeguarding the well-being of everyone and upholding the democratic principles. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;This balance should &lt;strong&gt;ideally&lt;/strong&gt; foster an environment where EVERY individual, immaterial of their believes, gender, caste, or ideology, can sit, contemplate and talk, much like myself right now, without the constant burden of worry or fear. &lt;em&gt;I can&amp;apos;t help but worry, as a nation, we are drifting further away from such ideals with each passing year.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;With that thought, I finished my coffee and headed towards the bill. As I did, I happened to notice the book, &lt;u&gt;&lt;a href="https://www.amazon.in/CROOKED-TIMBER-NEW-INDIA-REPUBLIC/dp/935447442X" rel="noreferrer" target="_blank"&gt;The Crooked Timber of New India&lt;/a&gt;&lt;/u&gt;. I picked it up, read the prologue, and  ordered another cup of coffee to read for one another hour. I continued to take notes and verify sources. I enjoyed this time of mine. &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Having done that, I&amp;apos;m planning to conduct a personal experiment by visiting this place regularly to read one chapter each week.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+      <title>Weekly notes (05/2024)</title>
+      <description>This week unfolded like a wave, with its fair share of ups and downs. I generally avoid delving too deep into dream interpretation, as my...</description>
+      <link>https://www.haripriya.org/post/weekly-notes-05-2024</link>
+      <guid isPermaLink="false">65be72556d739a4ec0a736cb</guid>
+      <category>Life</category>
+      <pubDate>Sat, 03 Feb 2024 18:12:16 GMT</pubDate>
+      <enclosure url="https://static.wixstatic.com/media/2402dd_ea97d4cd797748b99da7852cb2ee3cb0~mv2.png/v1/fit/w_904,h_826,al_c,q_80/file.png" length="0" type="image/png"/>
+      <dc:creator>Haripriya Sridharan</dc:creator>
+      <content:encoded>&lt;p&gt;This week unfolded like a wave, with its fair share of ups and downs.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;I generally avoid delving too deep into dream interpretation, as my friend often quotes that they mostly function as a means to process and manage emotions. But I want to log this particular dream, as it seemed to pretty much symbolise the start of my week. I took below notes as soon as I opened my eyes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I wake up to this world that has moved out of any form of extremism. No religious dogma, no overwhelming feelings, even the most intimate aspects of life were subdued. I couldn&amp;apos;t quite grasp what had transpired in the meantime. All I had to rely on was some written text suggesting that we had moved past those aspects.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;I am in a room; quite big. Has only two colours primarily. White and Blue. The beds in this room are uniformly white, as are the bedsheets, while the pillows provide a striking contrast in blue. At first, I&amp;apos;ve got this awesome setup with a big bed, a desk, and a chair. I felt a sense of sadness, as if I could be trapped there indefinitely. The windows were permanently shut. No sunlight whatsoever.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;With respect to personal projects, I have at last created a &lt;u&gt;&lt;a href="https://github.com/hariship/open-data-viewer" rel="noreferrer" target="_blank"&gt;github account&lt;/a&gt;&lt;/u&gt; that I had been putting off for a long time. Also penned a &lt;u&gt;&lt;a href="https://www.haripriya.org/post/visualising-wikipedia-data-pet-project" rel="noreferrer" target="_blank"&gt;post&lt;/a&gt;&lt;/u&gt; about it. I am looking forward to do more in the upcoming weeks.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I attended &lt;u&gt;&lt;a href="https://www.meetup.com/startupbangalore/" rel="noreferrer" target="_blank"&gt;eChai Startup&lt;/a&gt;&lt;/u&gt; meet in Koramangala. Met someone who does research on sustainable development. Had some interesting discussions related to the scope for open data, followed by a separate series of conversations with another friend I met after a long time.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;I binged yet &lt;u&gt;&lt;a href="https://seenunseen.in/episodes/2023/8/21/episode-343-we-are-all-amits-from-africa/" rel="noreferrer" target="_blank"&gt;another&lt;/a&gt;&lt;/u&gt; podcast of `&lt;em&gt;The Seen and Unseen&lt;/em&gt;`, a prequel to the one I heard last week. Again my main draw was &lt;u&gt;&lt;a href="https://www.instagram.com/_masalalab/?hl=en" rel="noreferrer" target="_blank"&gt;Krish Ashok&lt;/a&gt;&lt;/u&gt;. By now, I believe I&amp;apos;ve heard plenty from him. I&amp;apos;ll give a new one a try next week. Nonetheless, here are observations I quickly jotted on the go,&lt;/p&gt;&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Its noteworthy to think that we spend most of our time working for work than actual work. Has its own pros &amp;amp; cons.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Its okay to make mistakes, only repetition can help refine approach. &lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;As a society, we should thrive to reach a state where the person with even most mediocre health has a fantastic chance at life.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Amount of food you eat is far more important than what you eat.&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;We are grappling with a delicate balance between, &amp;quot;Large engagement being the issue&amp;quot; and &amp;quot;Suppressing voices not being a wise approach.&amp;quot;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;p&gt;Apart from all gyans, I learnt something new. A pineapple takes anywhere from 18 to 32 months to fully ripen. I developed this profound sense for the fact that I took a snap during my weekly grocery shopping. &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_ea97d4cd797748b99da7852cb2ee3cb0~mv2.png/v1/fit/w_904,h_826,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content:encoded>
+    </item>
+    <item>
+&lt;item&gt;
+    &lt;title&gt;&lt;![CDATA[Visualising Wikipedia: Pet Project]]&gt;&lt;/title&gt;
+    &lt;description&gt;&lt;![CDATA[I love maps, data and charts. Whenever I read any text, my natural instinct is to use maps to visualise it in a demographic context,...]]&gt;&lt;/description&gt;
+    &lt;link&gt;https://www.haripriya.org/post/visualising-wikipedia-data-pet-project&lt;/link&gt;
+    &lt;guid isPermaLink="false"&gt;65bccbc19c5fd96faf81f0f9&lt;/guid&gt;
+    &lt;category&gt;&lt;![CDATA[Technology]]&gt;&lt;/category&gt;
+    &lt;pubDate&gt;Fri, 02 Feb 2024 12:11:14 GMT&lt;/pubDate&gt;
+    &lt;enclosure url="https://static.wixstatic.com/media/2402dd_1a16b6ca5a494f9ebbae9eb63f136043~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png" length="0" type="image/png"/&gt;
+    &lt;dc:creator&gt;Haripriya Sridharan&lt;/dc:creator&gt;
+    &lt;content:encoded&gt;&lt;![CDATA[&lt;p&gt;I love maps, data and charts. Whenever I read any text, my natural instinct is to use maps to visualise it in a demographic context, which, in turn, deepens my understanding of the topic.&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;I have been eager to create visualisations of internet data with a demographic focus. And eventually get to a point where I don&amp;apos;t have to interact with BOT to retrieve information. (Influenced by all the sci-fi capers I grew up with!)&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_1a16b6ca5a494f9ebbae9eb63f136043~mv2.png/v1/fit/w_1000,h_1000,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;As a starting point, I aimed at presenting population data across globe. &lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;h2&gt;Open Data Sources&lt;/h2&gt;
+    &lt;p&gt;I started with &lt;u&gt;&lt;a href="https://huggingface.co/datasets/wikimedia/wikipedia" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;wiki dataset&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;&lt;u&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/u&gt;&lt;strong&gt;&lt;/strong&gt;from hugging face. I was exploring their latest collection (2022)&lt;/p&gt;
+    &lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_8413079a4fc0469a808d821afe840d4d~mv2.png/v1/fit/w_1000,h_536,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;They have quite a few collections but each had about 64L entries. So, I parked it on the side for later use.&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;I stumbled upon &lt;u&gt;&lt;a href="http://population.io" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;population.io&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;. I liked their animation of live population count.&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;em&gt;I also tested by giving date of birth as current date and below is what I got. &lt;/em&gt;&lt;/p&gt;
+    &lt;p&gt;Obviously inaccurate but looks pretty cool! It inspired me to look out for open apis.&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;I eventually came across open source &lt;u&gt;&lt;a href="https://en.wikipedia.org/w/api.php" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;wiki api&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/span&gt;that gives you data in json format. They are pretty fast and requires no api-key. Important to note here is the param &lt;strong&gt;"action: parse"&lt;/strong&gt; . You can also use &lt;strong&gt;"action:query" &lt;/strong&gt;but you wouldn&amp;apos;t be able to scrape tabulated data.&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;h2&gt;Developing Server and Client&lt;/h2&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;For backend: &lt;/strong&gt;I wrote a simple server side code to scrape population count from the wiki page &lt;u&gt;&lt;a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;List_of_countries_and_dependencies_by_population&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;. Code source: &lt;u&gt;&lt;a href="https://github.com/hariship/open-data-viewer/blob/main/server/main.py" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;For frontend: &lt;/strong&gt;I started with popular 3D geospatial service &lt;u&gt;&lt;a href="https://cesium.com/" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;Cesium Ion&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;&lt;u&gt;.&lt;/u&gt; However it has its limitations catering to only lat and long values.  &lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;For my needs, I required a solution that connects lat and long coordinates to specific countries. So, I turned to &lt;u&gt;&lt;a href="https://opencagedata.com/" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;opencage&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;. They offer a generous allowance of 2500 free calls per day. &lt;em&gt;(Not bad)&lt;/em&gt;. &lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;Here is how I connected them.&lt;/p&gt;
+    &lt;figure&gt;&lt;img src="https://static.wixstatic.com/media/2402dd_d122259f87f249cc9401cc54480893f8~mv2.png/v1/fit/w_1000,h_470,al_c,q_80/file.png"&gt;&lt;/figure&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;This is the final result.&lt;/p&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;a href="undefined"&gt;&lt;img src="undefined" width="1280" height="720"&gt;&lt;/a&gt;
+    &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+    &lt;p&gt;You can find the on-going project &lt;u&gt;&lt;a href="https://github.com/hariship/open-data-viewer.git" rel="noreferrer" target="_blank"&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;here&lt;/strong&gt;&lt;/span&gt;&lt;/a&gt;&lt;/u&gt;&lt;u&gt;&lt;span style="color: #518afb;"&gt;&lt;strong&gt;.&lt;/strong&gt;&lt;/span&gt;&lt;/u&gt;&lt;span style="color: #000000;"&gt;&lt;/span&gt;&lt;span style="color: rgb(0, 0, 0);"&gt;I&amp;apos;m curious to keep this journey going and see where it takes me. I&amp;apos;ll be sharing more as I explore new platforms/data sources.&lt;/span&gt;&lt;/p&gt;]]&gt;&lt;/content:encoded&gt;
+&lt;/item&gt;
+</item>
+  </channel>
+</rss>

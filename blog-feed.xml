@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Haripriya</title>
+    <description>Haripriya</description>
+    <link>https://www.haripriya.org/blog</link>
+    <generator>RSS for Node</generator>
+    <lastBuildDate>Thu, 20 Jun 2024 13:11:32 GMT</lastBuildDate>
+    <atom:link href="https://www.haripriya.org/blog-feed.xml" rel="self" type="application/rss+xml"/>
+    
+  </channel>
+</rss>
