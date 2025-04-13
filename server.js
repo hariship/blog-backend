@@ -25,7 +25,7 @@ const pgClient = new Client({
   user: 'postgres',
   host: 'localhost',
   database: 'blog',
-  password: 'admin',
+  password: 'hari_1234_1234',
   port: 5432,
 });
 
