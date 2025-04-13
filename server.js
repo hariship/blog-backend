@@ -6,7 +6,10 @@ const { Client } = require('pg');
 const xml2js = require('xml2js');
 const app = express();
 const port = 3001;
-const cors = require('cors'); // Add this line
+const cors = require('cors'); 
+
+const { body, validationResult } = require('express-validator'); 
+const mailHandler = require('./mailHandler'); 
 
 app.use(express.json());
 
@@ -341,6 +344,7 @@ app.post('/update-likes', async (req, res) => {
   }
 });
 
+
 app.get('/force-update-posts', async (req, res) => {
   try {
     const response = await fetch('https://www.haripriya.org/blog-feed.xml');
@@ -348,6 +352,7 @@ app.get('/force-update-posts', async (req, res) => {
     const parsedPosts = await parseRSS(rssData);
 
     let newPostsAdded = false;
+    const newPosts = []; // Array to store newly added posts
 
     for (const post of parsedPosts) {
       const { title, link, pubDate, description, category, content, enclosure } = post;
@@ -358,13 +363,13 @@ app.get('/force-update-posts', async (req, res) => {
       const postResult = await pgClient.query(postCheckQuery, [normalizedTitle]);
       const postId = postResult.rows[0]?.id;
 
-      if(!postId){
+      if (!postId) {
         console.log(`Inserting new post: ${title}`);
 
         const insertPostQuery = `
           INSERT INTO posts (title, normalized_title, description, image_url, link, pub_date, content, category, enclosure)
           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-          RETURNING id;
+          RETURNING id, title, description, category, enclosure;
         `;
 
         const newPostResult = await pgClient.query(insertPostQuery, [
@@ -386,19 +391,276 @@ app.get('/force-update-posts', async (req, res) => {
           INSERT INTO likes (post_id, likes_count)
           VALUES ($1, $2);
         `;
-        await pgClient.query(insertLikesQuery, [newPostId, post.likesCount]);
+        await pgClient.query(insertLikesQuery, [newPostId, 0]); // Start with 0 likes for new posts
 
         console.log(`Likes inserted for new post ID: ${newPostId}`);
+        
+        // Add the new post to our array for notifications
+        newPosts.push({
+          title: newPostResult.rows[0].title,
+          description: newPostResult.rows[0].description,
+          category: newPostResult.rows[0].category,
+          enclosure: newPostResult.rows[0].enclosure
+        });
+        
         newPostsAdded = true;
       }
     }
 
+    // If we've added new posts, send notifications to subscribers
+    if (newPostsAdded && newPosts.length > 0) {
+      console.log(`Sending notifications about ${newPosts.length} new posts`);
+      
+      // Get active subscribers
+      const subscribersQuery = `
+        SELECT * FROM subscribers 
+        WHERE status = 'active'
+      `;
+      const subscribersResult = await pgClient.query(subscribersQuery);
+      const subscribers = subscribersResult.rows;
+      
+      if (subscribers.length > 0) {
+        console.log(`Found ${subscribers.length} active subscribers to notify`);
+        
+        // Send notifications to each subscriber
+        let notificationsSent = 0;
+        for (const subscriber of subscribers) {
+          const success = await mailHandler.sendNewPostsNotification(subscriber, newPosts);
+          if (success) notificationsSent++;
+        }
+        
+        console.log(`Sent notifications to ${notificationsSent} subscribers`);
+      } else {
+        console.log("No active subscribers found for notifications");
+      }
+    }
+
     res.json({
-      message: newPostsAdded ? 'New posts added successfully.' : 'No new posts found.',
+      message: newPostsAdded ? `${newPosts.length} new posts added and notifications sent.` : 'No new posts found.',
+      newPosts: newPosts.length > 0 ? newPosts : []
     });
   } catch (error) {
     console.error('Error fetching and updating posts:', error);
     res.status(500).send('Internal Server Error');
+  }
+});
+
+// Validation middleware for subscribe endpoint
+const validateSubscription = [
+  body('email').isEmail().withMessage('Please provide a valid email address'),
+  body('name').not().isEmpty().withMessage('Name is required'),
+  body('frequency').isIn(['daily', 'weekly', 'monthly']).withMessage('Invalid frequency'),
+  body('categories').isArray().withMessage('Categories must be an array'),
+];
+
+// Subscribe endpoint
+app.post('/subscribe', validateSubscription, async (req, res) => {
+  // Check for validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, errors: errors.array() });
+  }
+
+  const { email, name, categories, frequency } = req.body;
+
+  try {
+    // Check if email already exists
+    const existingSubscriberQuery = 'SELECT * FROM subscribers WHERE email = $1';
+    const existingSubscriberResult = await pgClient.query(existingSubscriberQuery, [email]);
+    const existingSubscriber = existingSubscriberResult.rows[0];
+    
+    if (existingSubscriber) {
+      // Update existing subscriber
+      const updateSubscriberQuery = `
+        UPDATE subscribers 
+        SET name = $1, categories = $2, frequency = $3, status = 'active', updated_at = NOW()
+        WHERE email = $4
+        RETURNING *;
+      `;
+      
+      const result = await pgClient.query(
+        updateSubscriberQuery, 
+        [name, categories, frequency, email]
+      );
+      
+      console.log(`Updated subscriber: ${email}`);
+      
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Subscription updated successfully',
+        subscriber: result.rows[0]
+      });
+    }
+    
+    // Create new subscriber
+    const insertSubscriberQuery = `
+      INSERT INTO subscribers (email, name, categories, frequency)
+      VALUES ($1, $2, $3, $4)
+      RETURNING *;
+    `;
+    
+    const result = await pgClient.query(
+      insertSubscriberQuery, 
+      [email, name, categories, frequency]
+    );
+    
+    const newSubscriber = result.rows[0];
+    console.log(`New subscriber added: ${email}`);
+    
+    // Send welcome email
+    await mailHandler.sendWelcomeEmail({
+      email,
+      name,
+      categories,
+      frequency
+    });
+    
+    return res.status(201).json({ 
+      success: true, 
+      message: 'Subscribed successfully',
+      subscriber: newSubscriber
+    });
+  } catch (error) {
+    console.error('Error processing subscription:', error);
+    return res.status(500).json({ 
+      success: false, 
+      message: 'An error occurred while processing your subscription' 
+    });
+  }
+});
+
+// Get subscriber details
+app.get('/subscriber/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    
+    const subscriberQuery = 'SELECT * FROM subscribers WHERE email = $1';
+    const result = await pgClient.query(subscriberQuery, [email]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Subscriber not found'
+      });
+    }
+    
+    return res.status(200).json({
+      success: true,
+      subscriber: result.rows[0]
+    });
+  } catch (error) {
+    console.error('Error fetching subscriber:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'An error occurred while fetching subscriber information'
+    });
+  }
+});
+
+// Update subscription
+app.post('/update-subscription', validateSubscription, async (req, res) => {
+  // Check for validation errors
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ success: false, errors: errors.array() });
+  }
+
+  const { email, name, categories, frequency } = req.body;
+
+  try {
+    const updateSubscriberQuery = `
+      UPDATE subscribers 
+      SET name = $1, categories = $2, frequency = $3, updated_at = NOW()
+      WHERE email = $4
+      RETURNING *;
+    `;
+    
+    const result = await pgClient.query(
+      updateSubscriberQuery, 
+      [name, categories, frequency, email]
+    );
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Subscriber not found'
+      });
+    }
+    
+    console.log(`Updated subscription for: ${email}`);
+    
+    return res.status(200).json({
+      success: true,
+      message: 'Subscription updated successfully',
+      subscriber: result.rows[0]
+    });
+  } catch (error) {
+    console.error('Error updating subscription:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'An error occurred while updating your subscription'
+    });
+  }
+});
+
+// Unsubscribe endpoint
+app.get('/unsubscribe/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+    
+    const updateStatusQuery = `
+      UPDATE subscribers
+      SET status = 'inactive', updated_at = NOW()
+      WHERE email = $1
+      RETURNING *;
+    `;
+    
+    const result = await pgClient.query(updateStatusQuery, [email]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Subscriber not found'
+      });
+    }
+    
+    console.log(`Unsubscribed: ${email}`);
+    
+    return res.status(200).json({
+      success: true,
+      message: 'Unsubscribed successfully'
+    });
+  } catch (error) {
+    console.error('Error unsubscribing:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'An error occurred while processing your unsubscription request'
+    });
+  }
+});
+
+app.get('/test-email', async (req, res) => {
+  try {
+    const testSubscriber = {
+      email: 'your-test-email@example.com',
+      name: 'Test User',
+      categories: ['Technology'],
+      frequency: 'weekly'
+    };
+    
+    const result = await mailHandler.sendWelcomeEmail(testSubscriber);
+    
+    res.json({
+      success: result,
+      message: result ? 'Test email sent successfully!' : 'Failed to send test email'
+    });
+  } catch (error) {
+    console.error('Error sending test email:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Error sending test email',
+      error: error.message
+    });
   }
 });
 
