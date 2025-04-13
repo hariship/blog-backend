@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const fetch = require('node-fetch');
 const puppeteer = require('puppeteer');
@@ -14,6 +16,7 @@ const mailHandler = require('./mailHandler');
 app.use(express.json());
 
 app.use(cors());
+
 
 // Or use specific options to allow specific origins and methods
 app.use(cors({
