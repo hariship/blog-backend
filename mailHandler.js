@@ -27,7 +27,7 @@ class MailHandler {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <h2>Welcome to Our Newsletter, ${name}!</h2>
-            <p>We're so glad you've joined us. You'll now receive curated posts based on your preferences.</p>
+            <p>I am glad you've joined my newsletter. You will now be able to receive updates on my blog posts</p>
             <p>If you ever wish to update your preferences or unsubscribe, you can do so here:</p>
             <a href="${unsubscribeLink}" style="color: #35495E;">Manage your subscription</a>
           </div>

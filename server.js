@@ -645,7 +645,7 @@ app.get('/unsubscribe/:email', async (req, res) => {
 app.get('/test-email', async (req, res) => {
   try {
     const testSubscriber = {
-      email: 'mailtoharipriyas@gmail.com',
+      email: 'haripriya@q-u-i-l-t.com',
       name: 'Test User',
       categories: ['Technology'],
       frequency: 'weekly'
