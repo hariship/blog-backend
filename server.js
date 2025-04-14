@@ -349,101 +349,104 @@ app.post('/update-likes', async (req, res) => {
 
 app.post('/api/send-email-to-subscribers', async (req, res) => {
   try {
-    // Check for authentication or API key here for security
-    // This is important for production to prevent unauthorized access
-    // const apiKey = req.headers['x-api-key'];
-    // if (apiKey !== process.env.API_KEY) return res.status(401).json({ error: 'Unauthorized' });
-    
-    const { subject, content, includePosts = false } = req.body;
-    
-    if (!subject || !content) {
-      return res.status(400).json({
-        error: 'Missing required fields',
-        message: 'Subject and content are required'
-      });
-    }
-    
-    // Get all active subscribers
-    const subscribersQuery = `
-      SELECT * FROM subscribers 
-      WHERE status = 'active'
-    `;
-    const subscribersResult = await pgClient.query(subscribersQuery);
-    const subscribers = subscribersResult.rows;
-    
-    if (subscribers.length === 0) {
-      return res.json({
-        success: false,
-        message: 'No active subscribers found'
-      });
-    }
-    
-    let latestPosts = [];
-    
-    // If includePosts is true, fetch the most recent posts to include in the email
-    if (includePosts) {
-      const postsQuery = `
-        SELECT id, title, description, link, pub_date, category 
-        FROM posts 
-        ORDER BY pub_date DESC 
-        LIMIT 3
-      `;
-      const postsResult = await pgClient.query(postsQuery);
-      latestPosts = postsResult.rows;
-    }
-    
-    // Send email to each subscriber
-    let successCount = 0;
-    let failureCount = 0;
-    
-    for (const subscriber of subscribers) {
-      try {
-        await mailHandler.sendCustomEmail({
-          to: subscriber.email,
-          subject: subject,
-          content: content,
-          subscriberName: subscriber.name || 'Reader',
-          unsubscribeToken: subscriber.unsubscribe_token,
-          latestPosts: includePosts ? latestPosts : null
+    try {
+      const { postId } = req.params;
+      
+      if (!postId) {
+        return res.status(400).json({
+          error: 'Missing required parameter',
+          message: 'Post ID is required'
         });
-        
-        successCount++;
-        
-        // Log the email sent in the database for tracking
-        await pgClient.query(`
-          INSERT INTO email_logs (subscriber_id, email, subject, content_preview, sent_at, status)
-          VALUES ($1, $2, $3, $4, NOW(), 'sent')
-        `, [subscriber.id, subscriber.email, subject, content.substring(0, 200)]);
-        
-      } catch (error) {
-        console.error(`Failed to send email to ${subscriber.email}:`, error);
-        failureCount++;
-        
-        // Log the failed email in the database
-        await pgClient.query(`
-          INSERT INTO email_logs (subscriber_id, email, subject, content_preview, sent_at, status, error)
-          VALUES ($1, $2, $3, $4, NOW(), 'failed', $5)
-        `, [subscriber.id, subscriber.email, subject, content.substring(0, 200), error.message]);
       }
+      
+      // Get the post details from the database
+      const postQuery = `
+        SELECT id, title, normalized_title, description, link, pub_date, content, category, enclosure 
+        FROM posts 
+        WHERE id = $1
+      `;
+      const postResult = await pgClient.query(postQuery, [postId]);
+      
+      if (postResult.rows.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: 'Post not found'
+        });
+      }
+      
+      const post = postResult.rows[0];
+      
+      // Get all active subscribers
+      const subscribersQuery = `
+        SELECT * FROM subscribers 
+        WHERE status = 'active'
+      `;
+      const subscribersResult = await pgClient.query(subscribersQuery);
+      const subscribers = subscribersResult.rows;
+      
+      if (subscribers.length === 0) {
+        return res.json({
+          success: false,
+          message: 'No active subscribers found'
+        });
+      }
+      
+      // Send email to each subscriber
+      let successCount = 0;
+      let failureCount = 0;
+      
+      for (const subscriber of subscribers) {
+        try {
+          await mailHandler.sendCustomEmail({
+            to: subscriber.email,
+            subject: `New Post: ${post.title}`,
+            content: post.content,
+            subscriberName: subscriber.name || 'Reader',
+            unsubscribeToken: subscriber.unsubscribe_token,
+            post: post
+          });
+          
+          successCount++;
+          
+          // Log the email sent in the database for tracking
+          await pgClient.query(`
+            INSERT INTO email_logs (subscriber_id, email, post_id, subject, sent_at, status)
+            VALUES ($1, $2, $3, $4, NOW(), 'sent')
+          `, [subscriber.id, subscriber.email, post.id, `New Post: ${post.title}`]);
+          
+        } catch (error) {
+          console.error(`Failed to send email to ${subscriber.email}:`, error);
+          failureCount++;
+          
+          // Log the failed email in the database
+          await pgClient.query(`
+            INSERT INTO email_logs (subscriber_id, email, post_id, subject, sent_at, status, error)
+            VALUES ($1, $2, $3, $4, NOW(), 'failed', $5)
+          `, [subscriber.id, subscriber.email, post.id, `New Post: ${post.title}`, error.message]);
+        }
+      }
+      
+      res.json({
+        success: true,
+        message: `Post notification emails sent to subscribers`,
+        statistics: {
+          total: subscribers.length,
+          successful: successCount,
+          failed: failureCount,
+          postTitle: post.title
+        }
+      });
+      
+    } catch (error) {
+      console.error('Error sending post emails to subscribers:', error);
+      res.status(500).json({
+        success: false,
+        error: 'Internal Server Error',
+        message: error.message
+      });
     }
-    
-    res.json({
-      success: true,
-      message: `Emails sent to subscribers`,
-      statistics: {
-        total: subscribers.length,
-        successful: successCount,
-        failed: failureCount
-      }
-    });
-    
   } catch (error) {
-    console.error('Error sending emails to subscribers:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Internal Server Error',
-      message: error.message
-    });
+      console.log(error)
   }
 });
 

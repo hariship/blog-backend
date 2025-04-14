@@ -192,65 +192,81 @@ class MailHandler {
     }
   }
 
-  async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken, latestPosts }) {
-    try {
-      // Build email HTML
-      let emailHtml = `
+  /**
+ * Sends a custom email for a specific post to a subscriber
+ * @param {Object} options - Email options
+ * @param {string} options.to - Recipient email address
+ * @param {string} options.subject - Email subject
+ * @param {string} options.content - Email content (HTML format)
+ * @param {string} options.subscriberName - Name of the subscriber
+ * @param {string} options.unsubscribeToken - Token for unsubscribe functionality
+ * @param {Object} options.post - Post data object
+ * @returns {Promise<boolean>} - Success status
+ */
+async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken, post }){
+  try {
+    // Create a post excerpt (first few paragraphs) for the email preview
+    let postExcerpt = post.description || '';
+    
+    // If there's content and it's HTML, extract a clean excerpt
+    if (content) {
+      // Simple HTML stripping for excerpt - you might want a more sophisticated approach
+      const cleanContent = content.replace(/<[^>]*>/g, ' ').trim();
+      const words = cleanContent.split(/\s+/).slice(0, 50).join(' ');
+      postExcerpt = words + (cleanContent.split(/\s+/).length > 50 ? '...' : '');
+    }
+    
+    // Format the publication date
+    const pubDate = post.pub_date ? new Date(post.pub_date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }) : '';
+    
+    // Build email HTML
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <h2>Hello ${subscriberName},</h2>
-        <div>${content}</div>
-      `;
-      
-      // Add latest posts section if included
-      if (latestPosts && latestPosts.length > 0) {
-        emailHtml += `
-          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-            <h3>Latest from the Blog</h3>
-            <ul style="padding-left: 0; list-style-type: none;">
-        `;
+        <p>A new post has been published on the blog:</p>
         
-        latestPosts.forEach(post => {
-          emailHtml += `
-            <li style="margin-bottom: 15px;">
-              <a href="${post.link}" style="font-weight: bold; color: #0066cc; text-decoration: none;">
-                ${post.title}
-              </a>
-              <p style="margin-top: 5px; color: #666;">
-                ${post.description ? post.description.substring(0, 100) + '...' : ''}
-              </p>
-            </li>
-          `;
-        });
-        
-        emailHtml += `
-            </ul>
+        <div style="margin: 25px 0; padding: 20px; border: 1px solid #eee; border-radius: 5px;">
+          <h3 style="margin-top: 0; color: #333;">${post.title}</h3>
+          <p style="color: #666; font-size: 14px;">${pubDate}</p>
+          
+          ${post.category ? `<p style="color: #0066cc; font-size: 14px;">Category: ${post.category}</p>` : ''}
+          
+          <div style="margin: 15px 0;">
+            ${postExcerpt}
           </div>
-        `;
-      }
-      
-      // Add unsubscribe link
-      emailHtml += `
+          
+          <a href="${post.link}" style="display: inline-block; margin-top: 10px; padding: 8px 15px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 3px;">
+            Read Full Post
+          </a>
+        </div>
+        
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #999;">
           <p>If you no longer wish to receive these emails, you can 
-            <a href="${process.env.SITE_URL}/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
+            <a href="https://blog.haripriya.org/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
           </p>
         </div>
-      `;
-      
-      // Send email using Resend
-      const data = await resend.emails.send({
-        from: 'Your Blog <newsletter@yourdomain.com>',
-        to: [to],
-        subject: subject,
-        html: emailHtml,
-      });
-      
-      console.log('Email sent successfully:', data);
-      return true;
-    } catch (error) {
-      console.error('Error sending custom email:', error);
-      throw error;
+      </div>
+    `;
+    
+    // Send email using Resend (already configured in your mailHandler)
+    const data = await resend.emails.send({
+      from: 'Haripriya\'s Blog <newsletter@haripriya.org>',
+      to: [to],
+      subject: subject,
+      html: emailHtml,
+    });
+    
+    console.log('Email sent successfully:', data);
+    return true;
+  } catch (error) {
+    console.error('Error sending custom email:', error);
+    throw error;
     }
-  }
+  };
 }
 
 module.exports = new MailHandler();
