@@ -347,7 +347,7 @@ app.post('/update-likes', async (req, res) => {
   }
 });
 
-app.post('/api/send-email-to-subscribers', async (req, res) => {
+app.post('/api/send-email-to-subscribers/:postId', async (req, res) => {
   try {
     try {
       const { postId } = req.params;
