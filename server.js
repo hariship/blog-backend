@@ -451,9 +451,7 @@ app.get('/force-update-posts', async (req, res) => {
 // Validation middleware for subscribe endpoint
 const validateSubscription = [
   body('email').isEmail().withMessage('Please provide a valid email address'),
-  body('name').not().isEmpty().withMessage('Name is required'),
-  body('frequency').isIn(['daily', 'weekly', 'monthly']).withMessage('Invalid frequency'),
-  body('categories').isArray().withMessage('Categories must be an array'),
+  body('name').not().isEmpty().withMessage('Name is required')
 ];
 
 // Subscribe endpoint
@@ -464,7 +462,7 @@ app.post('/subscribe', validateSubscription, async (req, res) => {
     return res.status(400).json({ success: false, errors: errors.array() });
   }
 
-  const { email, name, categories, frequency } = req.body;
+  const { email, name } = req.body;
 
   try {
     // Check if email already exists
@@ -476,14 +474,14 @@ app.post('/subscribe', validateSubscription, async (req, res) => {
       // Update existing subscriber
       const updateSubscriberQuery = `
         UPDATE subscribers 
-        SET name = $1, categories = $2, frequency = $3, status = 'active', updated_at = NOW()
-        WHERE email = $4
+        SET name = $1, status = 'active', updated_at = NOW()
+        WHERE email = $2
         RETURNING *;
       `;
       
       const result = await pgClient.query(
         updateSubscriberQuery, 
-        [name, categories, frequency, email]
+        [name, email]
       );
       
       console.log(`Updated subscriber: ${email}`);
@@ -497,14 +495,14 @@ app.post('/subscribe', validateSubscription, async (req, res) => {
     
     // Create new subscriber
     const insertSubscriberQuery = `
-      INSERT INTO subscribers (email, name, categories, frequency)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO subscribers (email, name)
+      VALUES ($1, $2)
       RETURNING *;
     `;
     
     const result = await pgClient.query(
       insertSubscriberQuery, 
-      [email, name, categories, frequency]
+      [email, name]
     );
     
     const newSubscriber = result.rows[0];
@@ -513,9 +511,7 @@ app.post('/subscribe', validateSubscription, async (req, res) => {
     // Send welcome email
     await mailHandler.sendWelcomeEmail({
       email,
-      name,
-      categories,
-      frequency
+      name
     });
     
     return res.status(201).json({ 

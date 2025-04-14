@@ -25,12 +25,92 @@ class MailHandler {
         to: email,
         subject: 'Welcome to Haripriya.org Newsletter',
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2>Welcome to Our Newsletter, ${name}!</h2>
-            <p>I am glad you've joined my newsletter. You will now be able to receive updates on my blog posts</p>
-            <p>If you ever wish to update your preferences or unsubscribe, you can do so here:</p>
-            <a href="${unsubscribeLink}" style="color: #35495E;">Manage your subscription</a>
-          </div>
+          <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Newsletter Welcome</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  line-height: 1.6;
+                  color: #333333;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #f9f9f9;
+                }
+                .container {
+                  max-width: 600px;
+                  margin: 0 auto;
+                  padding: 30px;
+                  background-color: #ffffff;
+                  border-radius: 6px;
+                  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                }
+                .header {
+                  margin-bottom: 25px;
+                  border-bottom: 1px solid #eeeeee;
+                  padding-bottom: 15px;
+                }
+                h2 {
+                  color: #2c3e50;
+                  margin-top: 0;
+                  font-weight: 600;
+                }
+                p {
+                  margin-bottom: 18px;
+                }
+                .footer {
+                  margin-top: 30px;
+                  padding-top: 15px;
+                  border-top: 1px solid #eeeeee;
+                  font-size: 14px;
+                  color: #666666;
+                }
+                a {
+                  color: #3498db;
+                  text-decoration: none;
+                }
+                a:hover {
+                  text-decoration: underline;
+                }
+                .button {
+                  display: inline-block;
+                  padding: 10px 18px;
+                  background-color: #f8f9fa;
+                  border: 1px solid #dadce0;
+                  border-radius: 4px;
+                  color: #3c4043;
+                  font-size: 14px;
+                  text-align: center;
+                  margin-top: 5px;
+                  transition: background-color 0.2s;
+                }
+                .button:hover {
+                  background-color: #f1f3f4;
+                  text-decoration: none;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h2>Welcome, ${name}!</h2>
+                </div>
+                
+                <p>I am glad you've joined my newsletter. You will now receive updates on my blog posts.</p>
+                
+                <p>If you ever wish to update your preferences or unsubscribe, you can do so using the link below:</p>
+                
+                <a href="${unsubscribeLink}" class="button">Manage your subscription</a>
+                
+                <div class="footer">
+                  <p>Thank you for subscribing. I look forward to sharing content with you.</p>
+                </div>
+              </div>
+            </body>
+            </html>
         `,
       };
 
