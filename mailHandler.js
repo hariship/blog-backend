@@ -224,9 +224,12 @@ async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken,
     }) : '';
 
     // A replace function that replaces URL link
-    post.link = post.link.replace("https://haripriya.org", "https://blog.haripriya.org")
-    post.link = post.link.replace("https://www.haripriya.org", "https://blog.haripriya.org")
-    
+    console.log(post.link)
+    post = {
+      ...post,
+      link: post.link.replace(/https?:\/\/(www\.)?haripriya\.org/g, "https://blog.haripriya.org")
+    };
+    console.log(post.link)
     // Build email HTML
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
