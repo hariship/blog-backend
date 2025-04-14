@@ -347,6 +347,106 @@ app.post('/update-likes', async (req, res) => {
   }
 });
 
+app.post('/api/send-email-to-subscribers', async (req, res) => {
+  try {
+    // Check for authentication or API key here for security
+    // This is important for production to prevent unauthorized access
+    // const apiKey = req.headers['x-api-key'];
+    // if (apiKey !== process.env.API_KEY) return res.status(401).json({ error: 'Unauthorized' });
+    
+    const { subject, content, includePosts = false } = req.body;
+    
+    if (!subject || !content) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        message: 'Subject and content are required'
+      });
+    }
+    
+    // Get all active subscribers
+    const subscribersQuery = `
+      SELECT * FROM subscribers 
+      WHERE status = 'active'
+    `;
+    const subscribersResult = await pgClient.query(subscribersQuery);
+    const subscribers = subscribersResult.rows;
+    
+    if (subscribers.length === 0) {
+      return res.json({
+        success: false,
+        message: 'No active subscribers found'
+      });
+    }
+    
+    let latestPosts = [];
+    
+    // If includePosts is true, fetch the most recent posts to include in the email
+    if (includePosts) {
+      const postsQuery = `
+        SELECT id, title, description, link, pub_date, category 
+        FROM posts 
+        ORDER BY pub_date DESC 
+        LIMIT 3
+      `;
+      const postsResult = await pgClient.query(postsQuery);
+      latestPosts = postsResult.rows;
+    }
+    
+    // Send email to each subscriber
+    let successCount = 0;
+    let failureCount = 0;
+    
+    for (const subscriber of subscribers) {
+      try {
+        await mailHandler.sendCustomEmail({
+          to: subscriber.email,
+          subject: subject,
+          content: content,
+          subscriberName: subscriber.name || 'Reader',
+          unsubscribeToken: subscriber.unsubscribe_token,
+          latestPosts: includePosts ? latestPosts : null
+        });
+        
+        successCount++;
+        
+        // Log the email sent in the database for tracking
+        await pgClient.query(`
+          INSERT INTO email_logs (subscriber_id, email, subject, content_preview, sent_at, status)
+          VALUES ($1, $2, $3, $4, NOW(), 'sent')
+        `, [subscriber.id, subscriber.email, subject, content.substring(0, 200)]);
+        
+      } catch (error) {
+        console.error(`Failed to send email to ${subscriber.email}:`, error);
+        failureCount++;
+        
+        // Log the failed email in the database
+        await pgClient.query(`
+          INSERT INTO email_logs (subscriber_id, email, subject, content_preview, sent_at, status, error)
+          VALUES ($1, $2, $3, $4, NOW(), 'failed', $5)
+        `, [subscriber.id, subscriber.email, subject, content.substring(0, 200), error.message]);
+      }
+    }
+    
+    res.json({
+      success: true,
+      message: `Emails sent to subscribers`,
+      statistics: {
+        total: subscribers.length,
+        successful: successCount,
+        failed: failureCount
+      }
+    });
+    
+  } catch (error) {
+    console.error('Error sending emails to subscribers:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Internal Server Error',
+      message: error.message
+    });
+  }
+});
+
 
 app.get('/force-update-posts', async (req, res) => {
   try {
@@ -556,8 +656,11 @@ app.get('/subscriber/:email', async (req, res) => {
   }
 });
 
-// Update subscription
-app.post('/update-subscription', validateSubscription, async (req, res) => {
+// Enhanced update subscription endpoint
+app.post('/update-subscription', [
+  body('email').isEmail().withMessage('Please provide a valid email address'),
+  body('name').not().isEmpty().withMessage('Name is required')
+], async (req, res) => {
   // Check for validation errors
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -567,9 +670,25 @@ app.post('/update-subscription', validateSubscription, async (req, res) => {
   const { email, name, categories, frequency } = req.body;
 
   try {
+    // First check if subscriber exists
+    const checkSubscriberQuery = 'SELECT * FROM subscribers WHERE email = $1';
+    const checkResult = await pgClient.query(checkSubscriberQuery, [email]);
+    
+    if (checkResult.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Subscriber not found'
+      });
+    }
+    
+    // Update subscriber preferences
     const updateSubscriberQuery = `
       UPDATE subscribers 
-      SET name = $1, categories = $2, frequency = $3, updated_at = NOW()
+      SET name = $1, 
+          categories = $2, 
+          frequency = $3, 
+          status = 'active',
+          updated_at = NOW()
       WHERE email = $4
       RETURNING *;
     `;
@@ -578,13 +697,6 @@ app.post('/update-subscription', validateSubscription, async (req, res) => {
       updateSubscriberQuery, 
       [name, categories, frequency, email]
     );
-    
-    if (result.rows.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: 'Subscriber not found'
-      });
-    }
     
     console.log(`Updated subscription for: ${email}`);
     

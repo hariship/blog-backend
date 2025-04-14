@@ -191,6 +191,66 @@ class MailHandler {
       return false;
     }
   }
+
+  async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken, latestPosts }) {
+    try {
+      // Build email HTML
+      let emailHtml = `
+        <h2>Hello ${subscriberName},</h2>
+        <div>${content}</div>
+      `;
+      
+      // Add latest posts section if included
+      if (latestPosts && latestPosts.length > 0) {
+        emailHtml += `
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+            <h3>Latest from the Blog</h3>
+            <ul style="padding-left: 0; list-style-type: none;">
+        `;
+        
+        latestPosts.forEach(post => {
+          emailHtml += `
+            <li style="margin-bottom: 15px;">
+              <a href="${post.link}" style="font-weight: bold; color: #0066cc; text-decoration: none;">
+                ${post.title}
+              </a>
+              <p style="margin-top: 5px; color: #666;">
+                ${post.description ? post.description.substring(0, 100) + '...' : ''}
+              </p>
+            </li>
+          `;
+        });
+        
+        emailHtml += `
+            </ul>
+          </div>
+        `;
+      }
+      
+      // Add unsubscribe link
+      emailHtml += `
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #999;">
+          <p>If you no longer wish to receive these emails, you can 
+            <a href="${process.env.SITE_URL}/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
+          </p>
+        </div>
+      `;
+      
+      // Send email using Resend
+      const data = await resend.emails.send({
+        from: 'Your Blog <newsletter@yourdomain.com>',
+        to: [to],
+        subject: subject,
+        html: emailHtml,
+      });
+      
+      console.log('Email sent successfully:', data);
+      return true;
+    } catch (error) {
+      console.error('Error sending custom email:', error);
+      throw error;
+    }
+  }
 }
 
 module.exports = new MailHandler();
