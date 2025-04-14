@@ -408,7 +408,7 @@ app.post('/api/send-email-to-subscribers/:postId', async (req, res) => {
           
           successCount++;
           
-          // Log the email sent in the database for tracking
+          // // Log the email sent in the database for tracking
           await pgClient.query(`
             INSERT INTO email_logs (subscriber_id, email, post_id, subject, sent_at, status)
             VALUES ($1, $2, $3, $4, NOW(), 'sent')

@@ -261,7 +261,7 @@ async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken,
     };
     
     const info = await this.transporter.sendMail(mailOptions);
-    console.log('Email sent successfully:', info.messageId);
+    console.log('Email sent successfully to:', to);
     return true;
   } catch (error) {
     console.error('Error sending custom email:', error);
