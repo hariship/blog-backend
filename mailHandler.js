@@ -145,14 +145,14 @@ class MailHandler {
       const postsHTML = filteredPosts.map(post => `
         <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
           <h3 style="margin-top: 0;">
-            <a href="https://haripriya.org/post/${post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')}" style="color: #35495E; text-decoration: none;">
+            <a href="https://blog.haripriya.org/post/${post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')}" style="color: #35495E; text-decoration: none;">
               ${post.title}
             </a>
           </h3>
           ${post.enclosure ? `<img src="${post.enclosure}" alt="${post.title}" style="max-width: 100%; height: auto; margin-bottom: 10px;">` : ''}
           <p style="color: #555; margin-bottom: 10px;">${post.description}</p>
           <p style="margin: 0;">
-            <a href="https://haripriya.org/post/${post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')}" style="color: #35495E; text-decoration: none; font-weight: bold;">
+            <a href="https://blog.haripriya.org/post/${post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')}" style="color: #35495E; text-decoration: none; font-weight: bold;">
               Read more →
             </a>
           </p>
@@ -222,6 +222,9 @@ async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken,
       month: 'long',
       day: 'numeric'
     }) : '';
+
+    // A replace function that replaces URL link
+    post.link = post.link.replace("https://haripriya.org", "https://blog.haripriya.org")
     
     // Build email HTML
     const emailHtml = `
@@ -246,7 +249,7 @@ async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken,
         
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #999;">
           <p>If you no longer wish to receive these emails, you can 
-            <a href="${process.env.SITE_URL}/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
+            <a href="https://blog.haripriya.org/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
           </p>
         </div>
       </div>
