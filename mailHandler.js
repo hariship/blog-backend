@@ -48,7 +48,7 @@ class MailHandler {
     try {
       const { email, name, categories } = subscriber;
 
-      const unsubscribeLink = `https://haripriya.org/manage-subscription/${encodeURIComponent(email)}`;
+      const unsubscribeLink = `https://blog.haripriya.org/manage-subscription/${encodeURIComponent(email)}`;
 
       let filteredPosts = posts;
       if (categories.length > 0 && !categories.includes('all')) {
@@ -65,7 +65,7 @@ class MailHandler {
       const postsHTML = filteredPosts.map(post => `
         <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
           <h3 style="margin-top: 0;">
-            <a href="https://blog.haripriya.org/post/${post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')}" style="color: #35495E; text-decoration: none;">
+            <a href="https://haripriya.org/post/${post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')}" style="color: #35495E; text-decoration: none;">
               ${post.title}
             </a>
           </h3>
