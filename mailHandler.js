@@ -192,8 +192,8 @@ class MailHandler {
     }
   }
 
-  /**
- * Sends a custom email for a specific post to a subscriber
+/**
+ * Sends a custom email for a specific post to a subscriber using Nodemailer
  * @param {Object} options - Email options
  * @param {string} options.to - Recipient email address
  * @param {string} options.subject - Email subject
@@ -203,7 +203,7 @@ class MailHandler {
  * @param {Object} options.post - Post data object
  * @returns {Promise<boolean>} - Success status
  */
-async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken, post }){
+async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken, post }) {
   try {
     // Create a post excerpt (first few paragraphs) for the email preview
     let postExcerpt = post.description || '';
@@ -246,27 +246,28 @@ async sendCustomEmail ({ to, subject, content, subscriberName, unsubscribeToken,
         
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; font-size: 12px; color: #999;">
           <p>If you no longer wish to receive these emails, you can 
-            <a href="https://blog.haripriya.org/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
+            <a href="${process.env.SITE_URL}/unsubscribe?token=${unsubscribeToken}" style="color: #999;">unsubscribe here</a>.
           </p>
         </div>
       </div>
     `;
     
-    // Send email using Resend (already configured in your mailHandler)
-    const data = await resend.emails.send({
+    // Send email using Nodemailer with Resend
+    const mailOptions = {
       from: 'Haripriya\'s Blog <newsletter@haripriya.org>',
-      to: [to],
+      to: to,
       subject: subject,
-      html: emailHtml,
-    });
+      html: emailHtml
+    };
     
-    console.log('Email sent successfully:', data);
+    const info = await this.transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', info.messageId);
     return true;
   } catch (error) {
     console.error('Error sending custom email:', error);
     throw error;
-    }
-  };
-}
+  }
+  }
+};
 
 module.exports = new MailHandler();
