@@ -48,7 +48,6 @@ router.post('/api/send-email-to-subscribers/:postId', async (req, res) => {
     let failureCount = 0;
 
     for (const subscriber of subscribers) {
-      if (subscriber.id === 3) {
         try {
           await mailHandler.sendCustomEmail({
             to: subscriber.email,
@@ -71,7 +70,6 @@ router.post('/api/send-email-to-subscribers/:postId', async (req, res) => {
             VALUES ($1, $2, $3, $4, NOW(), 'failed', $5)
           `, [subscriber.id, subscriber.email, post.id, `New Post: ${post.title}`, error.message]);
         }
-      }
     }
 
     res.json({
