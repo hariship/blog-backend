@@ -41,8 +41,8 @@ app.use(cors());  // Use the cors middleware
 app.use(bodyParser.json());
 
 app.use(bodyParser.json());
-app.use('/api', mailRoutes);
-app.use('/api',clientRoutes);
+app.use('/', mailRoutes);
+app.use('/',clientRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

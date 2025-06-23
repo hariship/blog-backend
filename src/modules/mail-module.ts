@@ -143,7 +143,23 @@ class MailHandler {
         year: 'numeric', month: 'long', day: 'numeric'
       }) : '';
 
-      const emailHtml = `<div>Hi ${subscriberName},<h3>${post.title}</h3><p>${pubDate}</p><div>${fullPostHtml}</div><a href="https://blog.haripriya.org/manage-subscription/${encodeURIComponent(to)}">Unsubscribe</a></div>`;
+      const emailHtml = `
+        <div>
+            Hi ${subscriberName},
+            <h3>${post.title}</h3>
+            <p>${pubDate}</p>
+            <div>${fullPostHtml}</div>
+            <hr/>
+            <p style="font-size: 12px;">
+            <i>
+            If you ever wish to update your preferences or unsubscribe, click
+             <a href="https://blog.haripriya.org/manage-subscription/${encodeURIComponent(to)}" style="color: #888; text-decoration: none;">
+                here
+            </a></i> 
+            </p>
+        </div>
+        `;
+
 
       const mailOptions = {
         from: 'Haripriya\'s Blog <newsletter@haripriya.org>',
