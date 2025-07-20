@@ -5,6 +5,9 @@ import { Client as PGCClient } from 'pg';
 import { pgClient } from '../server';
 import puppeteer from 'puppeteer';
 import xml2js from 'xml2js';
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const CryptoJS = require('crypto-js');
 
 
 const router = express.Router();
@@ -561,6 +564,85 @@ router.get('/test-email', async (req, res) => {
     });
   }
 });
+
+const SECRET_KEY = process.env.JWT_SECRET || 'your-secret-jwt-key';
+
+router.post('/admin/auth', async (req, res) => {
+    const { password } = req.body;  // This is AES-encrypted from frontend
+  
+    if (!password) {
+      return res.status(400).json({ message: 'Password is required.' });
+    }
+  
+    try {
+      // Decrypt password
+      const bytes = CryptoJS.AES.decrypt(password, "your-secret-key-change-this");
+      const decryptedPassword = bytes.toString(CryptoJS.enc.Utf8);
+  
+      if (!decryptedPassword) {
+        return res.status(400).json({ message: 'Failed to decrypt password.' });
+      }
+  
+      // Fetch first admin user (assuming single admin)
+      const adminQuery = 'SELECT * FROM admin_users LIMIT 1';
+      const result = await pgClient.query(adminQuery);
+  
+      if (result.rows.length === 0) {
+        return res.status(500).json({ message: 'Admin user not configured.' });
+      }
+  
+      const adminUser = result.rows[0];
+  
+      // Compare decrypted password to stored bcrypt hash
+      const isMatch = await bcrypt.compare(decryptedPassword, adminUser.password_hash);
+  
+      if (!isMatch) {
+        return res.status(401).json({ message: 'Invalid password.' });
+      }
+  
+      const token = jwt.sign({ adminId: adminUser.id }, SECRET_KEY, { expiresIn: '2h' });
+  
+      res.json({
+        success: true,
+        token,
+        expiresAt: Date.now() + 2 * 60 * 60 * 1000  // 2 hours ahead
+      });
+  
+    } catch (err) {
+      console.error('Error in /admin/auth:', err);
+      res.status(500).json({ message: 'Internal server error.' });
+    }
+  });
+
+router.post('/admin/post', async (req, res) => {
+      const { title, description, image_url, content, category,enclosure } = req.body;
+  
+      // Validation
+      if (!title || !content) {
+        return res.status(400).json({
+          error: 'Title and content are required fields'
+        });
+      }
+  
+      const normalized_title = normalizeTitle(title);
+      const pub_date = new Date();
+  
+      // PostgreSQL Implementation
+      const insertQuery = `
+        INSERT INTO posts (title, normalized_title, description, image_url, content, category, pub_date, enclosure)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        RETURNING *
+      `;
+      
+      const values = [title, normalized_title, description, image_url, content, category, pub_date, enclosure];
+      const result = await pgClient.query(insertQuery, values);
+      
+      res.status(201).json({
+        success: true,
+        message: 'Post created successfully',
+        data: result.rows[0]
+      });
+    });
 
 export default router;
 

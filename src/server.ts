@@ -8,9 +8,11 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mailRoutes from './routes/mail';
 import clientRoutes from './routes/client';
+import rssRoutes from './routes/rss';
 
 const app = express();
 const port = process.env.PORT || 3000;
+const path = require('path');
 
 app.use(express.json());
 app.use(cors({
@@ -30,20 +32,19 @@ export const pgClient = new PGClient({
 pgClient.connect().then(() => console.log("Connected to PostgreSQL")).catch(console.error);
 
 // Redis setup
-const redisClient = createClient({
-  url: process.env.REDIS_URL || 'redis://localhost:6379'
-});
-redisClient.on('error', (err) => console.error('Redis Client Error', err));
-redisClient.connect();
+// const redisClient = createClient({
+//   url: process.env.REDIS_URL || 'redis://localhost:6379'
+// });
+// redisClient.on('error', (err) => console.error('Redis Client Error', err));
+// redisClient.connect();
 
 app.use(cors());  // Use the cors middleware
 
 app.use(bodyParser.json());
 
-app.use(bodyParser.json());
 app.use('/', mailRoutes);
 app.use('/',clientRoutes);
-
+app.use('/', rssRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
