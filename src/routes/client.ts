@@ -5,6 +5,8 @@ import { Client as PGCClient } from 'pg';
 import { pgClient } from '../server';
 import puppeteer from 'puppeteer';
 import xml2js from 'xml2js';
+import multer from 'multer';
+import { uploadImageToS3 } from '../modules/aws-module';
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const CryptoJS = require('crypto-js');
@@ -643,6 +645,28 @@ router.post('/admin/post', async (req, res) => {
         data: result.rows[0]
       });
     });
+
+
+const upload = multer({ storage: multer.memoryStorage() });
+
+router.post('/upload-image', upload.single('image'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ success: false, message: 'No image file provided' });
+    }
+
+    const imageUrl = await uploadImageToS3(req.file);
+
+    res.status(200).json({
+      success: true,
+      message: 'Image uploaded successfully',
+      imageUrl
+    });
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    res.status(500).json({ success: false, message: 'Failed to upload image' });
+  }
+});
 
 export default router;
 

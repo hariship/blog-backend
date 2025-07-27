@@ -1,6 +1,6 @@
 import express from 'express';
 import RSS from 'rss';
-import { pgClient } from '../server.js';  
+import { pgClient } from '../server';  
 
 const rss = express.Router();
 
