@@ -63,7 +63,7 @@ class SlackCookieService {
     
     if (!this.browser) {
       this.browser = await puppeteer.launch({
-        headless: false, // Set to true for production
+        headless: true, // Set to false for debugging
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
       });
     }
@@ -214,8 +214,8 @@ class SlackCookieService {
         console.log('Selecting all existing text and replacing...');
         await new Promise(resolve => setTimeout(resolve, 500));
         
-        // Take a screenshot to see the dialog state
-        await page.screenshot({ path: `/tmp/slack-dialog-before-typing.png` });
+        // Take a screenshot to see the dialog state (disabled for headless mode)
+        // await page.screenshot({ path: `/tmp/slack-dialog-before-typing.png` });
         
         // Multiple attempts to clear existing text
         const isMacClear = process.platform === 'darwin';
@@ -242,8 +242,8 @@ class SlackCookieService {
           await page.keyboard.type(status.text, { delay: 100 });
           console.log(`Finished typing: "${status.text}"`);
           
-          // Take another screenshot after typing
-          await page.screenshot({ path: `/tmp/slack-dialog-after-typing.png` });
+          // Take another screenshot after typing (disabled for headless mode)
+          // await page.screenshot({ path: `/tmp/slack-dialog-after-typing.png` });
           
           // Wait a bit to ensure text is registered
           await new Promise(resolve => setTimeout(resolve, 1000));
