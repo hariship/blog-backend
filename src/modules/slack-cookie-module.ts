@@ -431,9 +431,32 @@ class SlackCookieService {
   }
 
   async updateAllStatuses(status: StatusUpdate): Promise<boolean[]> {
-    const results = await Promise.all(
-      this.accounts.map(account => this.updateStatus(account.name, status))
-    );
+    const results: boolean[] = [];
+    
+    // Process accounts sequentially to avoid browser session conflicts
+    for (const account of this.accounts) {
+      console.log(`Updating status for ${account.name} (${account.workspace})...`);
+      
+      // Close any existing browser to ensure clean state for each account
+      if (this.browser) {
+        try {
+          await this.browser.close();
+        } catch {}
+        this.browser = null;
+      }
+      
+      // Wait a bit for cleanup
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const success = await this.updateStatus(account.name, status);
+      results.push(success);
+      
+      console.log(`Account ${account.name} result: ${success ? 'SUCCESS' : 'FAILED'}`);
+      
+      // Delay between accounts
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+    
     return results;
   }
 
@@ -442,9 +465,18 @@ class SlackCookieService {
   }
 
   async clearAllStatuses(): Promise<boolean[]> {
-    const results = await Promise.all(
-      this.accounts.map(account => this.clearStatus(account.name))
-    );
+    const results: boolean[] = [];
+    
+    // Process accounts sequentially to avoid browser session conflicts  
+    for (const account of this.accounts) {
+      console.log(`Clearing status for ${account.name} (${account.workspace})...`);
+      const success = await this.clearStatus(account.name);
+      results.push(success);
+      
+      // Small delay between accounts
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+    
     return results;
   }
 
