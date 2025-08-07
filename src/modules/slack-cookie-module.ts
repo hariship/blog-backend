@@ -63,7 +63,7 @@ class SlackCookieService {
     
     if (!this.browser) {
       this.browser = await puppeteer.launch({
-        headless: false, // Set to false for debugging
+        headless: true, // Set to false for debugging
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
       });
     }
