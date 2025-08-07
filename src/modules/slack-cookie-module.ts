@@ -201,33 +201,49 @@ class SlackCookieService {
             await new Promise(resolve => setTimeout(resolve, 500));
             console.log('✅ Emoji set');
           } else {
-            console.log('🧹 Clearing emoji - using fresh dialog approach');
+            console.log('🧹 Clearing status - looking for clear button next to input');
             
-            // Close current dialog completely and reopen fresh
-            await page.keyboard.press('Escape'); // Close emoji picker
+            // Close emoji picker first
+            await page.keyboard.press('Escape');
             await new Promise(resolve => setTimeout(resolve, 500));
-            await page.keyboard.press('Escape'); // Close status dialog
-            await new Promise(resolve => setTimeout(resolve, 1000));
             
-            // Reopen status dialog fresh
-            console.log('🔄 Reopening status dialog fresh...');
-            await page.keyboard.down('Control');
-            await page.keyboard.down('Shift');
-            await page.keyboard.press('Y');
-            await page.keyboard.up('Control');
-            await page.keyboard.up('Shift');
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Look for clear button near the input field (right side)
+            const clearButtons = [
+              'button[aria-label*="Clear"]',
+              'button[title*="Clear"]',
+              'button[data-qa*="clear"]',
+              '[data-qa="status_input_clear"]',
+              '.c-button--small[aria-label*="Clear"]',
+              'button:has([aria-hidden="true"]):has-text("×")',
+              'button[aria-label="Clear status"]',
+              '.p-status_input__clear'
+            ];
             
-            // Clear everything and leave empty
-            await page.keyboard.down('Control');
-            await page.keyboard.press('a');
-            await page.keyboard.up('Control');
-            for (let i = 0; i < 50; i++) {
-              await page.keyboard.press('Backspace');
-              await new Promise(resolve => setTimeout(resolve, 15));
+            let cleared = false;
+            for (const selector of clearButtons) {
+              try {
+                const clearBtn = await page.$(selector);
+                if (clearBtn) {
+                  await clearBtn.click();
+                  console.log(`✅ Clicked clear button: ${selector}`);
+                  cleared = true;
+                  break;
+                }
+              } catch {
+                continue;
+              }
             }
             
-            console.log('✅ Fresh dialog opened and cleared');
+            if (!cleared) {
+              console.log('❌ Clear button not found, manually clearing');
+              // Fallback: select all and delete
+              await page.keyboard.down('Control');
+              await page.keyboard.press('a');
+              await page.keyboard.up('Control');
+              await page.keyboard.press('Backspace');
+            }
+            
+            console.log('✅ Status cleared');
           }
         } else {
           console.warn('❌ Emoji button not found - skipping emoji handling');
