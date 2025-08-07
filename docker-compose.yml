@@ -1,7 +1,9 @@
 version: '3.8'
 services:
-  blog-app:
-    build: .
+  blog-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
     image: blog-backend:latest
     container_name: blog-backend
     ports:
@@ -15,14 +17,32 @@ services:
     depends_on:
       - redis
     restart: unless-stopped
-    volumes:
-      - ./logs:/app/logs
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/health"]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 40s
+      start_period: 20s
+
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.telegram
+    image: telegram-bot:latest
+    container_name: telegram-bot
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "sh", "-c", "ps aux | grep telegram-daemon || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
 
   redis:
     image: redis:alpine
