@@ -241,9 +241,9 @@ The bot automatically detects appropriate emojis! 🎯`, true);
 
       // Set status with the message
       const detectedEmoji = detectEmoji(message);
-      console.log(`💬 Setting status: "${message}" ${detectedEmoji}`);
+      console.log(`💬 Setting status: "${message}" with emoji :${detectedEmoji}:`);
       
-      await this.sendMessage(chatId, `🔄 Setting status: "${message}" ${detectedEmoji.replace(/:/g, '')}...`);
+      await this.sendMessage(chatId, `🔄 Setting status: "${message}" with emoji :${detectedEmoji.replace(/:/g, '')}: ...`);
 
       const statusUpdate = {
         text: message,
