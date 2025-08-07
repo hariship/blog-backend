@@ -288,7 +288,7 @@ class SlackCookieService {
   }
 
   getConfiguredAccounts(): string[] {
-    return this.accounts.map(acc => acc.name);
+    return this.accounts.map(acc => acc.workspace);
   }
 
   async cleanup() {
