@@ -3,3 +3,8 @@ node_modules/
 dist/
 .env
 *.txt
+
+# Signal data and temp files
+signal-data/
+signal-manual.sh
+signal-trigger.sh
