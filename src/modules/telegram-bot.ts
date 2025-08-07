@@ -183,93 +183,169 @@ class TelegramBot {
     const lowerMessage = message.toLowerCase();
 
     try {
+      // Parse workspace targeting (@kk or @quilt)
+      const { cleanMessage, targetWorkspaces } = this.parseWorkspaceTargets(message);
+      
+      if (targetWorkspaces.length > 0) {
+        console.log(`🎯 Targeting specific workspaces: ${targetWorkspaces.join(', ')}`);
+        console.log(`📝 Clean message: "${cleanMessage}"`);
+      }
       // Bot commands
-      if (message.startsWith('/start')) {
+      if (cleanMessage.startsWith('/start')) {
         await this.sendMessage(chatId, `🤖 *Slack Status Bot*
 
 Hi @${username}! I can update your Slack status automatically.
 
 *Commands:*
-• Send any text → Set as Slack status
-• "clear" → Clear status  
+• Send any text → Set as Slack status on all workspaces
+• "clear" → Clear status on all workspaces
 • "/help" → Show this message
 
+*Workspace Targeting:*
+• "@kk Coffee break" → Set status only on knowledgekeepergroup
+• "@quilt In a meeting" → Set status only on quilt-corp
+• "Working from home @kk" → Set status only on knowledgekeepergroup
+• "clear @quilt" → Clear status only on quilt-corp
+
 *Examples:*
-• "Having coffee" → ☕ Having coffee
-• "In a meeting" → 📅 In a meeting
-• "Working from home" → 🏠 Working from home
+• "Having coffee" → ☕ Having coffee (both workspaces)
+• "@kk Debugging" → 🐛 Debugging (knowledgekeepergroup only)
+• "Lunch break @quilt" → 🍽️ Lunch break (quilt-corp only)
 
 Just send me your status and I'll take care of the rest! 🚀`, true);
         return;
       }
 
-      if (message.startsWith('/help')) {
+      if (cleanMessage.startsWith('/help')) {
         await this.sendMessage(chatId, `🤖 *Slack Status Bot Commands:*
 
-• Send any text → Set as Slack status
-• "clear" → Clear status
+• Send any text → Set as Slack status on all workspaces
+• "clear" → Clear status on all workspaces
 • "/start" → Welcome message
 
+*Workspace Targeting:*
+• "@kk [text]" → knowledgekeepergroup only
+• "@quilt [text]" → quilt-corp only
+• "[text] @kk" → knowledgekeepergroup only  
+• "[text] @quilt" → quilt-corp only
+
 *Examples:*
-• "Having coffee" → ☕ Having coffee
-• "In a meeting" → 📅 In a meeting  
-• "Working from home" → 🏠 Working from home
-• "clear" → Clears your status
+• "Having coffee" → ☕ Both workspaces
+• "@kk Debugging" → 🐛 knowledgekeepergroup only
+• "Meeting @quilt" → 📅 quilt-corp only
+• "clear @kk" → Clear knowledgekeepergroup only
 
 The bot automatically detects appropriate emojis! 🎯`, true);
         return;
       }
 
       // Clear status commands
-      if (lowerMessage.includes('clear') || lowerMessage === 'x' || 
-          lowerMessage === 'none' || lowerMessage === 'reset') {
+      if (cleanMessage.toLowerCase().includes('clear') || cleanMessage.toLowerCase() === 'x' || 
+          cleanMessage.toLowerCase() === 'none' || cleanMessage.toLowerCase() === 'reset') {
         
         console.log('🧹 Clearing Slack status...');
-        await this.sendMessage(chatId, '🔄 Clearing your Slack status...');
         
-        const results = await slackService.clearAllStatuses();
-        const allSuccess = results.every(r => r);
-        const successCount = results.filter(r => r).length;
-        
-        if (allSuccess) {
-          await this.sendMessage(chatId, '✅ Slack status cleared for all accounts! 🌟');
+        if (targetWorkspaces.length > 0) {
+          // Clear specific workspaces
+          await this.sendMessage(chatId, `🔄 Clearing status on: ${targetWorkspaces.join(', ')}...`);
+          
+          const results: boolean[] = [];
+          const workspaceNames: string[] = [];
+          
+          for (const workspace of targetWorkspaces) {
+            const accountName = workspace === 'knowledgekeepergroup' ? 'account1' : 'account2';
+            console.log(`Clearing status for ${accountName} (${workspace})...`);
+            const result = await slackService.clearStatus(accountName);
+            results.push(result);
+            workspaceNames.push(workspace);
+          }
+          
+          const allSuccess = results.every(r => r);
+          const successCount = results.filter(r => r).length;
+          
+          if (allSuccess) {
+            await this.sendMessage(chatId, `✅ Status cleared for: ${workspaceNames.join(', ')}! 🌟`);
+          } else {
+            await this.sendMessage(chatId, `⚠️ Status cleared for ${successCount}/${results.length} targeted workspaces`);
+          }
         } else {
-          await this.sendMessage(chatId, `⚠️ Status cleared for ${successCount}/${results.length} accounts`);
+          // Clear all workspaces
+          await this.sendMessage(chatId, '🔄 Clearing your Slack status...');
+          
+          const results = await slackService.clearAllStatuses();
+          const allSuccess = results.every(r => r);
+          const successCount = results.filter(r => r).length;
+          
+          if (allSuccess) {
+            await this.sendMessage(chatId, '✅ Slack status cleared for all accounts! 🌟');
+          } else {
+            await this.sendMessage(chatId, `⚠️ Status cleared for ${successCount}/${results.length} accounts`);
+          }
         }
         return;
       }
 
       // Set status with the message
-      const detectedEmoji = detectEmoji(message);
-      console.log(`💬 Setting status: "${message}" with emoji :${detectedEmoji}:`);
+      const detectedEmoji = detectEmoji(cleanMessage);
+      console.log(`💬 Setting status: "${cleanMessage}" with emoji :${detectedEmoji}:`);
       
-      await this.sendMessage(chatId, `🔄 Setting status: "${message}" with emoji :${detectedEmoji.replace(/:/g, '')}: ...`);
-
       const statusUpdate = {
-        text: message,
+        text: cleanMessage,
         emoji: detectedEmoji,
         expiration: undefined
       };
 
-      const results = await slackService.updateAllStatuses(statusUpdate);
-      const allSuccess = results.every(r => r);
-      const someSuccess = results.some(r => r);
-      const successCount = results.filter(r => r).length;
-
-      if (allSuccess) {
+      if (targetWorkspaces.length > 0) {
+        // Update specific workspaces
+        await this.sendMessage(chatId, `🔄 Setting status on: ${targetWorkspaces.join(', ')}...`);
+        
+        const results: boolean[] = [];
+        const workspaceNames: string[] = [];
+        
+        for (const workspace of targetWorkspaces) {
+          const accountName = workspace === 'knowledgekeepergroup' ? 'account1' : 'account2';
+          console.log(`Setting status for ${accountName} (${workspace})...`);
+          const result = await slackService.updateStatus(accountName, statusUpdate);
+          results.push(result);
+          workspaceNames.push(workspace);
+        }
+        
+        const allSuccess = results.every(r => r);
+        const successCount = results.filter(r => r).length;
         const emojiDisplay = detectedEmoji.replace(/:/g, '');
-        await this.sendMessage(chatId, `✅ *Slack status updated!*
+        
+        if (allSuccess) {
+          await this.sendMessage(chatId, `✅ Slack status updated!
 
-📋 Status: "${message}" ${emojiDisplay}
-👥 Accounts: ${slackService.getConfiguredAccounts().join(', ')}`); // Remove markdown flag
-      } else if (someSuccess) {
-        const emojiDisplay = detectedEmoji.replace(/:/g, '');
-        await this.sendMessage(chatId, `⚠️ Partial update
-
-📋 Status: "${message}" ${emojiDisplay}
-✅ Updated: ${successCount}/${results.length} accounts`);
+📋 Status: "${cleanMessage}" ${emojiDisplay}
+👥 Workspaces: ${workspaceNames.join(', ')}`);
+        } else {
+          await this.sendMessage(chatId, `⚠️ Partial update: ${successCount}/${results.length} targeted workspaces`);
+        }
       } else {
-        await this.sendMessage(chatId, '❌ Failed to update Slack status. Please try again.');
+        // Update all workspaces
+        await this.sendMessage(chatId, `🔄 Setting status: "${cleanMessage}" with emoji :${detectedEmoji.replace(/:/g, '')}: ...`);
+        
+        const results = await slackService.updateAllStatuses(statusUpdate);
+        const allSuccess = results.every(r => r);
+        const someSuccess = results.some(r => r);
+        const successCount = results.filter(r => r).length;
+
+        if (allSuccess) {
+          const emojiDisplay = detectedEmoji.replace(/:/g, '');
+          await this.sendMessage(chatId, `✅ Slack status updated!
+
+📋 Status: "${cleanMessage}" ${emojiDisplay}
+👥 Accounts: ${slackService.getConfiguredAccounts().join(', ')}`);
+        } else if (someSuccess) {
+          const emojiDisplay = detectedEmoji.replace(/:/g, '');
+          await this.sendMessage(chatId, `⚠️ Partial update
+
+📋 Status: "${cleanMessage}" ${emojiDisplay}
+✅ Updated: ${successCount}/${results.length} accounts`);
+        } else {
+          await this.sendMessage(chatId, '❌ Failed to update Slack status. Please try again.');
+        }
       }
 
     } catch (error) {
@@ -292,6 +368,30 @@ The bot automatically detects appropriate emojis! 🎯`, true);
 
   async stop() {
     console.log('👋 Stopping Telegram bot...');
+  }
+
+  private parseWorkspaceTargets(message: string): { cleanMessage: string, targetWorkspaces: string[] } {
+    const targetWorkspaces: string[] = [];
+    let cleanMessage = message;
+
+    // Look for @kk or @quilt anywhere in the message
+    const kkMatch = cleanMessage.match(/@kk\b/gi);
+    const quiltMatch = cleanMessage.match(/@quilt\b/gi);
+
+    if (kkMatch) {
+      targetWorkspaces.push('knowledgekeepergroup');
+      cleanMessage = cleanMessage.replace(/@kk\b/gi, '').trim();
+    }
+
+    if (quiltMatch) {
+      targetWorkspaces.push('quilt-corp');
+      cleanMessage = cleanMessage.replace(/@quilt\b/gi, '').trim();
+    }
+
+    // Clean up extra spaces
+    cleanMessage = cleanMessage.replace(/\s+/g, ' ').trim();
+
+    return { cleanMessage, targetWorkspaces };
   }
 }
 
