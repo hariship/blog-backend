@@ -178,47 +178,49 @@ class SlackCookieService {
       }
       
       // Handle emoji (set or clear)
-      console.log('🎯 Handling emoji...');
-      
-      // Click the emoji button to open emoji picker
-      const emojiBtn = await page.$('button[data-qa="custom_status_input_emoji_picker"]');
-      if (emojiBtn) {
-        await emojiBtn.click();
-        await new Promise(r => setTimeout(r, 1000));
-        console.log('✅ Emoji picker opened');
-      } else {
-        console.warn('❌ Emoji button not found');
-      }
-
-      if (status.emoji && status.emoji.trim() !== '') {
-        console.log(`✍️ Setting emoji: ${status.emoji}`);
+      try {
+        console.log('🎯 Handling emoji...');
         
-        // Type emoji name in search
-        const emojiName = status.emoji.replace(/:/g, '');
-        await page.keyboard.type(emojiName);
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Press Enter to select first result
-        await page.keyboard.press('Enter');
-        await new Promise(resolve => setTimeout(resolve, 500));
-        console.log('✅ Emoji set');
-      } else {
-        console.log('🧹 Clearing emoji (removing any existing emoji)');
-        
-        // Clear any existing emoji by clicking the "No emoji" or clear option
-        // First try to clear the search field
-        await page.keyboard.down('Control');
-        await page.keyboard.press('a');
-        await page.keyboard.up('Control');
-        await page.keyboard.press('Backspace');
-        
-        // Wait a bit and try to find and click "No emoji" or similar clear option
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Try pressing Escape to close emoji picker without selecting
-        await page.keyboard.press('Escape');
-        await new Promise(resolve => setTimeout(resolve, 500));
-        console.log('✅ Emoji cleared');
+        // Click the emoji button to open emoji picker
+        const emojiBtn = await page.$('button[data-qa="custom_status_input_emoji_picker"]');
+        if (emojiBtn) {
+          await emojiBtn.click();
+          await new Promise(r => setTimeout(r, 1000));
+          console.log('✅ Emoji picker opened');
+          
+          if (status.emoji && status.emoji.trim() !== '') {
+            console.log(`✍️ Setting emoji: ${status.emoji}`);
+            
+            // Type emoji name in search
+            const emojiName = status.emoji.replace(/:/g, '');
+            await page.keyboard.type(emojiName);
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Press Enter to select first result
+            await page.keyboard.press('Enter');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            console.log('✅ Emoji set');
+          } else {
+            console.log('🧹 Clearing emoji (removing any existing emoji)');
+            
+            // Clear any existing emoji by clearing search and closing picker
+            await page.keyboard.down('Control');
+            await page.keyboard.press('a');
+            await page.keyboard.up('Control');
+            await page.keyboard.press('Backspace');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Close emoji picker without selecting (removes emoji)
+            await page.keyboard.press('Escape');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            console.log('✅ Emoji cleared');
+          }
+        } else {
+          console.warn('❌ Emoji button not found - skipping emoji handling');
+        }
+      } catch (emojiError) {
+        console.error('❌ Error handling emoji:', emojiError);
+        // Continue with saving even if emoji fails
       }
 
       try {
