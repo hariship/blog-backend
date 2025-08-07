@@ -106,7 +106,7 @@ router.post('/link',
 // Register a new Signal number (Step 1)
 router.post('/register',
   [
-    body('phoneNumber').isMobilePhone().withMessage('Valid phone number required'),
+    body('phoneNumber').isMobilePhone('any').withMessage('Valid phone number required'),
     body('captcha').optional().isString().trim()
   ],
   async (req: Request, res: Response) => {
@@ -150,7 +150,7 @@ router.post('/register',
 // Verify registration with SMS code (Step 2)
 router.post('/verify',
   [
-    body('phoneNumber').isMobilePhone().withMessage('Valid phone number required'),
+    body('phoneNumber').isMobilePhone('any').withMessage('Valid phone number required'),
     body('code').isString().trim().notEmpty().withMessage('Verification code required')
   ],
   async (req: Request, res: Response) => {

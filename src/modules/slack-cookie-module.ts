@@ -64,7 +64,16 @@ class SlackCookieService {
     if (!this.browser) {
       this.browser = await puppeteer.launch({
         headless: true, // Set to false for debugging
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+        args: [
+          '--no-sandbox', 
+          '--disable-setuid-sandbox', 
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor',
+          '--single-process', // Helps on Linux servers
+          '--no-zygote' // Helps on Linux servers
+        ]
       });
     }
     return this.browser;
@@ -125,23 +134,65 @@ class SlackCookieService {
         'button[aria-label*="User menu"]',
         'button[aria-label*="profile"]',
         '.p-ia__avatar',
-        '.p-classic_nav__team_header__user__button'
+        '.p-classic_nav__team_header__user__button',
+        '[data-qa="top_nav_user_button"]',
+        '.p-top_nav__button--avatar',
+        'button[aria-label*="Account"]',
+        '.c-avatar'
       ];
       
       let profileClicked = false;
       for (const selector of profileSelectors) {
         try {
+          console.log(`Trying profile selector: ${selector}`);
           await page.waitForSelector(selector, { timeout: 2000 });
           await page.click(selector);
+          console.log(`✅ Successfully clicked profile using: ${selector}`);
           profileClicked = true;
           break;
-        } catch {
+        } catch (error) {
+          console.log(`❌ Failed with selector: ${selector}`);
           continue;
         }
       }
       
       if (!profileClicked) {
-        throw new Error('Could not find profile button');
+        // Try to find any clickable elements that might be the profile
+        console.log('🔍 Searching for any profile-like elements...');
+        const allButtons = await page.$$eval('button, [role="button"], .c-avatar', elements => 
+          elements.map((el, index) => ({
+            index,
+            text: el.textContent?.trim() || '',
+            ariaLabel: el.getAttribute('aria-label') || '',
+            className: el.className,
+            tagName: el.tagName,
+            dataQa: el.getAttribute('data-qa') || ''
+          })).filter(el => 
+            el.ariaLabel.toLowerCase().includes('profile') ||
+            el.ariaLabel.toLowerCase().includes('user') ||
+            el.ariaLabel.toLowerCase().includes('account') ||
+            el.className.includes('avatar') ||
+            el.dataQa.includes('user')
+          )
+        );
+        
+        console.log('Found potential profile elements:', allButtons);
+        
+        if (allButtons.length === 0) {
+          throw new Error('Could not find profile button - no matching elements found');
+        }
+        
+        // Try clicking the first potential match
+        const buttons = await page.$$('button, [role="button"], .c-avatar');
+        if (buttons[allButtons[0].index]) {
+          await buttons[allButtons[0].index].click();
+          console.log(`✅ Clicked potential profile element: ${JSON.stringify(allButtons[0])}`);
+          profileClicked = true;
+        }
+      }
+      
+      if (!profileClicked) {
+        throw new Error('Could not find any profile button after exhaustive search');
       }
       
       await new Promise(resolve => setTimeout(resolve, 2000));
