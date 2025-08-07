@@ -261,12 +261,13 @@ The bot automatically detects appropriate emojis! 🎯`, true);
         await this.sendMessage(chatId, `✅ *Slack status updated!*
 
 📋 Status: "${message}" ${emojiDisplay}
-👥 Accounts: ${slackService.getConfiguredAccounts().join(', ')}`, true);
+👥 Accounts: ${slackService.getConfiguredAccounts().join(', ')}`); // Remove markdown flag
       } else if (someSuccess) {
-        await this.sendMessage(chatId, `⚠️ *Partial update*
+        const emojiDisplay = detectedEmoji.replace(/:/g, '');
+        await this.sendMessage(chatId, `⚠️ Partial update
 
-📋 Status: "${message}" ${detectedEmoji}
-✅ Updated: ${successCount}/${results.length} accounts`, true);
+📋 Status: "${message}" ${emojiDisplay}
+✅ Updated: ${successCount}/${results.length} accounts`);
       } else {
         await this.sendMessage(chatId, '❌ Failed to update Slack status. Please try again.');
       }
