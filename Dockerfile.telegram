@@ -20,9 +20,9 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies and ts-node
-RUN npm ci --only=production && npm cache clean --force
-RUN npm install -g ts-node
+# Install all dependencies (including dev dependencies for ts-node)
+RUN npm ci && npm cache clean --force
+RUN npm install -g ts-node typescript
 
 # Copy source code
 COPY . .

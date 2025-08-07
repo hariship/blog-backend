@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import TelegramBot from './modules/telegram-bot';
 import slackService from './modules/slack-cookie-module';
 
@@ -24,7 +24,7 @@ process.on('SIGTERM', async () => {
 });
 
 // Start the bot
-bot.start().catch(error => {
+bot.start().catch((error: Error) => {
   console.error('Failed to start Telegram bot:', error);
   process.exit(1);
 });
