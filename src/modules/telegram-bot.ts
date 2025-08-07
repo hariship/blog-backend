@@ -121,15 +121,18 @@ class TelegramBot {
     }
   }
 
-  private startPolling() {
-    // Poll for updates every 2 seconds
-    setInterval(async () => {
+  private async startPolling() {
+    // Use proper sequential polling to avoid conflicts
+    while (true) {
       try {
         await this.getUpdates();
       } catch (error) {
         console.error('❌ Error polling updates:', error);
       }
-    }, 2000);
+      
+      // Wait 2 seconds before next poll
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
   }
 
   private async getUpdates() {
