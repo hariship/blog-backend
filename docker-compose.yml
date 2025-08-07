@@ -1,14 +1,42 @@
 version: '3.8'
 services:
-  app:
+  blog-app:
     build: .
-    image: mycustomblog:latest  # Custom image name and tag
+    image: blog-backend:latest
+    container_name: blog-backend
     ports:
       - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - REDIS_URL=redis://redis:6379
+    env_file:
+      - .env
     depends_on:
       - redis
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   redis:
     image: redis:alpine
+    container_name: blog-redis
     expose:
       - "6379"
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  redis_data:
