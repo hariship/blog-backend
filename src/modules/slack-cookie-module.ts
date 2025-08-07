@@ -89,6 +89,7 @@ class SlackCookieService {
 
     // Set viewport to common size
     await page.setViewport({ width: 1366, height: 768 });
+    
 
     try {
       await page.setCookie({
@@ -105,7 +106,7 @@ class SlackCookieService {
         timeout: 60000
       });
 
-      await new Promise(resolve => setTimeout(resolve, 3000));
+      await new Promise(resolve => setTimeout(resolve, 4000));
 
       const isLoggedIn = await page.evaluate(() => {
         return !window.location.pathname.includes('/signin');
@@ -117,7 +118,7 @@ class SlackCookieService {
       }
       
       console.log(`Successfully logged into ${accountName} (${account.workspace})`);
-
+      await new Promise(resolve => setTimeout(resolve, 300));
       // Click on profile/user menu - try multiple possible selectors
       const profileSelectors = [
         'button[data-qa="user-button"]',
@@ -184,7 +185,7 @@ class SlackCookieService {
         console.log('Could not find status menu item via selectors, trying keyboard shortcut');
         // Try using keyboard shortcut instead
         await page.keyboard.press('Escape'); // Close any open menu
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 1000));
         
         // Try Cmd+Shift+Y (Mac) or Ctrl+Shift+Y (Windows/Linux) for status
         const isMac = process.platform === 'darwin';
@@ -205,7 +206,7 @@ class SlackCookieService {
         }
         
         // Wait longer for dialog to open
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 4000));
         
         // When using keyboard shortcut, just clear and type directly
         console.log('Status dialog opened via keyboard shortcut');
@@ -374,24 +375,22 @@ class SlackCookieService {
         console.log(`Setting emoji: ${status.emoji}`);
         
         // Try clicking emoji button first
-        const emojiButtons = await page.$$('button');
-        let emojiButtonClicked = false;
+        // Click the emoji button using known Slack selector
+            const emojiBtn = await page.$('button[data-qa="custom_status_input_emoji_picker"]');
+            if (emojiBtn) {
+                await emojiBtn.click();
+                await new Promise(r => setTimeout(r, 1000));
+            } else {
+                console.warn('Emoji button not found');
+            }
+
         
-        for (const button of emojiButtons) {
-          const ariaLabel = await page.evaluate(el => el.getAttribute('aria-label'), button);
-          if (ariaLabel && ariaLabel.toLowerCase().includes('emoji')) {
-            await button.click();
-            emojiButtonClicked = true;
-            break;
-          }
-        }
-        
-        if (!emojiButtonClicked) {
+        // if (!emojiButtonClicked) {
           // Try Tab key to navigate to emoji button
-          await page.keyboard.press('Tab');
-          await new Promise(resolve => setTimeout(resolve, 500));
-          await page.keyboard.press('Enter');
-        }
+        //   await page.keyboard.press('Tab');
+        //   await new Promise(resolve => setTimeout(resolve, 500));
+        //   await page.keyboard.press('Enter');
+        // }
         
         await new Promise(resolve => setTimeout(resolve, 1000));
         
