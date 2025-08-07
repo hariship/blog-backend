@@ -1,8 +1,29 @@
 import express, { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
+import axios from 'axios';
 import slackService from '../modules/slack-cookie-module';
 
 const router = express.Router();
+
+// Store for tracking async operations
+const operationTracker = new Map<string, any>();
+
+// Generate unique operation ID
+function generateOperationId(): string {
+  return `op_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+}
+
+// Send webhook notification
+async function sendWebhookNotification(webhookUrl: string, data: any) {
+  try {
+    await axios.post(webhookUrl, data, {
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 5000
+    });
+  } catch (error) {
+    console.error('Failed to send webhook notification:', error);
+  }
+}
 
 // Emoji detection helper
 function detectEmoji(text: string): string {
@@ -317,10 +338,11 @@ router.delete('/status',
   }
 );
 
-// Chat-like endpoint - just send a message
+// Chat-like endpoint with immediate response
 router.post('/chat',
   [
-    body('message').isString().trim()
+    body('message').isString().trim(),
+    body('webhook_url').optional().isURL()
   ],
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
@@ -332,95 +354,152 @@ router.post('/chat',
       });
     }
 
-    const { message } = req.body;
+    const { message, webhook_url } = req.body;
     const lowerMessage = message.toLowerCase();
+    const operationId = generateOperationId();
     
-    try {
-      // Check for clear/remove commands
-      if (lowerMessage.includes('clear') || lowerMessage.includes('remove') || 
-          lowerMessage.includes('delete') || lowerMessage === 'x' || 
-          lowerMessage === 'none' || lowerMessage === 'reset') {
-        
-        const results = await slackService.clearAllStatuses();
-        const allSuccess = results.every(r => r);
-        
-        if (allSuccess) {
-          res.json({ 
-            success: true, 
-            message: generateChatResponse('clear', undefined, undefined, true),
+    // Determine the action
+    const isClearing = lowerMessage.includes('clear') || lowerMessage.includes('remove') || 
+                      lowerMessage.includes('delete') || lowerMessage === 'x' || 
+                      lowerMessage === 'none' || lowerMessage === 'reset';
+    
+    const detectedEmoji = isClearing ? null : detectEmoji(message);
+    
+    // Send immediate acknowledgment
+    res.json({
+      success: true,
+      message: isClearing 
+        ? "Got it! Clearing your status now... I'll let you know when it's done! 🧹"
+        : `Roger that! Setting your status to \"${message}\" ${detectedEmoji || ''}... Working on it! ⚡`,
+      operation_id: operationId,
+      status: 'processing',
+      webhook_url: webhook_url || null,
+      estimated_time: '30-40 seconds'
+    });
+    
+    // Process asynchronously
+    (async () => {
+      const startTime = Date.now();
+      let result: any = {};
+      
+      try {
+        if (isClearing) {
+          const results = await slackService.clearAllStatuses();
+          const allSuccess = results.every(r => r);
+          
+          result = {
+            operation_id: operationId,
+            success: allSuccess,
+            message: generateChatResponse(allSuccess ? 'clear' : 'partial', undefined, undefined, allSuccess),
             action: 'cleared',
-            accounts: slackService.getConfiguredAccounts()
-          });
-        } else {
-          res.status(207).json({ 
-            success: false, 
-            message: generateChatResponse('partial'),
-            action: 'clear_partial',
-            results: slackService.getConfiguredAccounts().map((acc, i) => ({
+            accounts: slackService.getConfiguredAccounts(),
+            results: !allSuccess ? slackService.getConfiguredAccounts().map((acc, i) => ({
               account: acc,
               success: results[i],
               status: results[i] ? '✅' : '❌'
-            }))
-          });
+            })) : undefined,
+            processing_time: `${Date.now() - startTime}ms`
+          };
+        } else {
+          const statusUpdate = {
+            text: message,
+            emoji: detectedEmoji || ':speech_balloon:',
+            expiration: undefined
+          };
+          
+          const results = await slackService.updateAllStatuses(statusUpdate);
+          const allSuccess = results.every(r => r);
+          const someSuccess = results.some(r => r);
+          
+          result = {
+            operation_id: operationId,
+            success: allSuccess,
+            message: generateChatResponse(
+              allSuccess ? 'update' : someSuccess ? 'partial' : 'error',
+              statusUpdate,
+              undefined,
+              allSuccess
+            ),
+            status: statusUpdate,
+            accounts: slackService.getConfiguredAccounts(),
+            detectedEmoji: detectedEmoji,
+            action: 'updated',
+            results: !allSuccess ? slackService.getConfiguredAccounts().map((acc, i) => ({
+              account: acc,
+              success: results[i],
+              status: results[i] ? '✅' : '❌'
+            })) : undefined,
+            processing_time: `${Date.now() - startTime}ms`
+          };
         }
-        return;
+        
+        // Store result for potential polling
+        operationTracker.set(operationId, result);
+        
+        // Send webhook if provided
+        if (webhook_url) {
+          await sendWebhookNotification(webhook_url, result);
+        }
+        
+        // Clean up after 5 minutes
+        setTimeout(() => operationTracker.delete(operationId), 5 * 60 * 1000);
+        
+      } catch (error) {
+        console.error('Error in async Slack chat processing:', error);
+        result = {
+          operation_id: operationId,
+          success: false,
+          message: "Whoops! Something unexpected happened. The operation failed. 🛠️",
+          error: error instanceof Error ? error.message : 'Unknown error',
+          processing_time: `${Date.now() - startTime}ms`
+        };
+        
+        operationTracker.set(operationId, result);
+        
+        if (webhook_url) {
+          await sendWebhookNotification(webhook_url, result);
+        }
       }
-      
-      // Otherwise, set status with the message
-      const detectedEmoji = detectEmoji(message);
-      
-      const statusUpdate = {
-        text: message,
-        emoji: detectedEmoji,
-        expiration: undefined
-      };
-      
-      const results = await slackService.updateAllStatuses(statusUpdate);
-      const allSuccess = results.every(r => r);
-      const someSuccess = results.some(r => r);
-      
-      if (allSuccess) {
-        res.json({ 
-          success: true, 
-          message: generateChatResponse('update', statusUpdate, undefined, true),
-          status: statusUpdate,
-          accounts: slackService.getConfiguredAccounts(),
-          detectedEmoji: detectedEmoji,
-          action: 'updated'
-        });
-      } else if (someSuccess) {
-        res.status(207).json({ 
-          success: false, 
-          message: generateChatResponse('partial', statusUpdate),
-          status: statusUpdate,
-          action: 'update_partial',
-          results: slackService.getConfiguredAccounts().map((acc, i) => ({
-            account: acc,
-            success: results[i],
-            status: results[i] ? '✅' : '❌'
-          }))
-        });
-      } else {
-        res.status(400).json({ 
-          success: false, 
-          message: generateChatResponse('error', statusUpdate),
-          action: 'update_failed',
-          results: slackService.getConfiguredAccounts().map((acc, i) => ({
-            account: acc,
-            success: results[i]
-          }))
-        });
-      }
-    } catch (error) {
-      console.error('Error in Slack chat:', error);
-      res.status(500).json({ 
-        success: false, 
-        message: "Whoops! Something unexpected happened. Maybe try again? 🛠️",
-        error: 'Internal server error' 
-      });
-    }
+    })();
   }
 );
+
+// Endpoint to check operation status
+router.get('/chat/status/:operationId', (req: Request, res: Response) => {
+  const { operationId } = req.params;
+  const result = operationTracker.get(operationId);
+  
+  if (!result) {
+    return res.status(404).json({
+      success: false,
+      message: "Operation not found. It may have completed more than 5 minutes ago or doesn't exist. 🔍",
+      operation_id: operationId
+    });
+  }
+  
+  res.json(result);
+});
+
+// Webhook endpoint to receive status updates (for testing)
+router.post('/webhook/status', (req: Request, res: Response) => {
+  console.log('Received webhook notification:', req.body);
+  res.json({ 
+    success: true, 
+    message: 'Webhook received',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Alternative webhook endpoint (matches common callback patterns)
+router.post('/callback', (req: Request, res: Response) => {
+  console.log('Received callback notification:', req.body);
+  res.json({ 
+    success: true, 
+    message: 'Callback received',
+    timestamp: new Date().toISOString(),
+    received_data: req.body
+  });
+});
 
 router.get('/accounts', async (req: Request, res: Response) => {
   try {
@@ -438,6 +517,20 @@ router.get('/accounts', async (req: Request, res: Response) => {
       error: 'Internal server error' 
     });
   }
+});
+
+// Endpoint to list active operations
+router.get('/operations', (req: Request, res: Response) => {
+  const operations = Array.from(operationTracker.keys()).map(id => ({
+    operation_id: id,
+    status: operationTracker.get(id)?.success !== undefined ? 'completed' : 'processing'
+  }));
+  
+  res.json({
+    success: true,
+    message: `Found ${operations.length} tracked operation${operations.length !== 1 ? 's' : ''}`,
+    operations
+  });
 });
 
 export default router;
