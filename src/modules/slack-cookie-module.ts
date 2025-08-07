@@ -201,38 +201,43 @@ class SlackCookieService {
             await new Promise(resolve => setTimeout(resolve, 500));
             console.log('✅ Emoji set');
           } else {
-            console.log('🧹 Clearing emoji (removing any existing emoji)');
+            console.log('🧹 Clearing emoji (looking for X/clear button)');
             
-            // To clear emoji, we need to find and click the "remove" option or select blank
-            // First try typing "remove" to see if there's a remove option
-            await page.keyboard.type('remove');
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Look for the clear/X button to remove emoji
+            const clearButtons = [
+              'button[aria-label*="Clear"]',
+              'button[aria-label*="Remove"]', 
+              'button[title*="Clear"]',
+              'button[title*="Remove"]',
+              '.c-button--small',
+              'button:has-text("×")',
+              'button:has-text("X")',
+              '[data-qa*="clear"]',
+              '[data-qa*="remove"]'
+            ];
             
-            // Try pressing Enter to select remove option
-            let removeFound = false;
-            try {
-              await page.keyboard.press('Enter');
-              await new Promise(resolve => setTimeout(resolve, 500));
-              removeFound = true;
-              console.log('✅ Found and selected remove option');
-            } catch {
-              console.log('❌ Remove option not found, trying alternative method');
+            let cleared = false;
+            for (const selector of clearButtons) {
+              try {
+                const clearBtn = await page.$(selector);
+                if (clearBtn) {
+                  await clearBtn.click();
+                  console.log(`✅ Clicked clear button: ${selector}`);
+                  cleared = true;
+                  break;
+                }
+              } catch {
+                continue;
+              }
             }
             
-            if (!removeFound) {
-              // Clear search and try looking for blank/empty emoji
-              await page.keyboard.down('Control');
-              await page.keyboard.press('a');
-              await page.keyboard.up('Control');
-              await page.keyboard.press('Backspace');
-              await new Promise(resolve => setTimeout(resolve, 500));
-              
-              // Try typing "none" or "blank" or just press Enter on empty search
-              await page.keyboard.press('Enter');
-              await new Promise(resolve => setTimeout(resolve, 500));
+            if (!cleared) {
+              console.log('❌ Clear button not found, closing picker');
+              await page.keyboard.press('Escape');
             }
             
-            console.log('✅ Emoji clear attempted');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            console.log('✅ Emoji clear completed');
           }
         } else {
           console.warn('❌ Emoji button not found - skipping emoji handling');
