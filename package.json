@@ -9,7 +9,15 @@
         "signal-bot": "ts-node src/signal-daemon-simple.ts",
         "signal-bot-docker": "ts-node src/signal-daemon.ts",
         "telegram-bot": "ts-node src/telegram-daemon.ts",
-        "signal-link": "signal-cli link -n 'Signal Slack Bot'"
+        "signal-link": "signal-cli link -n 'Signal Slack Bot'",
+        "docker:build": "docker-compose build",
+        "docker:up": "docker-compose up -d",
+        "docker:down": "docker-compose down",
+        "docker:logs": "docker-compose logs -f",
+        "docker:logs:backend": "docker-compose logs -f blog-backend",
+        "docker:logs:telegram": "docker-compose logs -f telegram-bot",
+        "docker:restart": "docker-compose restart",
+        "docker:ps": "docker-compose ps"
     },
     "dependencies": {
         "@slack/types": "^2.15.0",

@@ -64,7 +64,16 @@ class SlackCookieService {
     if (!this.browser) {
       this.browser = await puppeteer.launch({
         headless: true, // Set to false for debugging
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+        args: [
+          '--no-sandbox', 
+          '--disable-setuid-sandbox', 
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--disable-web-security',
+          '--disable-features=VizDisplayCompositor',
+          '--single-process', // Helps on Linux servers
+          '--no-zygote' // Helps on Linux servers
+        ]
       });
     }
     return this.browser;
@@ -119,289 +128,129 @@ class SlackCookieService {
       
       console.log(`Successfully logged into ${accountName} (${account.workspace})`);
       await new Promise(resolve => setTimeout(resolve, 300));
-      // Click on profile/user menu - try multiple possible selectors
-      const profileSelectors = [
-        'button[data-qa="user-button"]',
-        'button[aria-label*="User menu"]',
-        'button[aria-label*="profile"]',
-        '.p-ia__avatar',
-        '.p-classic_nav__team_header__user__button'
-      ];
-      
-      let profileClicked = false;
-      for (const selector of profileSelectors) {
-        try {
-          await page.waitForSelector(selector, { timeout: 2000 });
-          await page.click(selector);
-          profileClicked = true;
-          break;
-        } catch {
-          continue;
-        }
-      }
-      
-      if (!profileClicked) {
-        throw new Error('Could not find profile button');
+      // Click on profile using the known working selector
+      console.log('🎯 Clicking profile with .c-avatar selector...');
+      try {
+        await page.waitForSelector('.c-avatar', { timeout: 5000 });
+        await page.click('.c-avatar');
+        console.log('✅ Successfully clicked profile');
+      } catch (error) {
+        throw new Error('Could not find profile button (.c-avatar selector failed)');
       }
       
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // Click on status option - try multiple selectors
-      const statusSelectors = [
-        '[data-qa="status-item"]',
-        '[data-qa="set-status-item"]',
-        'button[data-qa-action="status"]',
-        '[role="menuitem"]:has-text("status")',
-        'div[role="menuitem"]'
-      ];
+      // Use keyboard shortcut (known to work) - skip menu clicking entirely
+      console.log('🎯 Using keyboard shortcut to open status dialog...');
+      await page.keyboard.press('Escape'); // Close any open menu
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // First try data-qa selectors
-      let statusClicked = false;
-      for (const selector of statusSelectors.slice(0, 3)) {
-        try {
-          await page.click(selector);
-          statusClicked = true;
-          break;
-        } catch {
-          continue;
-        }
-      }
+      // Use Ctrl+Shift+Y (Linux) for status shortcut
+      await page.keyboard.down('Control');
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Y');
+      await page.keyboard.up('Control');
+      await page.keyboard.up('Shift');
       
-      // If that didn't work, look for menu items with "status" text
-      if (!statusClicked) {
-        const menuItems = await page.$$('div[role="menuitem"], button[role="menuitem"]');
-        for (const item of menuItems) {
-          const text = await page.evaluate(el => el.textContent?.toLowerCase() || '', item);
-          if (text.includes('status') || text.includes('update')) {
-            await item.click();
-            statusClicked = true;
-            break;
-          }
-        }
-      }
+      // Wait for dialog to open
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      console.log('✅ Status dialog opened');
       
-      let usedKeyboardShortcut = false;
-      if (!statusClicked) {
-        console.log('Could not find status menu item via selectors, trying keyboard shortcut');
-        // Try using keyboard shortcut instead
-        await page.keyboard.press('Escape'); // Close any open menu
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Try Cmd+Shift+Y (Mac) or Ctrl+Shift+Y (Windows/Linux) for status
-        const isMac = process.platform === 'darwin';
-        if (isMac) {
-          await page.keyboard.down('Meta');
-          await page.keyboard.down('Shift');
-        } else {
-          await page.keyboard.down('Control');
-          await page.keyboard.down('Shift');
-        }
-        await page.keyboard.press('Y');
-        if (isMac) {
-          await page.keyboard.up('Meta');
-          await page.keyboard.up('Shift');
-        } else {
-          await page.keyboard.up('Control');
-          await page.keyboard.up('Shift');
-        }
-        
-        // Wait longer for dialog to open
-        await new Promise(resolve => setTimeout(resolve, 4000));
-        
-        // When using keyboard shortcut, just clear and type directly
-        console.log('Status dialog opened via keyboard shortcut');
-        
-        // Skip the clear button approach - directly select all and replace
-        console.log('Selecting all existing text and replacing...');
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Take a screenshot to see the dialog state (disabled for headless mode)
-        // await page.screenshot({ path: `/tmp/slack-dialog-before-typing.png` });
-        
-        // Multiple attempts to clear existing text
-        const isMacClear = process.platform === 'darwin';
-        
-        // Method 1: Try Cmd+A to select all
-        console.log('Method 1: Pressing Cmd+A to select all text...');
-        await page.keyboard.down(isMacClear ? 'Meta' : 'Control');
-        await page.keyboard.press('a');
-        await page.keyboard.up(isMacClear ? 'Meta' : 'Control');
-        await new Promise(resolve => setTimeout(resolve, 300));
-        
-        // Method 2: Try multiple backspaces to clear any existing text
-        console.log('Method 2: Pressing backspaces to clear existing text...');
-        for (let i = 0; i < 50; i++) { // Clear up to 50 characters
-          await page.keyboard.press('Backspace');
-          await new Promise(resolve => setTimeout(resolve, 20));
-        }
-        
-        await new Promise(resolve => setTimeout(resolve, 300));
-        
-        // Now type the new status text (will replace the selected text)
-        if (status.text && status.text.trim() !== '') {
-          console.log(`About to type: "${status.text}"`);
-          await page.keyboard.type(status.text, { delay: 100 });
-          console.log(`Finished typing: "${status.text}"`);
-          
-          // Take another screenshot after typing (disabled for headless mode)
-          // await page.screenshot({ path: `/tmp/slack-dialog-after-typing.png` });
-          
-          // Wait a bit to ensure text is registered
-          await new Promise(resolve => setTimeout(resolve, 1000));
-        } else {
-          console.log('No new status text provided');
-        }
-        
-        // Mark that we used keyboard shortcut - skip all other input handling
-        usedKeyboardShortcut = true;
-        
-        // Jump directly to emoji and save logic
-        console.log('Keyboard shortcut path complete, skipping regular input handling');
-      } else {
-        await new Promise(resolve => setTimeout(resolve, 2000));
-      }
+      // Clear existing text and type new status
+      console.log('🧹 Clearing existing text...');
+      await page.keyboard.down('Control');
+      await page.keyboard.press('a'); // Select all
+      await page.keyboard.up('Control');
+      await new Promise(resolve => setTimeout(resolve, 300));
       
-
-      // Only look for input field if we clicked the menu (not keyboard shortcut)
-      if (!usedKeyboardShortcut) {
-        // Find and fill status input - try multiple approaches
-        let statusInput = null;
-        
-        // First try: Look for visible text inputs
-        const visibleInputs = await page.evaluate(() => {
-        const inputs = Array.from(document.querySelectorAll('input[type="text"], input:not([type])'));
-        return inputs.map((input, index) => {
-          const rect = input.getBoundingClientRect();
-          const isVisible = rect.width > 0 && rect.height > 0;
-          const placeholder = input.getAttribute('placeholder') || '';
-          const ariaLabel = input.getAttribute('aria-label') || '';
-          return {
-            index,
-            isVisible,
-            placeholder,
-            ariaLabel,
-            id: input.id,
-            className: input.className
-          };
-        }).filter(i => i.isVisible);
-      });
-      
-      // console.log(`Found ${visibleInputs.length} visible input fields:`, visibleInputs);
-      
-      if (visibleInputs.length > 0) {
-        // Try to find status-related input first
-        const statusInputIndex = visibleInputs.findIndex(i => 
-          i.placeholder.toLowerCase().includes('status') ||
-          i.ariaLabel.toLowerCase().includes('status')
-        );
-        
-        const targetIndex = statusInputIndex >= 0 ? statusInputIndex : 0;
-        const allInputs = await page.$$('input[type="text"], input:not([type])');
-        statusInput = allInputs[visibleInputs[targetIndex].index];
-      }
-      
-      if (statusInput) {
-        // Log what we found
-        const inputInfo = await page.evaluate(el => {
-          const input = el as HTMLInputElement;
-          return {
-            value: input.value,
-            placeholder: input.placeholder,
-            type: input.type,
-            tagName: input.tagName
-          };
-        }, statusInput);
-        console.log('Found input field:', inputInfo);
-        
-        // Focus the input first
-        await statusInput.focus();
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Get current value length
-        const valueLength = inputInfo.value ? inputInfo.value.length : 0;
-        
-        if (valueLength > 0) {
-          console.log(`Clearing ${valueLength} characters from status field`);
-          
-          // Move cursor to end
-          await page.keyboard.press('End');
-          await new Promise(resolve => setTimeout(resolve, 200));
-          
-          // Delete all characters one by one
-          for (let i = 0; i < valueLength; i++) {
-            await page.keyboard.press('Backspace');
-            await new Promise(resolve => setTimeout(resolve, 100));
-          }
-          
-          // Verify it's cleared
-          const afterClear = await page.evaluate(el => (el as HTMLInputElement).value, statusInput);
-          console.log(`After clearing: "${afterClear}"`);
-        }
-        
-        // Type new status text
-        if (status.text && status.text.trim() !== '') {
-          await page.keyboard.type(status.text, { delay: 50 });
-          console.log(`Typed status text: ${status.text}`);
-        } else {
-          console.log('No new status text to type');
-        }
-      } else {
-        // Alternative: Just start typing if dialog is open
-        console.log('Could not find input, attempting to type directly');
-        
-        // Wait a bit for dialog to be ready
-        await new Promise(resolve => setTimeout(resolve, 500));
-        
-        // Clear existing text - use multiple methods
-        const isMac = process.platform === 'darwin';
-        
-        // Method 1: Select all with Cmd/Ctrl+A and delete
-        await page.keyboard.down(isMac ? 'Meta' : 'Control');
-        await page.keyboard.press('a');
-        await page.keyboard.up(isMac ? 'Meta' : 'Control');
-        await new Promise(resolve => setTimeout(resolve, 300));
+      // Clear with backspaces for safety
+      for (let i = 0; i < 50; i++) {
         await page.keyboard.press('Backspace');
-        await new Promise(resolve => setTimeout(resolve, 300));
-        
-        // Type new status text
-        if (status.text && status.text.trim() !== '') {
-          await page.keyboard.type(status.text);
-          console.log(`Typed status text directly: ${status.text}`);
-        }
+        await new Promise(resolve => setTimeout(resolve, 15));
       }
-      }  // End of if (!usedKeyboardShortcut) block
-
-      if (status.emoji) {
-        console.log(`Setting emoji: ${status.emoji}`);
+      
+      // Type new status text
+      if (status.text && status.text.trim() !== '') {
+        console.log(`✍️ Typing: "${status.text}"`);
+        await page.keyboard.type(status.text, { delay: 80 });
+        await new Promise(resolve => setTimeout(resolve, 800));
+        console.log('✅ Text entered');
+      }
+      
+      // Handle emoji (set or clear)
+      try {
+        console.log('🎯 Handling emoji...');
         
-        // Try clicking emoji button first
-        // Click the emoji button using known Slack selector
-            const emojiBtn = await page.$('button[data-qa="custom_status_input_emoji_picker"]');
-            if (emojiBtn) {
-                await emojiBtn.click();
-                await new Promise(r => setTimeout(r, 1000));
-            } else {
-                console.warn('Emoji button not found');
+        // Click the emoji button to open emoji picker
+        const emojiBtn = await page.$('button[data-qa="custom_status_input_emoji_picker"]');
+        if (emojiBtn) {
+          await emojiBtn.click();
+          await new Promise(r => setTimeout(r, 1000));
+          console.log('✅ Emoji picker opened');
+          
+          if (status.emoji && status.emoji.trim() !== '') {
+            console.log(`✍️ Setting emoji: ${status.emoji}`);
+            
+            // Type emoji name in search
+            const emojiName = status.emoji.replace(/:/g, '');
+            await page.keyboard.type(emojiName);
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Press Enter to select first result
+            await page.keyboard.press('Enter');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            console.log('✅ Emoji set');
+          } else {
+            console.log('🧹 Clearing status - looking for clear button next to input');
+            
+            // Close emoji picker first
+            await page.keyboard.press('Escape');
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            // Look for clear button near the input field (right side)
+            const clearButtons = [
+              'button[aria-label*="Clear"]',
+              'button[title*="Clear"]',
+              'button[data-qa*="clear"]',
+              '[data-qa="status_input_clear"]',
+              '.c-button--small[aria-label*="Clear"]',
+              'button:has([aria-hidden="true"]):has-text("×")',
+              'button[aria-label="Clear status"]',
+              '.p-status_input__clear'
+            ];
+            
+            let cleared = false;
+            for (const selector of clearButtons) {
+              try {
+                const clearBtn = await page.$(selector);
+                if (clearBtn) {
+                  await clearBtn.click();
+                  console.log(`✅ Clicked clear button: ${selector}`);
+                  cleared = true;
+                  break;
+                }
+              } catch {
+                continue;
+              }
             }
-
-        
-        // if (!emojiButtonClicked) {
-          // Try Tab key to navigate to emoji button
-        //   await page.keyboard.press('Tab');
-        //   await new Promise(resolve => setTimeout(resolve, 500));
-        //   await page.keyboard.press('Enter');
-        // }
-        
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Type emoji name in search
-        const emojiName = status.emoji.replace(/:/g, '');
-        await page.keyboard.type(emojiName);
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Press Enter to select first result
-        await page.keyboard.press('Enter');
-        await new Promise(resolve => setTimeout(resolve, 500));
+            
+            if (!cleared) {
+              console.log('❌ Clear button not found, manually clearing');
+              // Fallback: select all and delete
+              await page.keyboard.down('Control');
+              await page.keyboard.press('a');
+              await page.keyboard.up('Control');
+              await page.keyboard.press('Backspace');
+            }
+            
+            console.log('✅ Status cleared');
+          }
+        } else {
+          console.warn('❌ Emoji button not found - skipping emoji handling');
+        }
+      } catch (emojiError) {
+        console.error('❌ Error handling emoji:', emojiError);
+        // Continue with saving even if emoji fails
       }
 
       try {
@@ -480,7 +329,7 @@ class SlackCookieService {
   }
 
   getConfiguredAccounts(): string[] {
-    return this.accounts.map(acc => acc.name);
+    return this.accounts.map(acc => acc.workspace);
   }
 
   async cleanup() {

@@ -1,0 +1,42 @@
+# Dockerfile for Telegram Bot
+FROM node:18-alpine
+
+# Install Chrome dependencies for Puppeteer (needed for Slack automation)
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    freetype-dev \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont
+
+# Set Puppeteer environment variables
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including dev dependencies for ts-node)
+RUN npm ci && npm cache clean --force
+RUN npm install -g ts-node typescript
+
+# Copy source code
+COPY . .
+
+# Create logs directory
+RUN mkdir -p logs
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S telegramuser -u 1001 -G nodejs
+RUN chown -R telegramuser:nodejs /app /app/logs
+USER telegramuser
+
+# No port exposure needed (background service)
+
+# Start telegram bot only
+CMD ["npm", "run", "telegram-bot"]
