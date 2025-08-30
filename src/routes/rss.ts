@@ -7,6 +7,11 @@ const rss = express.Router();
 rss.get('/blog-feed.xml', async (req, res) => {
     try {
       console.log(`Incoming Request: ${req.method} ${req.url}`);
+      
+      // Pagination parameters
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = Math.min(parseInt(req.query.limit as string) || 10, 50); // Max 50 items
+      const offset = (page - 1) * limit;
   
       const result = await pgClient.query(`
         SELECT 
@@ -19,8 +24,8 @@ rss.get('/blog-feed.xml', async (req, res) => {
           normalized_title
         FROM posts
         ORDER BY pub_date DESC
-        LIMIT 50
-      `);
+        LIMIT $1 OFFSET $2
+      `, [limit, offset]);
   
       const posts = result.rows;
   
@@ -55,6 +60,56 @@ rss.get('/blog-feed.xml', async (req, res) => {
     } catch (error) {
       console.error('Error generating RSS feed:', error);
       res.status(500).send('Failed to generate RSS feed.');
+    }
+  });
+
+// JSON API for posts with pagination
+rss.get('/posts', async (req, res) => {
+    try {
+      console.log(`Incoming Request: ${req.method} ${req.url}`);
+      
+      // Pagination parameters
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = Math.min(parseInt(req.query.limit as string) || 10, 50); // Max 50 items
+      const offset = (page - 1) * limit;
+      
+      // Get total count for pagination metadata
+      const countResult = await pgClient.query('SELECT COUNT(*) FROM posts');
+      const totalPosts = parseInt(countResult.rows[0].count);
+      const totalPages = Math.ceil(totalPosts / limit);
+      
+      // Get posts
+      const result = await pgClient.query(`
+        SELECT 
+          title,
+          description,
+          link,
+          pub_date,
+          content,
+          image_url AS enclosure,
+          normalized_title
+        FROM posts
+        ORDER BY pub_date DESC
+        LIMIT $1 OFFSET $2
+      `, [limit, offset]);
+      
+      const posts = result.rows;
+      
+      res.json({
+        posts,
+        pagination: {
+          page,
+          limit,
+          totalPosts,
+          totalPages,
+          hasNext: page < totalPages,
+          hasPrev: page > 1
+        }
+      });
+      
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      res.status(500).json({ error: 'Failed to fetch posts' });
     }
   });
 

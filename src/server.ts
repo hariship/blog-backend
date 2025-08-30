@@ -9,6 +9,8 @@ import bodyParser from 'body-parser';
 import mailRoutes from './routes/mail';
 import clientRoutes from './routes/client';
 import rssRoutes from './routes/rss';
+import slackRoutes from './routes/slack';
+import signalRoutes from './routes/signal';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -45,6 +47,8 @@ app.use(bodyParser.json());
 app.use('/', mailRoutes);
 app.use('/',clientRoutes);
 app.use('/', rssRoutes);
+app.use('/api/slack', slackRoutes);
+app.use('/api/signal', signalRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
