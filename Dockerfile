@@ -6,14 +6,17 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install ALL dependencies (needed for build)
+RUN npm ci && npm cache clean --force
 
 # Copy source code
 COPY . .
 
 # Build the application
 RUN npm run build
+
+# Remove dev dependencies after build
+RUN npm prune --production
 
 # Create non-root user
 RUN groupadd --gid 1001 nodejs && \
@@ -26,7 +29,7 @@ EXPOSE 3001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3001/health || exit 1
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3001/health || exit 1
 
 # Start blog backend only
 CMD ["npm", "start"]
