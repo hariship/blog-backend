@@ -26,9 +26,9 @@ app.use(cors({
 // PostgreSQL setup
 export const pgClient = new PGClient({
   user: process.env.DB_USER || 'postgres',
-  host: process.env.DB_HOST || '16.171.52.187',
+  host: process.env.DB_HOST || 'localhost',
   database: process.env.DB_NAME || 'blog',
-  password: process.env.DB_PASSWORD || 'hari_1234_1234',
+  password: process.env.DB_PASSWORD || '',
   port: 5432,
 });
 pgClient.connect().then(() => console.log("Connected to PostgreSQL")).catch(console.error);

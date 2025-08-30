@@ -73,8 +73,24 @@ rss.get('/posts', async (req, res) => {
       const limit = Math.min(parseInt(req.query.limit as string) || 10, 50); // Max 50 items
       const offset = (page - 1) * limit;
       
+      // Category filter
+      const category = req.query.category as string;
+      
+      // Build where clause for category filter
+      let whereClause = '';
+      let queryParams: any[] = [limit, offset];
+      
+      if (category && category !== '') {
+        whereClause = 'WHERE category = $3';
+        queryParams.push(category);
+      }
+      
       // Get total count for pagination metadata
-      const countResult = await pgClient.query('SELECT COUNT(*) FROM posts');
+      const countQuery = category && category !== '' 
+        ? 'SELECT COUNT(*) FROM posts WHERE category = $1'
+        : 'SELECT COUNT(*) FROM posts';
+      const countParams = category && category !== '' ? [category] : [];
+      const countResult = await pgClient.query(countQuery, countParams);
       const totalPosts = parseInt(countResult.rows[0].count);
       const totalPages = Math.ceil(totalPosts / limit);
       
@@ -87,11 +103,13 @@ rss.get('/posts', async (req, res) => {
           pub_date,
           content,
           image_url AS enclosure,
-          normalized_title
+          normalized_title,
+          category
         FROM posts
+        ${whereClause}
         ORDER BY pub_date DESC
         LIMIT $1 OFFSET $2
-      `, [limit, offset]);
+      `, queryParams);
       
       const posts = result.rows;
       
@@ -112,5 +130,26 @@ rss.get('/posts', async (req, res) => {
       res.status(500).json({ error: 'Failed to fetch posts' });
     }
   });
+
+// Get all categories
+rss.get('/categories', async (req, res) => {
+  try {
+    console.log(`Incoming Request: ${req.method} ${req.url}`);
+    
+    const result = await pgClient.query(`
+      SELECT DISTINCT category 
+      FROM posts 
+      WHERE category IS NOT NULL 
+      ORDER BY category
+    `);
+    
+    const categories = result.rows.map(row => row.category);
+    res.json(categories);
+    
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    res.status(500).json({ error: 'Failed to fetch categories' });
+  }
+});
 
 export default rss;
