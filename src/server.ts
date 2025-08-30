@@ -13,7 +13,7 @@ import slackRoutes from './routes/slack';
 import signalRoutes from './routes/signal';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const path = require('path');
 
 app.use(express.json());
@@ -43,6 +43,11 @@ pgClient.connect().then(() => console.log("Connected to PostgreSQL")).catch(cons
 app.use(cors());  // Use the cors middleware
 
 app.use(bodyParser.json());
+
+// Health check endpoint for Docker
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+});
 
 app.use('/', mailRoutes);
 app.use('/',clientRoutes);

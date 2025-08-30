@@ -145,7 +145,8 @@ router.get('/post/:title', async (req, res) => {
 
 router.get('/scrape', async (req, res) => {
   try {
-    const baseURL = 'https://www.haripriya.org/blog';
+    const sourceUrl = process.env.SOURCE_BLOG_URL || 'https://www.haripriya.org/blog';
+    const baseURL = sourceUrl;
     const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     let pageNum = 1;
 
@@ -366,7 +367,8 @@ router.post('/update-likes', async (req, res) => {
 
 router.get('/force-update-posts', async (req, res) => {
   try {
-    const response = await fetch('https://www.haripriya.org/blog-feed.xml');
+    const sourceFeedUrl = process.env.SOURCE_FEED_URL || 'https://www.haripriya.org/blog-feed.xml';
+    const response = await fetch(sourceFeedUrl);
     const rssData = await response.text();
     const parsedPosts = await parseRSS(rssData);
 
@@ -547,18 +549,32 @@ router.get('/unsubscribe/:email', async (req, res) => {
 
 router.get('/test-email', async (req, res) => {
   try {
+    console.log('Starting test email...');
+    console.log('RESEND_API_KEY configured:', !!process.env.RESEND_API_KEY);
+    console.log('EMAIL_FROM:', process.env.EMAIL_FROM);
+    
     const testSubscriber = {
-      email: 'haripriya@q-u-i-l-t.com',
+      email: process.env.TEST_EMAIL || 'mailtoharipriyas@gmail.com',
       name: 'Test User',
       categories: ['Technology'],
       frequency: 'weekly'
     };
+    
+    console.log('Sending email to:', testSubscriber.email);
     const result = await mailHandler.sendWelcomeEmail(testSubscriber);
+    console.log('Email result:', result);
+    
     res.json({
       success: result,
-      message: result ? 'Test email sent successfully!' : 'Failed to send test email'
+      message: result ? 'Test email sent successfully!' : 'Failed to send test email',
+      config: {
+        hasApiKey: !!process.env.RESEND_API_KEY,
+        emailFrom: process.env.EMAIL_FROM,
+        testEmail: testSubscriber.email
+      }
     });
   } catch (error:any) {
+    console.error('Test email error:', error);
     res.status(500).json({
       success: false,
       message: 'Error sending test email',

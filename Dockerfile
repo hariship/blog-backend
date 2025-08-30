@@ -1,5 +1,5 @@
 # Dockerfile for Blog Backend
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
@@ -16,8 +16,8 @@ COPY . .
 RUN npm run build
 
 # Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S bloguser -u 1001 -G nodejs
+RUN groupadd --gid 1001 nodejs && \
+    useradd --uid 1001 --gid nodejs --shell /bin/bash --create-home bloguser
 RUN chown -R bloguser:nodejs /app
 USER bloguser
 
@@ -26,7 +26,7 @@ EXPOSE 3001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3001/health || exit 1
+  CMD curl -f http://localhost:3001/health || exit 1
 
 # Start blog backend only
 CMD ["npm", "start"]

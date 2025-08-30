@@ -61,11 +61,13 @@ class MailHandler {
   async sendWelcomeEmail(subscriber: Subscriber): Promise<boolean> {
     try {
       const { email, name } = subscriber;
-      const unsubscribeLink = `https://blog.haripriya.org/manage-subscription/${encodeURIComponent(email)}`;
+      const domain = process.env.DOMAIN || 'https://blog.haripriya.org';
+      const emailFrom = process.env.EMAIL_FROM || `noreply@${new URL(domain).hostname}`;
+      const unsubscribeLink = `${domain}/manage-subscription/${encodeURIComponent(email)}`;
       const mailOptions = {
-        from: process.env.EMAIL_FROM || 'noreply@haripriya.org',
+        from: emailFrom,
         to: email,
-        subject: 'Welcome to Haripriya.org Newsletter',
+        subject: `Welcome to ${process.env.BLOG_TITLE || "Haripriya.org"} Newsletter`,
         html: `<html>...${name}...${unsubscribeLink}...</html>`, // Trimmed for brevity
       };
 
@@ -89,7 +91,8 @@ class MailHandler {
   async sendNewPostsNotification(subscriber: Subscriber, posts: Post[]): Promise<boolean> {
     try {
       const { email, name, categories } = subscriber;
-      const unsubscribeLink = `https://blog.haripriya.org/manage-subscription/${encodeURIComponent(email)}`;
+      const domain = process.env.DOMAIN || 'https://blog.haripriya.org';
+      const unsubscribeLink = `${domain}/manage-subscription/${encodeURIComponent(email)}`;
       let filteredPosts = posts;
 
       if (categories.length > 0 && !categories.includes('all')) {
@@ -106,7 +109,7 @@ class MailHandler {
       const postsHTML = await Promise.all(
         filteredPosts.map(async post => {
           const slug = post.title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-');
-          const postUrl = `https://blog.haripriya.org/post/${slug}`;
+          const postUrl = `${domain}/post/${slug}`;
           let fullContent = '';
           try {
             const res = await axios.get(postUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
@@ -121,9 +124,9 @@ class MailHandler {
       );
 
       const mailOptions = {
-        from: process.env.EMAIL_FROM || 'noreply@haripriya.org',
+        from: process.env.EMAIL_FROM || `noreply@${new URL(domain).hostname}`,
         to: email,
-        subject: `New Posts on Haripriya.org`,
+        subject: `New Posts on ${process.env.BLOG_TITLE || "Haripriya.org"}`,
         html: `<div>Hi ${name},<div>${postsHTML.join('')}</div><a href="${unsubscribeLink}">Unsubscribe</a></div>`
       };
 
@@ -139,6 +142,10 @@ class MailHandler {
   async sendCustomEmail(options: CustomEmailOptions): Promise<boolean> {
     try {
       const { to, subject, subscriberName, unsubscribeToken, post, fullPostHtml } = options;
+      const domain = process.env.DOMAIN || 'https://blog.haripriya.org';
+      const blogTitle = process.env.BLOG_TITLE || "Haripriya's Blog";
+      const emailFrom = process.env.EMAIL_FROM || `newsletter@${new URL(domain).hostname}`;
+      
       const pubDate = post.pub_date ? new Date(post.pub_date).toLocaleDateString('en-US', {
         year: 'numeric', month: 'long', day: 'numeric'
       }) : '';
@@ -153,7 +160,7 @@ class MailHandler {
             <p style="font-size: 12px;">
             <i>
             If you ever wish to update your preferences or unsubscribe, click
-             <a href="https://blog.haripriya.org/manage-subscription/${encodeURIComponent(to)}" style="color: #888; text-decoration: none;">
+             <a href="${domain}/manage-subscription/${encodeURIComponent(to)}" style="color: #888; text-decoration: none;">
                 here
             </a></i> 
             </p>
@@ -162,7 +169,7 @@ class MailHandler {
 
 
       const mailOptions = {
-        from: 'Haripriya\'s Blog <newsletter@haripriya.org>',
+        from: `${blogTitle} <${emailFrom}>`,
         to,
         subject,
         html: emailHtml

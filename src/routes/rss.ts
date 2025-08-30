@@ -29,11 +29,15 @@ rss.get('/blog-feed.xml', async (req, res) => {
   
       const posts = result.rows;
   
+      const domain = process.env.DOMAIN || 'https://blog.haripriya.org';
+      const blogTitle = process.env.BLOG_TITLE || "Haripriya's Blog";
+      const blogDescription = process.env.BLOG_DESCRIPTION || "Latest updates from Haripriya's blog";
+      
       const feed = new RSS({
-        title: "Haripriya's Blog",
-        description: "Latest updates from Haripriya's blog",
-        feed_url: 'https://blog.haripriya.org/blog-feed.xml',   // public feed URL
-        site_url: 'https://blog.haripriya.org',                 // blog homepage
+        title: blogTitle,
+        description: blogDescription,
+        feed_url: `${domain}/blog-feed.xml`,
+        site_url: domain,
         language: 'en',
         pubDate: new Date().toUTCString(),
         ttl: 60,
@@ -45,7 +49,7 @@ rss.get('/blog-feed.xml', async (req, res) => {
         feed.item({
           title: post.title,
           description: post.description || '',
-          url: post.link || `https://blog.haripriya.org/post/${post.normalized_title}`,
+          url: post.link || `${domain}/post/${post.normalized_title}`,
           date: post.pub_date,
           enclosure: post.enclosure ? { url: post.enclosure } : undefined,
           custom_elements: [
@@ -97,6 +101,7 @@ rss.get('/posts', async (req, res) => {
       // Get posts
       const result = await pgClient.query(`
         SELECT 
+          id,
           title,
           description,
           link,
