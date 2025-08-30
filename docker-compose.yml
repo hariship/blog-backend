@@ -9,7 +9,6 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3001
-      - DB_HOST=host.docker.internal
     env_file:
       - .env
     restart: unless-stopped
