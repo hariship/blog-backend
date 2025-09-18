@@ -96,15 +96,15 @@ const generatePostHTML = (post: any, normalizedTitle: string) => {
 };
 
 // SSR route for individual posts
-router.get('/post/:title', async (req, res) => {
+router.get('/post/:title', async (req, res, next) => {
   try {
     const { title } = req.params;
     const normalizedTitle = normalizeTitle(title);
     const userAgent = req.get('User-Agent') || '';
 
-    // For regular users (not crawlers), redirect to React app
+    // For regular users (not crawlers), pass through to next route (client route)
     if (!isCrawler(userAgent)) {
-      return res.redirect(`https://blog.haripriya.org/post/${normalizedTitle}`);
+      return next();
     }
 
     // For crawlers, serve SSR content with meta tags
