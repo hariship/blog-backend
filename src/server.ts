@@ -11,6 +11,7 @@ import clientRoutes from './routes/client';
 import rssRoutes from './routes/rss';
 import slackRoutes from './routes/slack';
 import signalRoutes from './routes/signal';
+import ssrRoutes from './routes/ssr';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -54,6 +55,9 @@ app.use('/',clientRoutes);
 app.use('/', rssRoutes);
 app.use('/api/slack', slackRoutes);
 app.use('/api/signal', signalRoutes);
+
+// SSR routes for social media meta tags (should be last to avoid conflicts)
+app.use('/', ssrRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
