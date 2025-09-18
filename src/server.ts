@@ -51,13 +51,13 @@ app.get('/health', (req, res) => {
 });
 
 app.use('/', mailRoutes);
-app.use('/',clientRoutes);
 app.use('/', rssRoutes);
 app.use('/api/slack', slackRoutes);
 app.use('/api/signal', signalRoutes);
 
-// SSR routes for social media meta tags (should be last to avoid conflicts)
+// SSR routes for social media meta tags (must be before clientRoutes to handle crawlers)
 app.use('/', ssrRoutes);
+app.use('/',clientRoutes);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
