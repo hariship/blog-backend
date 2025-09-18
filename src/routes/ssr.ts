@@ -5,6 +5,32 @@ import fs from 'fs';
 
 const router = express.Router();
 
+// Social media crawler detection
+const isCrawler = (userAgent: string) => {
+  if (!userAgent) return false;
+
+  const crawlerPatterns = [
+    'facebookexternalhit',
+    'twitterbot',
+    'whatsapp',
+    'slackbot',
+    'linkedinbot',
+    'discordbot',
+    'telegrambot',
+    'skypeuripreview',
+    'applebot',
+    'googlebot',
+    'bingbot',
+    'yandexbot',
+    'slack',
+    'teams',
+    'discord'
+  ];
+
+  const ua = userAgent.toLowerCase();
+  return crawlerPatterns.some(pattern => ua.includes(pattern));
+};
+
 const normalizeTitle = (title: string) => {
   return title
     .toLowerCase()
@@ -53,13 +79,6 @@ const generatePostHTML = (post: any, normalizedTitle: string) => {
 
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
-
-    <!-- Redirect to React app after meta tags are loaded -->
-    <script>
-        // Redirect to the React app immediately for human users
-        // Social media crawlers will get the meta tags before this executes
-        window.location.href = '${postURL}';
-    </script>
 </head>
 <body>
     <div id="root">
@@ -81,8 +100,14 @@ router.get('/post/:title', async (req, res) => {
   try {
     const { title } = req.params;
     const normalizedTitle = normalizeTitle(title);
+    const userAgent = req.get('User-Agent') || '';
 
-    // Fetch post from database
+    // For regular users (not crawlers), redirect to React app
+    if (!isCrawler(userAgent)) {
+      return res.redirect(`https://blog.haripriya.org/post/${normalizedTitle}`);
+    }
+
+    // For crawlers, serve SSR content with meta tags
     const query = 'SELECT * FROM posts WHERE normalized_title = $1';
     const result = await pgClient.query(query, [normalizedTitle]);
 
