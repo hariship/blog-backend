@@ -60,7 +60,10 @@ const generatePostHTML = (post: any, normalizedTitle: string) => {
     <meta property="og:title" content="${post.title}" />
     <meta property="og:description" content="${post.description || 'Personal Blog'}" />
     <meta property="og:image" content="${imageURL}" />
-    <meta property="og:site_name" content="Haripriya's Blog" />
+    <meta property="og:site_name" content="Hari's Blog" />
+    <meta property="og:image:secure_url" content="${imageURL}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="${post.title}" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -70,12 +73,12 @@ const generatePostHTML = (post: any, normalizedTitle: string) => {
     <meta name="twitter:image" content="${imageURL}" />
 
     <!-- Additional meta tags -->
-    <meta name="author" content="Haripriya Sridharan" />
-    <meta property="article:author" content="Haripriya Sridharan" />
+    <meta name="author" content="Hari" />
+    <meta property="article:author" content="Hari" />
     <meta property="article:published_time" content="${post.pubDate}" />
     <meta property="article:section" content="${post.category || 'Blog'}" />
 
-    <title>${post.title} - Haripriya's Blog</title>
+    <title>${post.title} - Hari's Blog</title>
 
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
